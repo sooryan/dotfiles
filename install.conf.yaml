@@ -1,0 +1,30 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ['~']
+
+- link:
+    ~/.dotfiles: ''
+    ~/.bash_aliases: bash_aliases
+    ~/.bash_functions: bash_functions
+    ~/.config/polybar/config: config/polybar
+    ~/.config/terminator/config: config/terminator
+    ~/.config/termite/config: config/termite
+    ~/.config/zathura/zathurarc: config/zathurarc
+    ~/.fonts: fonts
+    ~/.i3/config: config/i3
+    ~/.mpd: mpd
+    ~/.ncmpcpp: ncmpcpp
+    ~/.offlineimaprc: offlineimap/offlineimaprc
+    ~/.offlineimap.py: offlineimap/offlineimap.py
+    ~/.spacemacs: spacemacs         
+    ~/.vimperator: vimperator
+    ~/.vimperatorrc: vimperatorrc
+    ~/.zshrc: zshrc
+    ~/compton.conf: compton.conf
+    ~/spacemacs: spacemacs_l
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]

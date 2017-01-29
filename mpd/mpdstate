@@ -1,0 +1,41 @@
+sw_volume: 92
+audio_device_state:1:My Sound Card
+audio_device_state:1:my_fifo
+state: pause
+current: 0
+time: 705.317000
+random: 0
+repeat: 1
+single: 0
+consume: 1
+crossfade: 1
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+0:04 Instrumental/Jazz/Hiromi Uehara/01 Another Mind (2003)/02 Double Personality.mp3
+1:04 Instrumental/Jazz/Hiromi Uehara/01 Another Mind (2003)/03 Summer Rain.mp3
+2:04 Instrumental/Jazz/Hiromi Uehara/01 Another Mind (2003)/04 Joy.mp3
+3:04 Instrumental/Jazz/Hiromi Uehara/01 Another Mind (2003)/05 010101 (binary system).mp3
+4:04 Instrumental/Jazz/Hiromi Uehara/01 Another Mind (2003)/06 Truth and Lies.mp3
+5:04 Instrumental/Jazz/Hiromi Uehara/01 Another Mind (2003)/07 Dancando No Paraiso.mp3
+6:04 Instrumental/Jazz/Hiromi Uehara/01 Another Mind (2003)/08 Another Mind.mp3
+7:04 Instrumental/Jazz/Hiromi Uehara/01 Another Mind (2003)/09 Tom and Jerry Show (bonus track).mp3
+8:00 Classical/Carnatic/Kadri Gopalnath/A Sojourn/04 Jagadodarana.wma
+9:00 Classical/Carnatic/Kadri Gopalnath/A Sojourn/05 Chinnan Chiru Kiliye.wma
+10:00 Classical/Carnatic/Kadri Gopalnath/A Sojourn/06 Nanda Nandana.wma
+11:00 Classical/Carnatic/Kadri Gopalnath/A Sojourn/07 Mechathiru.wma
+12:00 Classical/Carnatic/Kadri Gopalnath/A Sojourn/08 Khelo Sange.wma
+13:04 Instrumental/Jazz/Duke Ellington & John Coltrane/01. In a Sentimental Mood.flac
+14:04 Instrumental/Jazz/Hiromi Uehara/06 Duet (2008)/Disc One/01 Very Early.mp3
+15:04 Instrumental/Jazz/Hiromi Uehara/06 Duet (2008)/Disc One/02 How Insensitive.mp3
+16:04 Instrumental/Jazz/Hiromi Uehara/06 Duet (2008)/Disc One/03 Deja vu.mp3
+17:04 Instrumental/Jazz/Hiromi Uehara/06 Duet (2008)/Disc One/04 Fool on the Hill.mp3
+18:04 Instrumental/Jazz/Hiromi Uehara/06 Duet (2008)/Disc One/05 Humpty Dumpty.mp3
+19:04 Instrumental/Jazz/Hiromi Uehara/06 Duet (2008)/Disc One/06 Bolivar Blues.mp3
+20:04 Instrumental/Jazz/Hiromi Uehara/06 Duet (2008)/Disc Two/01 Windows.mp3
+21:04 Instrumental/Jazz/Hiromi Uehara/06 Duet (2008)/Disc Two/02 Old Castle, by the river, in the middle of a forest.mp3
+22:04 Instrumental/Jazz/Hiromi Uehara/06 Duet (2008)/Disc Two/03 Summertime.mp3
+23:04 Instrumental/Jazz/Hiromi Uehara/06 Duet (2008)/Disc Two/04 Place To Be.mp3
+24:04 Instrumental/Jazz/Hiromi Uehara/06 Duet (2008)/Disc Two/05 Do Mo (Children's Song #12).mp3
+25:04 Instrumental/Jazz/Hiromi Uehara/06 Duet (2008)/Disc Two/06 Concierto de Aranjuez-Spain.mp3
+playlist_end
