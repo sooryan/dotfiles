@@ -15,8 +15,8 @@
     ~/.config/zathura/zathurarc: config/zathurarc
     ~/.fonts: fonts
     ~/.i3/config: config/i3
-    ~/.mpd: mpd
-    ~/.ncmpcpp: ncmpcpp
+    ~/.mpd/mpd.conf: config/mpd
+    ~/.ncmpcpp/config: config/ncmpcpp
     ~/.offlineimaprc: offlineimap/offlineimaprc
     ~/.offlineimap.py: offlineimap/offlineimap.py
     ~/.spacemacs: spacemacs         
