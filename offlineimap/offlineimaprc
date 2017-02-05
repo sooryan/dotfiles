@@ -1,23 +1,63 @@
 [general]
-accounts = Gmail
+accounts = Gmail, Dev, Professional
 maxsyncaccounts = 3
 pythonfile = ~/.offlineimap.py
 
+[Account Professional]
+localrepository = LocalProfessional
+remoterepository = RemoteProfessional
+
+[Account Dev]
+localrepository = LocalDev
+remoterepository = RemoteDev
+
 [Account Gmail]
-localrepository = Local
-remoterepository = Remote
+localrepository = LocalPersonal
+remoterepository = RemotePersonal
 
-[Repository Local]
+[Repository LocalProfessional]
 type = Maildir
-localfolders = ~/.mail
+localfolders = ~/.mail/Professional
 
-[Repository Remote]
+[Repository LocalDev]
+type = Maildir
+localfolders = ~/.mail/Dev
+
+[Repository LocalPersonal]
+type = Maildir
+localfolders = ~/.mail/Personal
+
+[Repository RemoteProfessional]
 type = Gmail
 remoteuser = soorya.narayan.jm@gmail.com
 remotepasseval = get_password_emacs("imap.gmail.com", "soorya.narayan.jm@gmail.com", "993")
 realdelete = no
 
 folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/All Mail', '[Gmail]/Starred', '[Gmail]/Important']
+
+holdconnectionopen = true
+keepalive = 60
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+[Repository RemoteDev]
+type = Gmail
+remoteuser = nayaran.ayroos@gmail.com
+remotepasseval = get_password_emacs("imap.gmail.com", "nayaran.ayroos@gmail.com", "993")
+realdelete = no
+
+folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/All Mail', '[Gmail]/Starred', '[Gmail]/Important' ]
+
+holdconnectionopen = true
+keepalive = 60
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+[Repository RemotePersonal]
+type = Gmail
+remoteuser = soorya.art@gmail.com
+remotepasseval = get_password_emacs("imap.gmail.com", "soorya.art@gmail.com", "993")
+realdelete = no
+
+folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/All Mail', '[Gmail]/Starred', 'Junk', '[Gmail]/Important']
 
 holdconnectionopen = true
 keepalive = 60
