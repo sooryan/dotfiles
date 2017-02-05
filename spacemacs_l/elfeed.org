@@ -1,0 +1,36 @@
+* Blogs                                                              :elfeed:
+** entry-title: \(linux\|linus\|ubuntu\|kde\|gnome\)                  :linux:
+** http://git-annex.branchable.com/design/assistant/blog/index.rss :mustread:
+** http://feeds.feedburner.com/InformationIsBeautiful
+** [[http://orgmode.org][Org Mode Links supported as well]]
+** Software Development                                                 :dev:
+*** Emacs                                                    :emacs:mustread:
+**** http://www.terminally-incoherent.com/blog/feed
+**** http://nullprogram.com/feed
+**** entry-title: \(emacs\|org-mode\)
+**** http://planet.emacsen.org/atom.xml
+*** General Practices
+**** http://feeds.feedburner.com/codinghorror
+** Research                                                        :research:
+*** http://googleresearch.blogspot.com/atom.xml 
+*** http://matt.might.net/articles/feed.rss 
+*** http://blog.regehr.org/feed
+*** http://blog.acolyer.org/feed/                                    :papers:
+** Math                                                                :math:
+*** http://math.andrej.com/feed/ 
+*** http://jeremykun.wordpress.com/feed/ 
+** CS                                                                   :tcs:
+*** http://lambda-the-ultimate.org/rss.xml                               :pl:
+*** http://scottaaronson.com/blog/?feed=rss2                        :quantum:
+*** http://sigfpe.blogspot.com/feeds/posts/default               :pl:haskell:
+*** http://semantic-domain.blogspot.com/feeds/posts/default              :pl:
+** General                                                             :misc:
+*** http://www.aaronsw.com/2002/feeds/pgessays.rss
+*** http://cacm.acm.org/blogs/blog-cacm.rss
+** Amusement
+*** http://www.smbc-comics.com/rss.php                                :comic:
+*** http://xkcd.com/rss.xml                                           :comic:
+*** http://what-if.xkcd.com/feed.atom 
+** ML                                                                    :ml:
+*** http://feeds.feedburner.com/PartiallyDerivative 
+
