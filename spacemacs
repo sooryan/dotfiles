@@ -31,59 +31,74 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     yaml
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
-     asm
-     (auto-completion :variables
-                      auto-completion-enable-help-tooltip t
-                      )
-     better-defaults
-     (c-c++ :variables
-            c-c++-enable-clang-support t
-            c-c++-default-mode-for-headers 'c++-mode
-            )
-     emacs-lisp
+	 ;; ----------------------------------------------------------------
+	 ;; Example of useful layers you may want to use right away.
+	 ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
+	 ;; <M-m f e R> (Emacs style) to install them.
+	 ;; ----------------------------------------------------------------
+	 asm
+	 (auto-completion :variables
+					  auto-completion-enable-help-tooltip t
+					  )
+	 better-defaults
+	 (c-c++ :variables
+			c-c++-enable-clang-support t
+			c-c++-default-mode-for-headers 'c++-mode
+			)
+	 dash
+	 (elfeed :variables
+			 rmh-elfeed-org-files (list "~/spacemacs/elfeed.org")
+			 elfeed-enable-web-interface t
+			 )
+	 emacs-lisp
 	 erc
-     games
-     git
+	 games
+	 git
+	 github
 	 html
-     (haskell :variables
-              haskell-completion-backend 'intero
-              haskell-enable-hindent-style "johan-tibell"
+	 (haskell :variables
+			  haskell-completion-backend 'intero
+			  haskell-enable-hindent-style "johan-tibell"
+			  )
+	 helm
+     (ibuffer :variables
+              ibuffer-group-buffers-by 'projects
               )
-     helm
 	 java
-     javascript
+	 javascript
 	 latex
-     markdown
-     mu4e
-     (org :variables
+	 markdown
+	 (mu4e :variables
+           mu4e-account-alist t
+           mu4e-enable-notifications t
+           mu4e-enable-mode-line t
+           )
+	 (org :variables
 		  org-enable-github-support t
 		  )
 	 pdf-tools
-     python
-     (shell :variables
-            shell-default-shell 'ansi-term
-            shell-default-term-shell "/bin/zsh"
-            shell-default-height 50
-            shell-default-position 'bottom)
-     syntax-checking
-     version-control
-     xkcd
-     ;; spell-checking
-     )
+	 python
+	 (shell :variables
+			shell-default-shell 'ansi-term
+			shell-default-term-shell "/bin/zsh"
+			shell-default-height 50
+			shell-default-position 'bottom
+            )
+     semantic
+	 syntax-checking
+	 version-control
+	 xkcd
+	 yaml
+	 ;; spell-checking
+	 )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
-                                      gruvbox-theme
-                                      monokai-theme
-                                     )
+									  gruvbox-theme
+									  monokai-theme
+									  )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -147,29 +162,29 @@ values."
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
    dotspacemacs-startup-lists '((recents . 5)
-                                (projects . 7))
+								(projects . 7))
    ;; True if the home buffer should respond to resize events.
    dotspacemacs-startup-buffer-responsive t
    ;; Default major mode of the scratch buffer (default `text-mode')
-   dotspacemacs-scratch-mode 'text-mode
+   dotspacemacs-scratch-mode 'org-mode
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         gruvbox
-                         monokai
+						 monokai
+						 gruvbox
 						 spacemacs-dark
-                         spacemacs-light
-                        )
+						 spacemacs-light
+						 )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Monaco"
-                               :size 14
-                               :weight normal
-                               :width normal
-                               :powerline-scale 1.1)
+   dotspacemacs-default-font '("Pragmata Pro"
+							   :size 15
+							   :weight light
+							   :width normal
+							   :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -194,7 +209,7 @@ values."
    ;; works in the GUI. (default nil)
    dotspacemacs-distinguish-gui-tab nil
    ;; If non nil `Y' is remapped to `y$' in Evil states. (default nil)
-   dotspacemacs-remap-Y-to-y$ nil
+   dotspacemacs-remap-Y-to-y$ t
    ;; If non-nil, the shift mappings `<' and `>' retain visual state if used
    ;; there. (default t)
    dotspacemacs-retain-visual-state-on-shift t
@@ -282,7 +297,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -313,7 +328,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'changed
    ))
 
 (defun dotspacemacs/user-init ()
@@ -326,18 +341,18 @@ before packages are loaded. If you are unsure, you should try in setting them in
   )
 
 (defun dotspacemacs/user-config ()
-  	"CONFIGURATION function for user code.
+  "CONFIGURATION function for user code.
 	This function is called at the very end of Spacemacs initialization after
 	layers configuration.
 	This is the place where most of your configurations should be done. Unless it is
 	explicitly specified that a variable should be set before a package is loaded,
 	you should place your code here."
-  (load-theme 'gruvbox t)
   ;; Mine
   (add-to-list 'load-path "/home/soorya/spacemacs")
 
+  (load-theme 'gruvbox t)
   ;; show line numbers
-  (global-linum-mode t)
+  ;; (global-linum-mode t)
   ;; UTF-8
   (set-language-environment 'utf-8)
   (set-default-coding-systems 'utf-8)
@@ -349,29 +364,28 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; Alt + Up/Down to move block of selected text up/down
   (require 'move-text)
   (move-text-default-bindings)
-
   ;; (menu-bar-mode t)
-  (global-set-key (kbd "M-f") 'menu-bar-open)
+  (global-set-key (kbd "M-f")
+                  'menu-bar-open)
   (setq neo-theme 'arrow)
-  (setq-default
-   whitespace-line-column 80
-   whitespace-style '(face lines-tail))
-
+  (setq-default whitespace-line-column 80
+                whitespace-style
+                '(face lines-tail))
   ;; Copy, paste And cut
-  (global-set-key (kbd "C-x c") 'clipboard-kill-ring-save)
-  (global-set-key (kbd "C-x p") 'clipboard-yank)
-  (global-set-key (kbd "C-x x") 'clipboard-kill-region)
-
+  (global-set-key (kbd "C-x c")
+                  'clipboard-kill-ring-save)
+  (global-set-key (kbd "C-x p")
+                  'clipboard-yank)
+  (global-set-key (kbd "C-x x")
+                  'clipboard-kill-region)
   ;; delete line
-  (global-set-key (kbd "<delete>") 'delete-region)
-
+  (global-set-key (kbd "<delete>")
+                  'delete-region)
   ;; terminal
   (setq system-uses-terminfo nil)
-
   ;; C/C++ mode customizations
-  (global-set-key (kbd "C-x f") 'clang-format-buffer)
-
-  (setq-default tab-width 4)
+  (global-set-key (kbd "C-x f")
+                  'clang-format-region)
   (setq indent-line-function 'insert-tab)
   ;; Text scaling
   (define-key global-map (kbd "C-+") 'text-scale-increase)
@@ -382,68 +396,107 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
   (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
   (setq scroll-step 1) ;; keyboard scroll one line at a time
+  ;; (require 'sublimity)
+  ;; (require 'sublimity-scroll)
+  ;; (sublimity-mode 1)
+  ;; (setq sublimity-scroll-weight 2 sublimity-scroll-drift-length
+  ;;       5)
+  ;; make these keys behave like normal browser
+
+  (defun webkit-setup ()
+    (define-key xwidget-webkit-mode-map [mouse-4] 'xwidget-webkit-scroll-down)
+    (define-key xwidget-webkit-mode-map [mouse-5] 'xwidget-webkit-scroll-up)
+    (define-key xwidget-webkit-mode-map (kbd "<up>") 'xwidget-webkit-scroll-down)
+    (define-key xwidget-webkit-mode-map (kbd "<down>") 'xwidget-webkit-scroll-up)
+    (define-key xwidget-webkit-mode-map (kbd "M-w") 'xwidget-webkit-copy-selection-as-kill)
+    (define-key xwidget-webkit-mode-map (kbd "C-c") 'xwidget-webkit-copy-selection-as-kill)
+    )
+
+  (add-hook 'xwidget-webkit-mode-hook 'webkit-setup)
+
+  (defun c++-setup ()
+    (setq-default tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92)
+                  indent-tabs-mode t
+                  tab-width 4
+                  fill-column 72))
+
+  (add-hook 'c++-mode-hook 'c++-setup)
+  (add-hook 'c-mode-hook 'c++-setup)
 
   (require 'nyan-mode)
   (nyan-mode t)
 
-  (global-set-key (kbd "<C-down>") 'shrink-window)
-  (global-set-key (kbd "<C-up>") 'enlarge-window)
-  (global-set-key (kbd "<C-right>") 'shrink-window-horizontally)
-  (global-set-key (kbd "<C-left>") 'enlarge-window-horizontally)
-
+  (setq org-bullets-bullet-list '("" "" "▲" "▶"))
+  (global-set-key (kbd "<C-down>")
+                  'shrink-window)
+  (global-set-key (kbd "<C-up>")
+                  'enlarge-window)
+  (global-set-key (kbd "<C-right>")
+                  'shrink-window-horizontally)
+  (global-set-key (kbd "<C-left>")
+                  'enlarge-window-horizontally)
   (setq projectile-indexing-method 'alien)
   (setq projectile-enable-caching t)
-
   ;; default
-  (setq mu4e-maildir "~/.mail")
-
-  (setq mu4e-drafts-folder "/[Gmail].Drafts")
-  (setq mu4e-sent-folder   "/[Gmail].Sent Mail")
-  (setq mu4e-trash-folder  "/[Gmail].Trash")
 
   ;; don't save message to Sent Messages, GMail/IMAP will take care of this
-  (setq mu4e-sent-messages-behavior 'delete)
-
+  ;; (setq mu4e-sent-messages-behavior 'delete)
+  (setq-default mu4e-maildir "~/.mail")
   ;; setup some handy shortcuts
-  (setq mu4e-maildir-shortcuts
-    '(("/INBOX"             . ?i)
-      ("/[Gmail].Sent Mail" . ?s)
-      ("/[Gmail].Trash"     . ?t)))
 
   ;; allow for updating mail using 'U' in the main view:
   (setq mu4e-get-mail-command "offlineimap")
+  (setq mu4e-account-alist '(("personal"
+                              ;; Under each account, set the account-specific variables you want.
+                              ;; (mu4e-sent-messages-behavior delete)
+                              (mu4e-sent-folder "/Personal/[Gmail].Sent Mail")
+                              (mu4e-drafts-folder "/Personal/[Gmail].Drafts")
+                              (mu4e-trash-folder "/Personal/[Gmail].Trash")
+                              (user-mail-address "soorya.art@gmail.com")
+                              (user-full-name "J M Soorya Narayan"))
+                             ("professional"
+                              ;; Under each account, set the account-specific variables you want.
+                              ;; (mu4e-sent-messages-behavior delete)
+                              (mu4e-sent-folder "/Professional/[Gmail].Sent Mail")
+                              (mu4e-drafts-folder "/Professional/[Gmail].Drafts")
+                              (mu4e-trash-folder "/Professional/[Gmail].Trash")
+                              (user-mail-address "soorya.narayan.jm@gmail.com")
+                              (user-full-name "J M Soorya Narayan"))
+                             ("Dev"
+                              ;; (mu4e-sent-messages-behavior sent)
+                              (mu4e-sent-folder "/Dev/[Gmail].Sent Mail")
+                              (mu4e-drafts-folder "/Dev/[Gmail].Drafts")
+                              (mu4e-trash-folder "/Dev/[Gmail].Trash")
+                              (user-mail-address "nayaran.ayroos@gmail.com")
+                              (user-full-name "J M Soorya Narayan"))))
+  (mu4e/mail-account-reset)
+  (let message-send-mail-function 'smtpmail-send-it
+        starttls-use-gnutls
+        t
+        smtpmail-starttls-credentials
+        '(("smtp.gmail.com" 587 nil nil))
+        smtpmail-auth-credentials
+        (expand-file-name "~/.authinfo.gpg")
+        smtpmail-default-smtp-server
+        "smtp.gmail.com"
+        smtpmail-smtp-server
+        "smtp.gmail.com"
+        smtpmail-smtp-service
+        587
+        smtpmail-debug-info
+        t)
 
-  ;; something about ourselves
-  ;; I don't use a signature...
-  (setq
-   user-mail-address "soorya.narayan.jm@gmail.com"
-   user-full-name  "Soorya Narayan"
-   ;; message-signature
-   ;;  (concat
-   ;;    "Foo X. Bar\n"
-   ;;    "http://www.example.com\n")
-  )
-
-  (setq message-send-mail-function 'smtpmail-send-it
-    starttls-use-gnutls t
-    smtpmail-starttls-credentials
-    '(("smtp.gmail.com" 587 nil nil))
-    smtpmail-auth-credentials
-    (expand-file-name "~/.authinfo.gpg")
-     smtpmail-default-smtp-server "smtp.gmail.com"
-     smtpmail-smtp-server "smtp.gmail.com"
-     smtpmail-smtp-service 587
-     smtpm ail-debug-info t)
+  (with-eval-after-load 'mu4e-alert
+    ;; Enable Desktop notifications
+    (mu4e-alert-set-default-style 'notifications))
 
   (defun my-render-html-message ()
-    (let ((dom (libxml-parse-html-region (point-min) (point-max))))
+    (let ((dom (libxml-parse-html-region (point-min)
+                                         (point-max))))
       (erase-buffer)
       (shr-insert-document dom)
       (goto-char (point-min))))
-
-  (setq mu4e-html2text-command 'my-render-html-message)
-
-)
+  (setq mu4e-html2text-command 'my-render-html-message))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
