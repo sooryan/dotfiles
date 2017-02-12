@@ -10,6 +10,7 @@
     ~/.bash_aliases: bash_aliases
     ~/.bash_functions: bash_functions
     ~/.config/polybar/config: config/polybar
+    ~/.config/qutebrowser: qutebrowser
     ~/.config/terminator/config: config/terminator
     ~/.config/termite/config: config/termite
     ~/.config/zathura/zathurarc: config/zathurarc
