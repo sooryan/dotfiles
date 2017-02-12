@@ -19,12 +19,12 @@
     ~/.ncmpcpp/config: config/ncmpcpp
     ~/.offlineimaprc: offlineimap/offlineimaprc
     ~/.offlineimap.py: offlineimap/offlineimap.py
-    ~/.spacemacs: spacemacs         
+    ~/.spacemacs: spacemacs/dotspacemacs
     ~/.vimperator: vimperator
     ~/.vimperatorrc: vimperatorrc
     ~/.zshrc: zshrc
     ~/compton.conf: compton.conf
-    ~/spacemacs: spacemacs_l
+    ~/spacemacs: spacemacs/spacemacs
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
