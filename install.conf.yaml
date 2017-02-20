@@ -26,6 +26,7 @@
     ~/.zshrc: zshrc
     ~/compton.conf: compton.conf
     ~/spacemacs: spacemacs/spacemacs
+    ~/wallpaper.png: wallpaper.png
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
