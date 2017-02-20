@@ -24,7 +24,7 @@ color1l = #40955540
 color2  = #5B93B8
 color2l = #40477893
 
-color3  = #BED4E2
+color3  = #C0C4C5
 color3l = #40BC832C
 
 
@@ -38,8 +38,8 @@ offset-y = 0
 
 ; bottom = true
 
-background = #1A1A18
-foreground = #B6BBBD
+background = #0e1618
+foreground = #C0C4C5
 linecolor = #555
 
 spacing = 1
@@ -49,19 +49,19 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = Pragmata Pro:size=6:dpi=138;0
-font-1 = FontAwesome:size=7:dpi=138;0
+font-0 = Monaco:size=9:dpi=138;0
+font-1 = FontAwesome:size=9:dpi=138;0
 
-modules-right  = cpu volume battery network date 
-; modules-center = 
+modules-right  = cpu volume battery network date
+; modules-center =
 modules-left   = i3 xwindow
 
 enable-ipc = true
 
 tray-position = right
 tray-padding = 4
-tray-transparent = true
-tray-background = #88FF0000
+; tray-transparent = true
+; tray-background = #88FF0000
 
 [module/xwindow]
 type = internal/xwindow
@@ -128,11 +128,11 @@ format = <label-state>
 index-sort = true
 
 label-focused            = %icon%
-label-focused-foreground = #BED4E2
+label-focused-foreground = #F0F4F5
 label-focused-padding    = 1
 
 label-unfocused            = %icon%
-label-unfocused-foreground = #366181
+label-unfocused-foreground = #B0B4B5
 label-unfocused-padding    = 1
 
 label-urgent            = %icon%
@@ -160,9 +160,11 @@ host = 127.0.0.1
 port = 7000
 
 format-online-foreground = ${colors.color3}
-format-online = <bar-progress> <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <label-time>  <label-song>
+format-online = <label-time>  <label-song>
+; <bar-progress> <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  
 
 label-song = %artist% - %title%
+label-maxlen = 50
 
 icon-play   = 
 icon-pause  = 
@@ -175,7 +177,7 @@ icon-random = 
 icon-repeat = 
 
 ;lol-padding = 1
-bar-progress-width = 1
+bar-progress-width = 5
 bar-progress-indicator = ◉
 bar-progress-fill = ━
 bar-progress-empty = ─
