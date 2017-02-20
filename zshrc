@@ -56,12 +56,12 @@ HIST_STAMPS="dd/mm/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(web_search z git common-aliases thefuck zsh-syntax-highlighting colored-man-pages mercurial)
+plugins=(web_search z git common-aliases colored-man-pages mercurial zsh-syntax-highlighting)
 # User configuration
 
 export PATH="/home/soorya/.local/bin:/home/soorya/bin:/home/soorya/bin/git-scripts:/home/soorya/krita/inst/bin:/home/soorya/bin:/home/soorya/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/soorya/scripts:/home/soorya/.local/bin:/home/soorya/.cargo/bin:/home/soorya/bin/cross/bin"
 
-export PATH="/home/soorya/bin/sources/cling_2017-01-01_ubuntu16/bin:$PATH"
+export PATH="/home/soorya/clones/LLVM/llvm_build/bin:$PATH"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -99,14 +99,7 @@ if [ -f ~/.bash_functions  ]; then
    . ~/.bash_functions
 fi
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-export PATH="/home/soorya/Clones/Github/Nim/bin:$PATH"
 export PATH="/home/soorya/.cabal/bin:$PATH"
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 function collapse_pwd {
     echo $(pwd | sed -e "s,^$HOME,~,")
@@ -115,7 +108,7 @@ function collapse_pwd {
 function prompt_char {
     git branch >/dev/null 2>/dev/null && echo '±' && return
     hg root >/dev/null 2>/dev/null && echo '☿' && return
-    echo '○'
+    echo '>'
 }
 
 function battery_charge {
@@ -172,3 +165,5 @@ if [ -n "$INSIDE_EMACS"  ]; then
     export EDITOR=emacsclient
     unset zle_bracketed_paste  # This line
 fi
+
+(wal -r &)
