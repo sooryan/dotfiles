@@ -1,0 +1,109 @@
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+! scrollback in secondary buffer
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+URxvt.secondaryWheel: 1
+
+! URxvt.font: 9x15
+URxvt.font: xft:monaco:size=10
+URxvt.letterSpace: -1
+
+! Clickabe URLs
+URxvt.perl-ext-common:default,matcher,url-select,keyboard-select,tabbedex,resize-font,clipboard
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
+URxvt.keysym.C-Delete: perl:matcher:last
+URxvt.keysym.M-Delete: perl:matcher:list
+
+URxvt.matcher.rend.0: Uline Bold fg5
+
+! URxvt.url-select.launcher:  /usr/bin/xdg-open
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+
+! Tabs
+URxvt.tabbed.new-button: no
+URxvt.tabbed.autohide: yes
+URxvt.tabbedex.reopen-on-close: yes
+URxvt.tabbed.title: no
+URxvt.keysym.Control-t: perl:tabbedex:new_tab
+URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
+URxvt.keysym.Control-PgDn: perl:tabbedex:next_tab
+URxvt.keysym.Control-PgUp: perl:tabbedex:prev_tab
+URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
+
+URxvt.clipboard.autocopy: true
+
+URxvt.tabbed.tabbar-fg: 7
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 0
+URxvt.tabbed.tab-bg: 7
+
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+
+
+! URxvt.keysym.Control-Shift-t:	perl:tabbedex:new_tab
+! URxvt.keysym.Shifft-Right:	perl:tabbedex:next_tab
+! URxvt.keysym.Shift-Left:	perl:tabbedex:prev_tab
+
+URxvt.resize-font.smaller: C-minus
+URxvt.resize-font.bigger: C-equal
+
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+URxvt*scrollBar:     false
+URxvt*scrollBar_right:   false
+
+! URxvt*transparent:   false
+
+*antialias:  true
+
+! ! special
+! URxvt.foreground:   #ffffff
+! URxvt.background:   #1e1e1e
+! URxvt.cursorColor:  #ffffff
+
+! ! black
+! URxvt.color0:       #222222
+! URxvt.color8:       #333333
+
+! ! red
+! URxvt.color1:       #ca4a4b
+! URxvt.color9:       #ca4a4b
+
+! ! green
+! URxvt.color2:       #aa2a2a
+! URxvt.color10:      #aa2a2a
+
+! ! yellow
+! URxvt.color3:       #830c0c
+! URxvt.color11:      #830c0c
+
+! ! blue
+! URxvt.color4:       #ca4a4b
+! URxvt.color12:      #ca4a4b
+
+! ! magenta
+! URxvt.color5:       #aa2a2a
+! URxvt.color13:      #aa2a2a
+
+! ! cyan
+! URxvt.color6:       #830c0c
+! URxvt.color14:      #830c0c
+
+! ! white
+! URxvt.color7:       #ffffff
+! URxvt.color15:      #ffffff

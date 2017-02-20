@@ -23,6 +23,8 @@
     ~/.spacemacs: spacemacs/dotspacemacs
     ~/.vimperator: vimperator
     ~/.vimperatorrc: vimperatorrc
+    ~/.Xresources: Xresources
+    ~/.Xdefaults: Xresources
     ~/.zshrc: zshrc
     ~/compton.conf: compton.conf
     ~/spacemacs: spacemacs/spacemacs
