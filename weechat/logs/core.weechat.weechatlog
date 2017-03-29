@@ -1,0 +1,26 @@
+2017-02-22 20:04:24	!!	Warning: /home/soorya/.weechat/irc.conf, line 23: unknown option for section "look": hide_nickserv_pwd = on
+2017-02-22 20:04:24	!!	Warning: /home/soorya/.weechat/irc.conf, line 27: unknown option for section "look": highlight_tags = "irc_privmsg,irc_notice"
+2017-02-22 20:04:24	!!	Warning: /home/soorya/.weechat/irc.conf, line 28: unknown option for section "look": item_away_message = on
+2017-02-22 20:04:24	!!	Warning: /home/soorya/.weechat/irc.conf, line 29: unknown option for section "look": item_channel_modes_hide_key = off
+2017-02-22 20:04:24	!!	Warning: /home/soorya/.weechat/irc.conf, line 36: unknown option for section "look": nick_color_force = ""
+2017-02-22 20:04:24	!!	Warning: /home/soorya/.weechat/irc.conf, line 37: unknown option for section "look": nick_color_stop_chars = "_|["
+2017-02-22 20:04:24	!!	Warning: /home/soorya/.weechat/irc.conf, line 41: unknown option for section "look": nick_prefix = ""
+2017-02-22 20:04:24	!!	Warning: /home/soorya/.weechat/irc.conf, line 42: unknown option for section "look": nick_suffix = ""
+2017-02-22 20:04:24	!!	Warning: /home/soorya/.weechat/irc.conf, line 58: unknown option for section "color": item_away = 240
+2017-02-22 20:04:24	!!	Warning: /home/soorya/.weechat/irc.conf, line 65: unknown option for section "color": nick_prefix = green
+2017-02-22 20:04:24	!!	Warning: /home/soorya/.weechat/irc.conf, line 67: unknown option for section "color": nick_suffix = green
+2017-02-22 20:04:24	!!	Warning: /home/soorya/.weechat/irc.conf, line 74: unknown option for section "network": alternate_nick = on
+2017-02-22 20:04:24	!!	Warning: /home/soorya/.weechat/irc.conf, line 80: unknown option for section "network": lag_disconnect = 0
+2017-02-22 20:04:24	!!	Warning: /home/soorya/.weechat/irc.conf, line 110: unknown option for section "server_default": default_msg_part = "WeeChat %v"
+2017-02-22 20:04:24	!!	Warning: /home/soorya/.weechat/irc.conf, line 111: unknown option for section "server_default": default_msg_quit = "WeeChat %v"
+2017-02-22 20:04:24	!!	irc: error creating server option "freenode.default_msg_part"
+2017-02-22 20:04:24	!!	Warning: /home/soorya/.weechat/irc.conf, line 162: invalid value for option: freenode.default_msg_part
+2017-02-22 20:04:24	!!	irc: error creating server option "freenode.default_msg_quit"
+2017-02-22 20:04:24	!!	Warning: /home/soorya/.weechat/irc.conf, line 163: invalid value for option: freenode.default_msg_quit
+2017-02-22 20:04:24		perl scripts loaded: beep, buffers
+2017-02-22 20:04:24		Plugins loaded: alias, aspell, charset, exec, fifo, guile, irc, logger, lua, perl, python, relay, script, trigger, xfer
+2017-02-22 20:04:36	!!	Error with command "/server irc.freenode.net" (help on command: /help server)
+2017-02-22 20:04:44	!!	irc: command "nick" must be executed on irc buffer (server or channel)
+2017-02-22 20:05:18	!!	irc: command "join" must be executed on connected irc server
+2017-02-22 20:05:45		perl: scripts unloaded
+2017-02-22 20:05:45		fifo: pipe closed

@@ -1,0 +1,357 @@
+[colors]
+foreground  = #CACAC8
+background  = #1A1A18
+
+t1		= #332D35
+t2		= #7D6297
+t6		= #CAB8D1
+
+t3		= #AD9CC3
+t4  	= #B6A5C8
+t5		= #C0AECD
+t7		= #D3C1D6
+t8		= #DDCADB
+t99		= colors.background
+t100    = colors.background
+
+[bar/top]
+monitor = eDP-1
+bottom = false
+height = 22
+
+override-redirect = false
+width = 100%
+enable-ipc = true
+
+padding-left = 0
+padding-right = 1
+offset-x = 0
+offset-y = 0
+
+tray-detached = false
+tray-position = right
+tray-offset-x = 0
+tray-offset-y = 0
+tray-maxsize = 16
+tray-padding = 0
+tray-scale = 1
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+; border-left-size = 15
+border-right-size = 15
+border-color = ${self.background}
+
+font-0 = Fantasque Sans Mono:size=11:dpi=138;2
+font-1 = FontAwesome:size=9:dpi=138;2
+font-2 = Cousine for Powerline:size=18;2
+
+modules-left   = i3 xwindow
+; modules-center = xwindow
+modules-right  = mpd wlan volume battery cpu clock
+
+[module/xwindow]
+type = internal/xwindow
+label-maxlen = 30
+label-padding   = 2
+
+[module/i3]
+type = internal/i3
+format = <label-state>
+index-sort = true
+
+label-focused            = %icon%
+label-focused-foreground = #F0F4F5
+label-focused-padding    = 1
+
+label-unfocused            = %icon%
+; label-unfocused-foreground = #B0B4B5
+label-unfocused-padding    = 1
+
+label-urgent            = %icon%
+label-urgent-foreground = #FF5F5F
+label-urgent-padding    = 1
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;5
+ws-icon-5 = 6;6
+ws-icon-6 = 7;7
+ws-icon-7 = 8;8
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+ws-icon-default = 
+
+[module/mpd]
+type                  = internal/mpd
+interval = 2
+
+host = 127.0.0.1
+port = 7000
+
+label-song            =   %title% - %artist%
+label-song-maxlen     = 40
+label-song-ellipsis   = true
+
+format-online         = <label-song>
+# <icon-prev>    <icon-seekb>  <toggle>  <icon-seekf>    <icon-next>     <icon-random>  <icon-repeat>
+
+label-song-background = ${colors.t99}
+icon-pause-background = ${self.label-song-background}
+icon-play-background  = ${self.label-song-background}
+icon-pause-foreground = ${self.label-song-foreground}
+icon-play-foreground  = ${self.label-song-foreground}
+
+label-song-padding = 2
+icon-pause-padding-right = 2
+icon-play-padding-right = 2
+
+icon-prev  = 
+icon-seekb = 
+icon-stop  = 
+icon-pause = 
+icon-play  = 
+icon-next  = 
+icon-seekf = 
+
+; padding-left = 50
+icon-random = 
+icon-repeat = 
+toggle-off-foreground = ${colors.grey}
+toggle-on-foreground  = ${colors.blue}
+
+[module/memory]
+type             = internal/memory
+interval         = 2
+format           = <label>
+
+label            =  %percentage_used%%
+
+label-background = ${colors.t5}
+label-padding   =  2
+
+format-prefix            = 
+format-prefix-background = #D3C1D6
+format-prefix-foreground = ${self.label-background}
+
+format-suffix            = 
+format-suffix-background = ${self.label-background}
+format-suffix-foreground = ${module/cpu.format-background}
+
+
+[module/cpu]
+format-label       = internal/cpu
+
+format             = <label>
+label-background = ${colors.t99}
+
+type      = internal/cpu
+interval  = 2
+label     = "  %percentage%% "
+padding   = 0
+
+[module/wlan]
+type      = internal/network
+interface = wlo1
+; p3s0
+interval  = 3.0
+
+label-connected-padding      = 2
+label-disconnected-padding   = 2
+
+format-connected              = <label-connected>
+format-disconnected           = <label-disconnected>
+
+label-connected-foreground    = ${colors.foreground}
+label-connected-background    = ${colors.t99}
+
+label-disconnected-foreground    = ${colors.foreground}
+label-disconnected-background    = ${colors.t99}
+
+label-connected    =  %downspeed%
+label-disconnected = no wifi :(
+
+[module/eth]
+type                          = internal/network
+interface                     = eno1
+interval                      = 3.0
+
+format-connected              = <label-connected>
+format-disconnected           = <label-disconnected>
+
+label-connected-padding      = 2
+label-disconnected-padding   = 2
+
+label-connected               =  connected
+label-disconnected            = 
+
+label-connected-foreground    = ${colors.foreground}
+label-connected-background    = ${colors.t99}
+
+label-disconnected-foreground    = ${colors.foreground}
+label-disconnected-background    = ${colors.t99}
+
+[module/date]
+type     = internal/date
+interval = 2
+
+date     = " %d.%m.%Y"
+date-alt = "  %A, %d. %B"
+
+time     = " %H:%M"
+time-alt = "%H:%M:%S"
+
+label-background = ${colors.t7}
+label-padding = 2
+format-padding   = 0
+format           = <label>
+label            = %time% | %date%
+
+[module/volume]
+type                      		= internal/volume
+
+format = <label>
+label-muted-background  	= ${colors.t99}
+label-volume-background  	= ${colors.t99}
+
+format-volume 					= <label-volume>
+format-muted  					= <label-muted>
+
+label-muted   					=  " muted "
+format-muted-padding 		= 0
+
+label-volume = " %percentage%% "
+format-volume-padding 		= 0
+
+bar-volume-background 			= ${colors.t99}
+
+[module/battery]
+type    = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging    = <label-charging>
+time-format        = %H:%M
+
+format-discharging =  <label-discharging>
+label-discharging  = "  %percentage%% "
+label-charging  = "   %percentage%% "
+
+format-padding     = 2
+
+label-charging-background = ${colors.t99}
+
+format-full-background        = ${colors.t99}
+format-charging-background    = ${colors.t99}
+format-discharging-background = ${colors.t99}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 =  
+animation-charging-framerate = 750
+
+[module/temperature]
+type                  = internal/temperature
+thermal-zone          = 0
+warn-temperature      = 80
+
+format             = <ramp><label>
+format-background  = ${colors.t5}
+label-background   = ${colors.t5}
+label-padding = 2
+
+format-prefix                 = 
+format-prefix-background      = ${module/battery.format-background}
+format-prefix-foreground      = ${self.label-background}
+
+format-suffix                 = 
+format-suffix-foreground      = ${self.label-background}
+
+format-warn-prefix            = 
+format-warn-prefix-background = ${module/battery.format-background}
+format-warn-prefix-foreground = ${self.label-warn-background}
+
+format-warn-suffix            = 
+format-warn-suffix-foreground = ${self.label-warn-background}
+
+format-warn           = <label-warn>
+label-warn-background = ${colors.t2}
+
+ramp-background       = ${colors.t5}
+
+label                 = %temperature%
+label-warn            =  %temperature%
+
+ramp-0 = "   "
+ramp-1 = "   "
+ramp-2 = " "
+
+[module/weather]
+type = custom/script
+interval = 300
+format = <label>
+exec = ~/.config/polybar/weather-git.sh
+
+label-background = ${colors.t7}
+label-padding   =  2
+
+format-prefix            = 
+format-prefix-background = #B6A5C8
+format-prefix-foreground = ${self.label-background}
+
+format-suffix            = 
+format-suffix-background = ${self.label-background}
+format-suffix-foreground = #AD9CC3
+
+[module/clock]
+type = custom/script
+interval = 1
+format = <label>
+exec = ~/.config/polybar/clock.sh
+
+label-background = ${colors.t100}
+label-padding-right    = 2
+
+[module/pkg]
+type = custom/script
+interval = 120
+format = <label>
+label = "%output:0:30%"
+exec = ~/.config/polybar/pkg.sh
+exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+
+label-background = ${colors.t99}
+label-foreground = ${colors.t100}
+format-underline = ${colors.cyan}
+label-padding   =  2
+
+[module/temps]
+type = custom/script
+interval = 1
+format = <label>
+exec = ~/.config/polybar/cputemp.sh
+
+label-background = ${colors.t5}
+format-underline = ${colors.cyan}
+label-padding   =  2
+
+format-prefix            = 
+format-prefix-background = #D3C1D6
+format-prefix-foreground = ${self.label-background}
+
+format-suffix            = 
+format-suffix-background = ${self.label-background}
+format-suffix-foreground = #B6A5C8
+

@@ -19,8 +19,8 @@ set guioptions ""
 
 # zathurarc-dark
 
-set font "Monaco 10"
-set default-bg "#0e1618" #00
+set font "Fantasque Sans Mono 10"
+set default-bg "#1A1A18" #00
 set default-fg "#F7F7F6" #01
 
 set statusbar-fg "#B0B0B0" #04
@@ -48,7 +48,7 @@ set notification-bg "#90A959" #0B
 set notification-fg "#151515" #00
 
 set recolor "true"
-set recolor-lightcolor "#0e1618" #00
+set recolor-lightcolor "#1A1A18" #00
 set recolor-darkcolor "#E0E0E0" #06
 # set recolor-reverse-video "true"
 # set recolor-keephue "true"
@@ -56,6 +56,6 @@ set recolor-darkcolor "#E0E0E0" #06
 set selection-clipboard clipboard
 set render-loading "false"
 set scroll-step 50
-unmap f
-map f toggle_fullscreen
-map [fullscreen] f toggle_fullscreen
+# unmap f
+# map f toggle_fullscreen
+# map [fullscreen] f toggle_fullscreen

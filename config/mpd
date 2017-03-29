@@ -1,11 +1,11 @@
-music_directory    "/home/soorya/Music"  
-playlist_directory "/home/soorya/.mpd/playlists"   
-db_file            "/home/soorya/.mpd/mpd.db"  
-log_file           "/home/soorya/.mpd/mpd.log"  
-pid_file           "/home/soorya/.mpd/mpd.pid"  
-state_file         "/home/soorya/.mpd/mpdstate"  
+music_directory    "~/Music"
+playlist_directory "~/.mpd/playlists"
+db_file            "~/.mpd/mpd.db"
+log_file           "~/.mpd/mpd.log"
+pid_file           "~/.mpd/mpd.pid"
+state_file         "~/.mpd/mpdstate"
 
-bind_to_address "127.0.0.1"
+# bind_to_address "127.0.0.1"
 port "7000"
 audio_output {
         type            "pulse"
@@ -22,4 +22,15 @@ audio_output {
     name             "my_fifo"
     path             "/tmp/mpd.fifo"
     format           "44100:16:2"
+}
+
+audio_output {
+    type  "httpd"
+    name  "My HTTP Stream"
+    encoder  "vorbis"  # optional, vorbis or lame
+    port  "8000"
+    quality  "5.0"   # do not define if bitrate is defined
+    # bitrate  "128"   # do not define if quality is defined
+    format  "44100:16:1"
+    max_clients "0"   # optional 0=no limit
 }

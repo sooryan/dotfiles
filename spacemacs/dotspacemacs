@@ -1,11 +1,11 @@
 ;; -*- mode: emacs-lisp -*-
-;; This file is loaded by Spacemacs at startup.
+; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
-You should not put any user code in this function besides modifying the variable
-values."
+  You should not put any user code in this function besides
+  modifying the variable values."
   (setq-default
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+	 vimscript
 	 ;; ----------------------------------------------------------------
 	 ;; Example of useful layers you may want to use right away.
 	 ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -51,7 +52,6 @@ values."
 			 elfeed-enable-web-interface t
 			 )
 	 emacs-lisp
-	 erc
 	 games
 	 git
 	 github
@@ -61,33 +61,33 @@ values."
 			  haskell-enable-hindent-style "johan-tibell"
 			  )
 	 helm
-     (ibuffer :variables
-              ibuffer-group-buffers-by 'projects
-              )
+   (ibuffer :variables
+        ibuffer-group-buffers-by 'projects
+        )
 	 java
 	 javascript
 	 latex
 	 markdown
 	 (mu4e :variables
-           mu4e-account-alist t
-           mu4e-enable-notifications t
-           mu4e-installation-path "/usr/share/emacs/site-lisp/mu4e"
-           mu4e-enable-mode-line t
-           )
+        mu4e-account-alist t
+        mu4e-enable-notifications t
+        mu4e-installation-path "/usr/share/emacs/site-lisp/mu4e"
+        mu4e-enable-mode-line t
+        )
+   ocaml
 	 (org :variables
-		  org-enable-github-support t
-		  )
+  		  org-enable-github-support t
+	      )
 	 pdf-tools
 	 python
-	 rcirc
 	 rust
 	 (shell :variables
-			shell-default-shell 'ansi-term
-			shell-default-term-shell "/bin/zsh"
-			shell-default-height 50
-			shell-default-position 'bottom
-            )
-     semantic
+			  shell-default-shell 'term
+  			shell-default-term-shell "/usr/sbin/zsh"
+	  		shell-default-height 50
+		  	shell-default-position 'bottom
+        )
+   semantic
 	 syntax-checking
 	 version-control
 	 xkcd
@@ -99,9 +99,13 @@ values."
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
-                    darkroom
+                    material-theme
 									  gruvbox-theme
+									  minimal-theme
 									  monokai-theme
+									  nyan-mode
+									  pkgbuild-mode
+									  sicp
 									  )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -175,20 +179,20 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-						 monokai
-						 gruvbox
-						 spacemacs-dark
-						 spacemacs-light
-						 )
+                         gruvbox
+						 minimal
+                         monokai
+                         spacemacs-dark
+                         spacemacs-light
+                         )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Monaco"
-							   :size 14
-							   :weight light
-							   :width normal
-							   :powerline-scale 1.1)
+   dotspacemacs-default-font '("Operator Mono Light"
+                               :size 15
+                               :width normal
+                               :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -301,7 +305,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers 'relative
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -337,31 +341,22 @@ values."
 
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
-  It is called immediately after `dotspacemacs/init', before layer
-  configuration executes. This function is mostly useful for
-  variables that need to be set before packages are loaded. If you
-  are unsure, you should try in setting them in
+  It is called immediately after `dotspacemacs/init', before
+  layer configuration executes.  This function is mostly useful
+  for variables that need to be set before packages are loaded.
+  If you are unsure, you should try in setting them in
   `dotspacemacs/user-config' first." )
 
 (defun dotspacemacs/user-config ()
   "CONFIGURATION function for user code.
-	This function is called at the very end of Spacemacs initialization after
-	layers configuration.
-	This is the place where most of your configurations should be done. Unless it is
-	explicitly specified that a variable should be set before a package is loaded,
-	you should place your code here."
-  (eval-after-load 'semantic
-    (add-hook 'semantic-mode-hook
-              (lambda ()
-                (dolist (x (default-value 'completion-at-point-functions))
-                  (when (string-prefix-p "semantic-"
-                                         (symbol-name x))
-                    (remove-hook 'completion-at-point-functions
-                                 x))))))
+	This function is called at the very end of Spacemacs
+	initialization after layers configuration.  This is the place
+	where most of your configurations should be done.  Unless it
+	is explicitly specified that a variable should be set before
+	a package is loaded, you should place your code here."
   ;; Mine
   (add-to-list 'load-path "/home/soorya/spacemacs")
-  (load-theme 'monokai t)
-  (require 'darkroom)
+  (load-theme 'gruvbox t)
   ;; show line numbers
   ;; (global-linum-mode t)
   ;; UTF-8
@@ -372,10 +367,8 @@ values."
   (prefer-coding-system 'utf-8)
   (setq utf-translate-cjk-mode nil) ; disable cjk coding/encoding
 
+  (setq evil-want-fine-undo t)
   ;; Alt + Up/Down to move block of selected text up/down
-  (require 'i3)
-  (require 'i3-integration)
-  (i3-one-window-per-frame-mode-on)
   (require 'move-text)
   (move-text-default-bindings)
   ;; (menu-bar-mode t)
@@ -386,20 +379,16 @@ values."
                 whitespace-style
                 '(face lines-tail))
   ;; Copy, paste And cut
-  (global-set-key (kbd "C-x c")
-                  'clipboard-kill-ring-save)
-  (global-set-key (kbd "C-x p")
-                  'clipboard-yank)
-  (global-set-key (kbd "C-x x")
-                  'clipboard-kill-region)
+  (global-set-key (kbd "C-x c") 'clipboard-kill-ring-save)
+  (global-set-key (kbd "C-x p") 'clipboard-yank)
+  (global-set-key (kbd "C-x x") 'clipboard-kill-region)
   ;; delete line
   (global-set-key (kbd "<delete>")
                   'delete-region)
   ;; terminal
-  (setq system-uses-terminfo nil)
+  ;; (setq system-uses-terminfo nil)
   ;; C/C++ mode customizations
-  (global-set-key (kbd "C-x f")
-                  'clang-format-region)
+  (global-set-key (kbd "C-x b") 'clang-format-buffer)
   (setq indent-line-function 'insert-tab)
   ;; Text scaling
   (define-key global-map (kbd "C-+") 'text-scale-increase)
@@ -418,27 +407,29 @@ values."
   ;;       5)
   ;; make these keys behave like normal browser
   (defun webkit-setup ()
-    (define-key xwidget-webkit-mode-map (kbd "<mouse-4>") 'xwidget-webkit-scroll-down)
-    (define-key xwidget-webkit-mode-map (kbd "<mouse-5>") 'xwidget-webkit-scroll-up)
-    (define-key xwidget-webkit-mode-map (kbd "<up>") 'xwidget-webkit-scroll-down)
-    (define-key xwidget-webkit-mode-map (kbd "<down>") 'xwidget-webkit-scroll-up)
-    (define-key xwidget-webkit-mode-map (kbd "M-w") 'xwidget-webkit-copy-selection-as-kill)
-    (define-key xwidget-webkit-mode-map (kbd "C-c") 'xwidget-webkit-copy-selection-as-kill))
+    (define-key xwidget-webkit-mode-map (kbd "<mouse-4>")
+    'xwidget-webkit-scroll-down)
+    (define-key xwidget-webkit-mode-map (kbd "<mouse-5>")
+    'xwidget-webkit-scroll-up)
+    (define-key xwidget-webkit-mode-map (kbd "<up>")
+    'xwidget-webkit-scroll-down)
+    (define-key xwidget-webkit-mode-map (kbd "<down>")
+    'xwidget-webkit-scroll-up)
+    (define-key xwidget-webkit-mode-map (kbd "M-w")
+    'xwidget-webkit-copy-selection-as-kill)
+    (define-key xwidget-webkit-mode-map (kbd "C-c")
+    'xwidget-webkit-copy-selection-as-kill))
   (add-hook 'xwidget-webkit-mode-hook 'webkit-setup)
   (defun c++-setup ()
     (setq-default tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60
                                     64 68 72 76 80 84 88 92)
-                  indent-tabs-mode
-                  t
-                  tab-width
-                  4
-                  fill-column
-                  72))
+                  indent-tabs-mode t
+                  tab-width 4
+                  fill-column 72))
   (add-hook 'c++-mode-hook 'c++-setup)
   (add-hook 'c-mode-hook 'c++-setup)
-  (require 'nyan-mode)
   (nyan-mode t)
-  (setq org-bullets-bullet-list '("" "" "▲" "▶"))
+  (setq-default org-bullets-bullet-list '("" "" "▲" "▶"))
   (global-set-key (kbd "<C-down>")
                   'shrink-window)
   (global-set-key (kbd "<C-up>")
@@ -447,30 +438,31 @@ values."
                   'shrink-window-horizontally)
   (global-set-key (kbd "<C-left>")
                   'enlarge-window-horizontally)
-  (setq projectile-indexing-method 'alien)
-  (setq projectile-enable-caching t)
+  (setq-default projectile-indexing-method 'alien)
+  (setq-default projectile-enable-caching t)
   ;; default
 
   ;; don't save message to Sent Messages, GMail/IMAP will take care of this
   ;; (setq mu4e-sent-messages-behavior 'delete)
-  (setq-default mu4e-maildir "~/.mail")
+  (setq-default mu4e-maildir "~/Maildir")
   ;; setup some handy shortcuts
 
+  (setq mail-user-agent 'mu4e-user-agent)
   ;; allow for updating mail using 'U' in the main view:
-  (setq mu4e-get-mail-command "offlineimap")
+  (setq-default mu4e-get-mail-command "offlineimap")
   (setq user-full-name "J M Soorya Narayan"
         smtpmail-smtp-server
         "smtp.gmail.com"
         smtpmail-default-smtp-server
         "smtp.gmail.com"
-        smtpmail-starttls-credentials
+        smtpmthan ail-starttls-credentials
         '(("smtp.gmail.com" 587 nil nil))
         smtpmail-stream-type
         'starttls
         ;; mu4e-sent-messages-behavior delete
         smtpmail-smtp-service
         587)
-  (setq mu4e-account-alist '(("Personal"
+  (setq-default mu4e-account-alist '(("Personal"
                               (mu4e-sent-folder "/Personal/[Gmail].Sent Mail")
                               (mu4e-drafts-folder "/Personal/[Gmail].Drafts")
                               (mu4e-trash-folder "/Personal/[Gmail].Trash")
@@ -523,7 +515,7 @@ values."
   (require 'smtpmail)
   ;; (setq message-send-mail-function 'smtpmail-send-it
   ;;       starttls-use-gnutls t)
-  (setq message-kill-buffer-on-exit t)
+  (setq-default message-kill-buffer-on-exit t)
   (with-eval-after-load 'mu4e-alert
     ;; Enable Desktop notifications
     (mu4e-alert-set-default-style 'notifications))
@@ -533,7 +525,9 @@ values."
       (erase-buffer)
       (shr-insert-document dom)
       (goto-char (point-min))))
-  (setq mu4e-html2text-command 'my-render-html-message))
+  (setq-default mu4e-html2text-command 'my-render-html-message)
+
+)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -542,71 +536,17 @@ values."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-    [default default default italic underline success warning error])
- '(ansi-color-names-vector
-    ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
- '(compilation-message-face (quote default))
  '(custom-enabled-themes (quote (gruvbox)))
  '(custom-safe-themes
-    (quote
-     ("74bca2951d424d60b511b4efcb8a467182bcf351a6d13e7c3309279dfa94bf05" "e7c771cdf2ee0093181f93c3fb61019d7b92a747fe11efc1854f9dc2a22e1f19" "58330cad7e54c7d682631bb90decf09ad13ea18e8d139ac354df6c521b4cd6d4" "c7a9a68bd07e38620a5508fef62ec079d274475c8f92d75ed0c33c45fbe306bc" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "10e231624707d46f7b2059cc9280c332f7c7a530ebc17dba7e506df34c5332c4" default)))
+   (quote
+	("3c5367b7432c8965cb82bcf5d3824e6d8a96db36bfef2278d93429e85185f9b5" "10abc17879eccf878007e26919b878aae03c652bc9957b1aa30b6ce7b43fa9ad" default)))
  '(evil-want-Y-yank-to-eol t)
- '(fci-rule-color "#3C3D37" t)
- '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
- '(highlight-tail-colors
-    (quote
-     (("#3C3D37" . 0)
-      ("#679A01" . 20)
-      ("#4BBEAE" . 30)
-      ("#1DB4D0" . 50)
-      ("#9A8F21" . 60)
-      ("#A75B00" . 70)
-      ("#F309DF" . 85)
-      ("#3C3D37" . 100))))
- '(initial-buffer-choice t)
- '(magit-diff-use-overlays nil)
- '(org-agenda-files
-    (quote
-     ("~/Documents/CS/Books/Notes/ptogramming_ground_up.org")))
  '(package-selected-packages
-    (quote
-     (zenity-color-picker toml-mode racer flycheck-rust cargo rust-mode darkroom rcirc-notify rcirc-color circe-notifications circe pkg-info epl zeal-at-point yapfify yaml-mode xterm-color xkcd x86-lookup ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package typit toc-org tagedit stickyfunc-enhance srefactor spacemacs-theme spaceline smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-isort pug-mode pip-requirements persp-mode pdf-tools pcre2el paradox pacmacs ox-gfm orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file neotree nasm-mode mwim multi-term mu4e-maildirs-extension mu4e-alert move-text monokai-theme mmm-mode markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc intero info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets gruvbox-theme google-translate golden-ratio gnuplot github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies dumb-jump disaster diff-hl define-word cython-mode company-web company-tern company-statistics company-quickhelp company-ghci company-ghc company-emacs-eclim company-cabal company-c-headers company-auctex company-anaconda column-enforce-mode coffee-mode cmm-mode cmake-mode clean-aindent-mode clang-format bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell 2048-game)))
- '(paradox-github-token t)
- '(pos-tip-background-color "#A6E22E")
- '(pos-tip-foreground-color "#0E1618")
- '(safe-local-variable-values
-    (quote
-     ((helm-make-build-dir . "build")
-      (helm-make-build-dir . "build/state"))))
- '(send-mail-function (quote mailclient-send-it))
- '(vc-annotate-background nil)
- '(vc-annotate-color-map
-    (quote
-     ((20 . "#F92672")
-      (40 . "#CF4F1F")
-      (60 . "#C26C0F")
-      (80 . "#E6DB74")
-      (100 . "#AB8C00")
-      (120 . "#A18F00")
-      (140 . "#989200")
-      (160 . "#8E9500")
-      (180 . "#A6E22E")
-      (200 . "#729A1E")
-      (220 . "#609C3C")
-      (240 . "#4E9D5B")
-      (260 . "#3C9F79")
-      (280 . "#A1EFE4")
-      (300 . "#299BA6")
-      (320 . "#2896B5")
-      (340 . "#2790C3")
-      (360 . "#66D9EF"))))
- '(vc-annotate-very-old-color nil)
- '(weechat-color-list
-    (unspecified "#0E1618" "#3C3D37" "#F70057" "#F92672" "#86C30D" "#A6E22E" "#BEB244" "#E6DB74" "#40CAE4" "#66D9EF" "#FB35EA" "#FD5FF0" "#74DBCD" "#A1EFE4" "#F8F8F2" "#F8F8F0")))
+   (quote
+	(vimrc-mode dactyl-mode zeal-at-point yapfify yaml-mode xterm-color xkcd x86-lookup ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen utop use-package typit tuareg toml-mode toc-org tagedit stickyfunc-enhance srefactor spacemacs-theme spaceline smeargle slim-mode sicp shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters racer quelpa pyvenv pytest pyenv-mode py-isort pug-mode pkgbuild-mode pip-requirements persp-mode pdf-tools pcre2el paradox pacmacs ox-gfm orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file ocp-indent nyan-mode neotree nasm-mode mwim multi-term mu4e-maildirs-extension mu4e-alert move-text monokai-theme mmm-mode minimal-theme merlin material-theme markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc intero info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets gruvbox-theme google-translate golden-ratio gnuplot github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies dumb-jump disaster diff-hl define-word cython-mode company-web company-tern company-statistics company-quickhelp company-ghci company-ghc company-emacs-eclim company-cabal company-c-headers company-auctex company-anaconda column-enforce-mode coffee-mode cmm-mode cmake-mode clean-aindent-mode clang-format cargo auto-yasnippet auto-highlight-symbol auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell 2048-game))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Monaco" :foundry "APPL" :slant normal :weight normal :height 105 :width normal)))))
+ )

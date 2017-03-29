@@ -42,7 +42,8 @@ visualizer_sync_interval = "30"
 visualizer_in_stereo     = "yes"
 #visualizer_type         = "wave" (spectrum/wave)
 visualizer_type          = "spectrum" (spectrum/wave)
-visualizer_look          = "+|"
+visualizer_look          = ●▮
+visualizer_sample_multiplier = .8
 
 allow_for_physical_item_deletion = "yes"
 
@@ -52,3 +53,14 @@ mpd_music_dir            = "~/Music"
 mpd_crossfade_time       = "1"
 visualizer_output_name   = "my_fifo"
 
+song_list_format = {%a - }{%t}|{$8%f$9}$R{$5(%l)$9}
+#
+song_status_format = {{%a{ "%b"{ (%y) } } - }{%t}}|{%f}
+#
+song_library_format = {%n - }{%t}|{%f}
+#
+#
+alternative_header_first_line_format = $b$1$aqqu$/a$5 {%t}|{%f} $1$atqq$/a$9$/b
+alternative_header_second_line_format = {{$2$b%a$/b$9}{ - $4%b$9 }{ ($4%y$9) }}|{%D}
+now_playing_prefix = "$b$8! "
+now_playing_suffix = $/b

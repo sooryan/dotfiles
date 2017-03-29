@@ -1,54 +1,41 @@
 [options]
-font = Monaco 10.5
+font = Pragmata Pro 11
 
 [colors]
-# Base16 Flat
-# Scheme= Chris Kempson (http=//chriskempson.com)
+# hard contrast: background = #1d2021
+background = #1A1A18
+# soft contrast: background = #32302f
+foreground = #ebdbb2
+foreground_bold = #ebdbb2
 
-foreground      = #e0e0e0
-foreground_bold = #e0e0e0
-cursor          = #e0e0e0
-background      = rgba(7,21,30,0.96)
+# dark0 + gray
+color0 = #282828
+color8 = #928374
 
-color0  = #000
-color1  = #fb4245
-color2  = #50fa7b
-color3  = #f0fa8b
-color4  = #49b9fe
-color5  = #fb4cb3
-color6  = #8be9fd
-color7  = #ededec
-color8  = #555555
-color9  = #fb4245
-color10 = #50fa7b
-color11 = #f0fa8b
-color12 = #49b9fe
-color13 = #fb4cb3
-color14 = #8be9fd
-color15 = #ededec
-# 16 color space
-# color0  = #2C3E50
-# color1  = #E74C3C
-# color2  = #2ECC71
-# color3  = #F1C40F
-# color4  = #3498DB
-# color5  = #9B59B6
-# color6  = #1ABC9C
-# color7  = #e0e0e0
-# color8  = #95A5A6
-# color9  = #E74C3C
-# color10 = #2ECC71
-# color11 = #F1C40F
-# color12 = #3498DB
-# color13 = #9B59B6
-# color14 = #1ABC9C
-# color15 = #ECF0F1
+# neutral_red + bright_red
+color1 = #cc241d
+color9 = #fb4934
 
-# 256 color space
-color16 = #E67E22
-color17 = #be643c
-color18 = #34495E
-color19 = #7F8C8D
-color20 = #BDC3C7
-color21 = #f5f5f5
+# neutral_green + bright_green
+color2 = #98971a
+color10 = #b8bb26
 
+# neutral_yellow + bright_yellow
+color3 = #d79921
+color11 = #fabd2f
+
+# neutral_blue + bright_blue
+color4 = #458588
+color12 = #83a598
+
+# neutral_purple + bright_purple
+color5 = #b16286
+color13 = #d3869b
+
+# neutral_aqua + faded_aqua
+color6 = #689d6a
+color14 = #8ec07c
+
+# light4 + light1
+color7 = #a89984
+color15 = #ebdbb2

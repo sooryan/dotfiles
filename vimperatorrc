@@ -47,6 +47,7 @@ ignorekeys add docs\\.google\\.com -except o,t,T,O,f,F,r,R
 set activate=
 set newtab=all
 set gui=none,tabs,addons
+set focuscontent
 set defsearch=google
 set suggestengines=google
 set maxitems=10

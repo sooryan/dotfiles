@@ -1,69 +1,8 @@
 [global_config]
-  dbus = True
   borderless = True
   handle_size = 1
   suppress_multiple_term_dialog = True
-  scrollbar_position = hidden
 [keybindings]
-[profiles]
-  [[default]]
-    palette = "#151515:#ac4142:#7e8e50:#e5b567:#6c99bb:#9f4e85:#7dd6cf:#d0d0d0:#505050:#ac4142:#7e8e50:#e5b567:#6c99bb:#9f4e85:#7dd6cf:#f5f5f5"
-    scrollbar_position = hidden
-    ; palette = "#181818:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
-    font = Monaco 10.5
-    background_image = None
-    background_darkness = 1.04
-    scrollback_lines = 10000
-    use_system_font = False
-    cursor_color = "#7c6f64"
-    scroll_background = False
-    show_titlebar = False
-    copy_on_selection = True
-    background_color = "#0e1618"
-    foreground_color = "#ebdbb2"
-  [[dracula]]
-    palette = "#000000:#ff5555:#50fa7b:#f1fa8c:#bd93f9:#ff79c6:#8be9fd:#bbbbbb:#555555:#ff5555:#50fa7b:#f1fa8c:#bd93f9:#ff79c6:#8be9fd:#ffffff"
-    background_image = None
-    cursor_color = "#bbbbbb"
-    scroll_background = False
-    show_titlebar = False
-    font = Monaco 10.5
-    background_color = "#1e1f29"
-    foreground_color = "#f8f8f2"
-  [[alacritty]]
-    scrollbar_position = hidden
-    palette = "#000000:#d54e53:#b9ca4a:#e6c547:#7aa6da:#c397d8:#70c0ba:#424242:#666666:#ff3334:#9ec400:#e7c547:#7aa6da:#b77ee0:#54ced6:#2a2a2a"
-    font = Monaco 10.5
-    background_image = None
-    background_darkness = 1.0
-    scrollback_lines = 10000
-    use_system_font = False
-    scroll_background = False
-    show_titlebar = False
-    copy_on_selection = True
-    foreground_color = "#eaeaea"
-  [[material-dark]]
-    palette = "#2c2c2c:#c62828:#558b2e:#f9a825:#1565c1:#6a1e9a:#00838f:#ffffff:#969694:#f15250:#86bd47:#f8e63a:#77b2f6:#b963c8:#25c3dc:#ffffff"
-    background_color = "#2e2e2d"
-    background_image = None
-    cursor_color = "#25C3DC"
-    foreground_color = "#f2f2f2"
-  [[material-light]]
-    palette = "#f8f8f8:#d7005f:#718c00:#ff8f01:#005f87:#6a1e9a:#3e999f:#2c2c2c:#2c2c2c:#ef5251:#90c94d:#ffa000:#4271ae:#c774c1:#3e999f:#f5f5f5"
-    background_color = "#eeeeee"
-    background_image = None
-    cursor_color = "#25C3DC"
-    foreground_color = "#3c3c3b"
-  [[light]]
-    scrollbar_position = hidden
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
-    background_image = None
-    scrollback_lines = 10000
-    use_system_font = False
-    foreground_color = "#e0e0e0"
-    show_titlebar = False
-    font = Hack 9
-    background_color = "#07151d"
 [layouts]
   [[default]]
     [[[child1]]]
@@ -73,3 +12,55 @@
       parent = ""
       type = Window
 [plugins]
+[profiles]
+  [[default]]
+    background_color = "#1a1a18"
+    background_darkness = 1.0
+    copy_on_selection = True
+    cursor_color = "#7c6f64"
+    font = Input Mono 11
+    foreground_color = "#ebdbb2"
+    palette = "#181818:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
+    scroll_background = False
+    scrollback_lines = 10000
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+  [[alacritty]]
+    background_darkness = 1.0
+    copy_on_selection = True
+    font = Monaco 10.5
+    foreground_color = "#eaeaea"
+    palette = "#000000:#d54e53:#b9ca4a:#e6c547:#7aa6da:#c397d8:#70c0ba:#424242:#666666:#ff3334:#9ec400:#e7c547:#7aa6da:#b77ee0:#54ced6:#2a2a2a"
+    scroll_background = False
+    scrollback_lines = 10000
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+  [[dracula]]
+    background_color = "#1e1f29"
+    cursor_color = "#bbbbbb"
+    font = Monaco 10.5
+    foreground_color = "#f8f8f2"
+    palette = "#000000:#ff5555:#50fa7b:#f1fa8c:#bd93f9:#ff79c6:#8be9fd:#bbbbbb:#555555:#ff5555:#50fa7b:#f1fa8c:#bd93f9:#ff79c6:#8be9fd:#ffffff"
+    scroll_background = False
+    show_titlebar = False
+  [[light]]
+    background_color = "#07151d"
+    font = Hack 9
+    foreground_color = "#e0e0e0"
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    scrollback_lines = 10000
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+  [[material-dark]]
+    background_color = "#2e2e2d"
+    cursor_color = "#25C3DC"
+    foreground_color = "#f2f2f2"
+    palette = "#2c2c2c:#c62828:#558b2e:#f9a825:#1565c1:#6a1e9a:#00838f:#ffffff:#969694:#f15250:#86bd47:#f8e63a:#77b2f6:#b963c8:#25c3dc:#ffffff"
+  [[material-light]]
+    background_color = "#eeeeee"
+    cursor_color = "#25C3DC"
+    foreground_color = "#3c3c3b"
+    palette = "#f8f8f8:#d7005f:#718c00:#ff8f01:#005f87:#6a1e9a:#3e999f:#2c2c2c:#2c2c2c:#ef5251:#90c94d:#ffa000:#4271ae:#c774c1:#3e999f:#f5f5f5"

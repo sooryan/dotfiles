@@ -1,0 +1,44 @@
+2017-02-22 20:04:24	--	irc: connecting to server chat.freenode.net/6667...
+2017-02-22 20:04:24	--	irc: connected to chat.freenode.net/6667 (81.18.73.123)
+2017-02-22 20:04:25	--	hobana.freenode.net: *** Looking up your hostname...
+2017-02-22 20:04:25	--	hobana.freenode.net: *** Checking Ident
+2017-02-22 20:04:25	--	hobana.freenode.net: *** Couldn't look up your hostname
+2017-02-22 20:04:25	--	hobana.freenode.net: *** No Ident response
+2017-02-22 20:04:25	--	hobana.freenode.net: *** Your username is invalid. Please make sure that your username contains only alphanumeric characters.
+2017-02-22 20:04:25	!!	Closing Link: 220.158.140.122 (Invalid username [~______])
+2017-02-22 20:04:25	--	irc: disconnected from server
+2017-02-22 20:04:25	--	irc: reconnecting to server in 10 seconds
+2017-02-22 20:04:35	--	irc: reconnecting to server...
+2017-02-22 20:04:35	--	irc: connecting to server chat.freenode.net/6667...
+2017-02-22 20:04:35	--	irc: connected to chat.freenode.net/6667 (81.18.73.123)
+2017-02-22 20:04:35	--	hobana.freenode.net: *** Looking up your hostname...
+2017-02-22 20:04:36	--	hobana.freenode.net: *** Checking Ident
+2017-02-22 20:04:36	--	hobana.freenode.net: *** Couldn't look up your hostname
+2017-02-22 20:04:36	--	hobana.freenode.net: *** No Ident response
+2017-02-22 20:04:36	--	hobana.freenode.net: *** Your username is invalid. Please make sure that your username contains only alphanumeric characters.
+2017-02-22 20:04:36	!!	Closing Link: 220.158.140.122 (Invalid username [~______])
+2017-02-22 20:04:36	--	irc: disconnected from server
+2017-02-22 20:04:36	--	irc: reconnecting to server in 20 seconds
+2017-02-22 20:04:56	--	irc: reconnecting to server...
+2017-02-22 20:04:56	--	irc: connecting to server chat.freenode.net/6667...
+2017-02-22 20:04:56	--	irc: connected to chat.freenode.net/6667 (185.30.166.37)
+2017-02-22 20:04:56	--	verne.freenode.net: *** Looking up your hostname...
+2017-02-22 20:04:57	--	verne.freenode.net: *** Checking Ident
+2017-02-22 20:04:57	--	verne.freenode.net: *** Couldn't look up your hostname
+2017-02-22 20:04:57	--	verne.freenode.net: *** No Ident response
+2017-02-22 20:04:57	--	verne.freenode.net: *** Your username is invalid. Please make sure that your username contains only alphanumeric characters.
+2017-02-22 20:04:57	!!	Closing Link: 220.158.140.122 (Invalid username [~______])
+2017-02-22 20:04:57	--	irc: disconnected from server
+2017-02-22 20:04:57	--	irc: reconnecting to server in 40 seconds
+2017-02-22 20:05:37	--	irc: reconnecting to server...
+2017-02-22 20:05:37	--	irc: connecting to server chat.freenode.net/6667...
+2017-02-22 20:05:37	--	irc: connected to chat.freenode.net/6667 (81.18.73.123)
+2017-02-22 20:05:37	--	hobana.freenode.net: *** Looking up your hostname...
+2017-02-22 20:05:38	--	hobana.freenode.net: *** Checking Ident
+2017-02-22 20:05:38	--	hobana.freenode.net: *** Couldn't look up your hostname
+2017-02-22 20:05:38	--	hobana.freenode.net: *** No Ident response
+2017-02-22 20:05:38	--	hobana.freenode.net: *** Your username is invalid. Please make sure that your username contains only alphanumeric characters.
+2017-02-22 20:05:38	!!	Closing Link: 220.158.140.122 (Invalid username [~______])
+2017-02-22 20:05:38	--	irc: disconnected from server
+2017-02-22 20:05:38	--	irc: reconnecting to server in 1 minute, 20 seconds
+2017-02-22 20:05:45	--	irc: disconnected from server
