@@ -244,3 +244,7 @@ xkcd(){
 define(){
 	sdcv "$1" | less
 }
+
+za() {
+    zathura $1 & disown;
+}
