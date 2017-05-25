@@ -15,7 +15,7 @@ set scroll-step 100
 
 #zoom settings
 set zoom-min 10
-set guioptions ""
+set guioptions "s"
 
 # zathurarc-dark
 

@@ -248,3 +248,7 @@ define(){
 za() {
     zathura $1 & disown;
 }
+
+ecd() {
+    ec $1 & disown;
+}

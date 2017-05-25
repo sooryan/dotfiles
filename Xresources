@@ -16,9 +16,9 @@ URxvt.secondaryWheel: 1
 ! urxvt*foreground:#B0B0B0
 ! urxvt*background:rgba:0010/0010/0010/cccc
 
-URxvt.font:     xft:fira code-11
-URxvt.boldFont: xft:fira code-11
-URxvt.letterSpace: -1
+URxvt.font:     xft:iosevka-11.5
+URxvt.boldFont: xft:iosevka-11.5
+URxvt.letterSpace: 0
 URxvt.internalBorder: 6
 
 ! Clickabe URLs
@@ -89,7 +89,7 @@ rofi.color-normal: argb:0fdf6e3, #ffffff, argb:0eee8d5, #009688, #ffffff
 rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
 rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
 rofi.line-margin: 31
-rofi.font: Roboto Light 20
+rofi.font: Iosevka 15
 rofi.padding: 168
 rofi.fullscreen: true
 rofi.display-drun:

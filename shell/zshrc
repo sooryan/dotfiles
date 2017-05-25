@@ -3,7 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/soorya/.oh-my-zsh
-export PATH="/home/soorya/Downloads/wine-2.2:/home/soorya/.gem/ruby/2.4.0/bin:$PATH"
+export PATH="/home/soorya/Downloads/wine-2.2:/home/soorya/.gem/ruby/2.4.0/bin:/home/soorya/clones/LLVM/orig/llvm_build/bin:$PATH"
 export STARDICT_DATA_DIR=~
 HISTFILE=~/.bash_history
 HISTSIZE=99999999
@@ -12,8 +12,8 @@ SAVEHIST=$HISTSIZE
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="af-magic"
-# ZSH_THEME="adben"
+ZSH_THEME="clean"
+# ZSH_THEME="af-magic"
 #philips
 #bira
 # Uncomment the following line to use case-sensitive completion.
@@ -61,12 +61,7 @@ HIST_STAMPS="dd/mm/yyyy"
 plugins=(web_search z git common-aliases colored-man-pages mercurial zsh-syntax-highlighting)
 # User configuration
 
-export PATH="/home/soorya/.local/bin:/home/soorya/bin:/home/soorya/bin/git-scripts:/home/soorya/krita/inst/bin:/home/soorya/bin:/home/soorya/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/soorya/scripts:/home/soorya/.local/bin:/home/soorya/.cargo/bin:/home/soorya/bin/cross/bin"
-
-export PATH="/home/soorya/clones/LLVM/llvm_build/bin:$PATH"
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
+export PATH="/home/soorya/.local/bin:/home/soorya/bin:/home/soorya/bin/git-scripts:/home/soorya/krita/inst/bin:/home/soorya/bin:/home/soorya/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/soorya/scripts:/home/soorya/.local/bin:/home/soorya/.cargo/bin:/home/soorya/bin/cross/bin:/home/soorya/clones/LLVM/orig/llvm_build/bin"
 
 source $ZSH/oh-my-zsh.sh
 

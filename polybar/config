@@ -43,7 +43,7 @@ foreground = ${colors.foreground}
 border-right-size = 15
 border-color = ${self.background}
 
-font-0 = Fantasque Sans Mono:size=11:dpi=138;2
+font-0 = Iosevka:size=11:dpi=138;2
 font-1 = FontAwesome:size=9:dpi=138;2
 font-2 = Cousine for Powerline:size=18;2
 

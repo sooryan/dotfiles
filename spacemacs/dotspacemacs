@@ -45,6 +45,7 @@
 			c-c++-enable-clang-support t
 			c-c++-default-mode-for-headers 'c++-mode
 			)
+	 clojure
 	 common-lisp
 	 dash
 	 (elfeed :variables
@@ -61,7 +62,7 @@
 			  haskell-enable-hindent-style "johan-tibell"
 			  )
 	 helm
-   (ibuffer :variables
+	 (ibuffer :variables
         ibuffer-group-buffers-by 'projects
         )
 	 java
@@ -74,7 +75,7 @@
         mu4e-installation-path "/usr/share/emacs/site-lisp/mu4e"
         mu4e-enable-mode-line t
         )
-   ocaml
+	 ocaml
 	 (org :variables
   		  org-enable-github-support t
 	      )
@@ -87,9 +88,10 @@
 	  		shell-default-height 50
 		  	shell-default-position 'bottom
         )
-   semantic
+	 semantic
 	 syntax-checking
 	 version-control
+	 vimscript
 	 xkcd
 	 yaml
 	 ;; spell-checking
@@ -179,9 +181,9 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         monokai
                          gruvbox
 						 minimal
-                         monokai
                          spacemacs-dark
                          spacemacs-light
                          )
@@ -356,7 +358,7 @@ values."
 	a package is loaded, you should place your code here."
   ;; Mine
   (add-to-list 'load-path "/home/soorya/spacemacs")
-  (load-theme 'gruvbox t)
+  (load-theme 'monokai t)
   ;; show line numbers
   ;; (global-linum-mode t)
   ;; UTF-8
@@ -365,7 +367,7 @@ values."
   (set-selection-coding-system 'utf-8)
   (set-locale-environment "en.utf-8")
   (prefer-coding-system 'utf-8)
-  (setq utf-translate-cjk-mode nil) ; disable cjk coding/encoding
+  ;; (setq utf-translate-cjk-mode nil) ; disable cjk coding/encoding
 
   (setq evil-want-fine-undo t)
   ;; Alt + Up/Down to move block of selected text up/down
@@ -374,7 +376,7 @@ values."
   ;; (menu-bar-mode t)
   (global-set-key (kbd "M-f")
                   'menu-bar-open)
-  (setq neo-theme 'arrow)
+  (setq-default neo-theme 'arrow)
   (setq-default whitespace-line-column 80
                 whitespace-style
                 '(face lines-tail))
@@ -444,88 +446,88 @@ values."
 
   ;; don't save message to Sent Messages, GMail/IMAP will take care of this
   ;; (setq mu4e-sent-messages-behavior 'delete)
-  (setq-default mu4e-maildir "~/Maildir")
-  ;; setup some handy shortcuts
+  ;; (setq-default mu4e-maildir "~/Maildir")
+  ;; ;; setup some handy shortcuts
 
-  (setq mail-user-agent 'mu4e-user-agent)
-  ;; allow for updating mail using 'U' in the main view:
-  (setq-default mu4e-get-mail-command "offlineimap")
-  (setq user-full-name "J M Soorya Narayan"
-        smtpmail-smtp-server
-        "smtp.gmail.com"
-        smtpmail-default-smtp-server
-        "smtp.gmail.com"
-        smtpmthan ail-starttls-credentials
-        '(("smtp.gmail.com" 587 nil nil))
-        smtpmail-stream-type
-        'starttls
-        ;; mu4e-sent-messages-behavior delete
-        smtpmail-smtp-service
-        587)
-  (setq-default mu4e-account-alist '(("Personal"
-                              (mu4e-sent-folder "/Personal/[Gmail].Sent Mail")
-                              (mu4e-drafts-folder "/Personal/[Gmail].Drafts")
-                              (mu4e-trash-folder "/Personal/[Gmail].Trash")
-                              (user-mail-address "soorya.art@gmail.com")
-                              (smtpmail-auth-credentials '(("smtp.gmail.com" 587 "soorya.art@gmail.com"
-                                                            nil))))
-                             ("Professional"
-                              (mu4e-sent-folder "/Professional/[Gmail].Sent Mail")
-                              (mu4e-drafts-folder "/Professional/[Gmail].Drafts")
-                              (mu4e-trash-folder "/Professional/[Gmail].Trash")
-                              (user-mail-address "soorya.narayan.jm@gmail.com")
-                              (smtpmail-auth-credentials '(("smtp.gmail.com" 587 "soorya.narayan.jm@gmail.com"
-                                                            nil))))
-                             ("Dev"
-                              (mu4e-sent-folder "/Dev/[Gmail].Sent Mail")
-                              (mu4e-drafts-folder "/Dev/[Gmail].Drafts")
-                              (mu4e-trash-folder "/Dev/[Gmail].Trash")
-                              (user-mail-address "nayaran.ayroos@gmail.com")
-                              (smtpmail-auth-credentials '(("smtp.gmail.com" 587 "nayaran.ayroos@gmail.com"
-                                                            nil))))))
-  (mu4e/mail-account-reset)
-  (defun my-mu4e-set-account ()
-    "Set the account for composing a message."
-    (let* ((account (if mu4e-compose-parent-message
-                        (let ((maildir (mu4e-message-field mu4e-compose-parent-message
-                                                           :maildir)))
-                          (string-match "/\\(.*?\\)/" maildir)
-                          (match-string 1 maildir))
-                      (completing-read (format "Compose with account: (%s) "
-                                               (mapconcat #'(lambda (var)
-                                                              (car var))
-                                                          mu4e-account-alist
-                                                          "/"))
-                                       (mapcar #'(lambda (var)
-                                                   (car var))
-                                               mu4e-account-alist)
-                                       nil
-                                       t
-                                       nil
-                                       nil
-                                       (caar mu4e-account-alist))))
-           (account-vars (cdr (assoc account mu4e-account-alist))))
-      (if account-vars
-          (mapc #'(lambda (var)
-                    (set (car var)
-                         (cadr var)))
-                account-vars)
-        (error "No email account found"))))
-  (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
-  (require 'smtpmail)
-  ;; (setq message-send-mail-function 'smtpmail-send-it
+  ;; (setq mail-user-agent 'mu4e-user-agent)
+  ;; ;; allow for updating mail using 'U' in the main view:
+  ;; (setq-default mu4e-get-mail-command "offlineimap")
+  ;; (setq user-full-name "J M Soorya Narayan"
+  ;;       smtpmail-smtp-server
+  ;;       "smtp.gmail.com"
+  ;;       smtpmail-default-smtp-server
+  ;;       "smtp.gmail.com"
+  ;;       smtpmthan ail-starttls-credentials
+  ;;       '(("smtp.gmail.com" 587 nil nil))
+  ;;       smtpmail-stream-type
+  ;;       'starttls
+  ;;       ;; mu4e-sent-messages-behavior delete
+  ;;       smtpmail-smtp-service
+  ;;       587)
+  ;; (setq-default mu4e-account-alist '(("Personal"
+  ;;                             (mu4e-sent-folder "/Personal/[Gmail].Sent Mail")
+  ;;                             (mu4e-drafts-folder "/Personal/[Gmail].Drafts")
+  ;;                             (mu4e-trash-folder "/Personal/[Gmail].Trash")
+  ;;                             (user-mail-address "soorya.art@gmail.com")
+  ;;                             (smtpmail-auth-credentials '(("smtp.gmail.com" 587 "soorya.art@gmail.com"
+  ;;                                                           nil))))
+  ;;                            ("Professional"
+  ;;                             (mu4e-sent-folder "/Professional/[Gmail].Sent Mail")
+  ;;                             (mu4e-drafts-folder "/Professional/[Gmail].Drafts")
+  ;;                             (mu4e-trash-folder "/Professional/[Gmail].Trash")
+  ;;                             (user-mail-address "soorya.narayan.jm@gmail.com")
+  ;;                             (smtpmail-auth-credentials '(("smtp.gmail.com" 587 "soorya.narayan.jm@gmail.com"
+  ;;                                                           nil))))
+  ;;                            ("Dev"
+  ;;                             (mu4e-sent-folder "/Dev/[Gmail].Sent Mail")
+  ;;                             (mu4e-drafts-folder "/Dev/[Gmail].Drafts")
+  ;;                             (mu4e-trash-folder "/Dev/[Gmail].Trash")
+  ;;                             (user-mail-address "nayaran.ayroos@gmail.com")
+  ;;                             (smtpmail-auth-credentials '(("smtp.gmail.com" 587 "nayaran.ayroos@gmail.com"
+  ;;                                                           nil))))))
+  ;; (mu4e/mail-account-reset)
+  ;; (defun my-mu4e-set-account ()
+  ;;   "Set the account for composing a message."
+  ;;   (let* ((account (if mu4e-compose-parent-message
+  ;;                       (let ((maildir (mu4e-message-field mu4e-compose-parent-message
+  ;;                                                          :maildir)))
+  ;;                         (string-match "/\\(.*?\\)/" maildir)
+  ;;                         (match-string 1 maildir))
+  ;;                     (completing-read (format "Compose with account: (%s) "
+  ;;                                              (mapconcat #'(lambda (var)
+  ;;                                                             (car var))
+  ;;                                                         mu4e-account-alist
+  ;;                                                         "/"))
+  ;;                                      (mapcar #'(lambda (var)
+  ;;                                                  (car var))
+  ;;                                              mu4e-account-alist)
+  ;;                                      nil
+  ;;                                      t
+  ;;                                      nil
+  ;;                                      nil
+  ;;                                      (caar mu4e-account-alist))))
+  ;;          (account-vars (cdr (assoc account mu4e-account-alist))))
+  ;;     (if account-vars
+  ;;         (mapc #'(lambda (var)
+  ;;                   (set (car var)
+  ;;                        (cadr var)))
+  ;;               account-vars)
+  ;;       (error "No email account found"))))
+  ;; (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
+  ;; (require 'smtpmail)
+  ;; ;; (setq message-send-mail-function 'smtpmail-send-it
   ;;       starttls-use-gnutls t)
-  (setq-default message-kill-buffer-on-exit t)
-  (with-eval-after-load 'mu4e-alert
-    ;; Enable Desktop notifications
-    (mu4e-alert-set-default-style 'notifications))
-  (defun my-render-html-message ()
-    (let ((dom (libxml-parse-html-region (point-min)
-                                         (point-max))))
-      (erase-buffer)
-      (shr-insert-document dom)
-      (goto-char (point-min))))
-  (setq-default mu4e-html2text-command 'my-render-html-message)
+  ;; (setq-default message-kill-buffer-on-exit t)
+  ;; (with-eval-after-load 'mu4e-alert
+  ;;   ;; Enable Desktop notifications
+  ;;   (mu4e-alert-set-default-style 'notifications))
+  ;; (defun my-render-html-message ()
+  ;;   (let ((dom (libxml-parse-html-region (point-min)
+  ;;                                        (point-max))))
+  ;;     (erase-buffer)
+  ;;     (shr-insert-document dom)
+  ;;     (goto-char (point-min))))
+  ;; (setq-default mu4e-html2text-command 'my-render-html-message)
 
 )
 
@@ -540,54 +542,53 @@ values."
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
    ["#3c3836" "#fb4934" "#b8bb26" "#fabd2f" "#83a598" "#d3869b" "#8ec07c" "#ebdbb2"])
- '(ansi-term-color-vector
-   [unspecified "#1d2021" "#fb4934" "#b8bb26" "#fabd2f" "#83a598" "#d3869b" "#83a598" "#d5c4a1"] t)
  '(compilation-message-face (quote default))
  '(custom-enabled-themes (quote (monokai)))
  '(custom-safe-themes
    (quote
-    ("d9129a8d924c4254607b5ded46350d68cc00b6e38c39fc137c3cfb7506702c12" "907bacbe973888e44b057b32439bd51795d38034dceb71876958ffccc808a010" "93268bf5365f22c685550a3cbb8c687a1211e827edc76ce7be3c4bd764054bad" "16dd114a84d0aeccc5ad6fd64752a11ea2e841e3853234f19dc02a7b91f5d661" "dd4628d6c2d1f84ad7908c859797b24cc6239dfe7d71b3363ccdd2b88963f336" "74bca2951d424d60b511b4efcb8a467182bcf351a6d13e7c3309279dfa94bf05" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" "065efdd71e6d1502877fd5621b984cded01717930639ded0e569e1724d058af8" "3c5367b7432c8965cb82bcf5d3824e6d8a96db36bfef2278d93429e85185f9b5" "10abc17879eccf878007e26919b878aae03c652bc9957b1aa30b6ce7b43fa9ad" default)))
+	("f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" "d9129a8d924c4254607b5ded46350d68cc00b6e38c39fc137c3cfb7506702c12" "907bacbe973888e44b057b32439bd51795d38034dceb71876958ffccc808a010" "93268bf5365f22c685550a3cbb8c687a1211e827edc76ce7be3c4bd764054bad" "16dd114a84d0aeccc5ad6fd64752a11ea2e841e3853234f19dc02a7b91f5d661" "dd4628d6c2d1f84ad7908c859797b24cc6239dfe7d71b3363ccdd2b88963f336" "74bca2951d424d60b511b4efcb8a467182bcf351a6d13e7c3309279dfa94bf05" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" "065efdd71e6d1502877fd5621b984cded01717930639ded0e569e1724d058af8" "3c5367b7432c8965cb82bcf5d3824e6d8a96db36bfef2278d93429e85185f9b5" "10abc17879eccf878007e26919b878aae03c652bc9957b1aa30b6ce7b43fa9ad" default)))
  '(evil-want-Y-yank-to-eol t)
  '(fci-rule-color "#3C3D37" t)
  '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
  '(highlight-tail-colors
    (quote
-    (("#3C3D37" . 0)
-     ("#679A01" . 20)
-     ("#4BBEAE" . 30)
-     ("#1DB4D0" . 50)
-     ("#9A8F21" . 60)
-     ("#A75B00" . 70)
-     ("#F309DF" . 85)
-     ("#3C3D37" . 100))))
+	(("#3C3D37" . 0)
+	 ("#679A01" . 20)
+	 ("#4BBEAE" . 30)
+	 ("#1DB4D0" . 50)
+	 ("#9A8F21" . 60)
+	 ("#A75B00" . 70)
+	 ("#F309DF" . 85)
+	 ("#3C3D37" . 100))))
  '(hl-sexp-background-color "#1c1f26")
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (dracula-theme base16-theme gotham-theme xresources-theme slime-company slime common-lisp-snippets vimrc-mode dactyl-mode zeal-at-point yapfify yaml-mode xterm-color xkcd x86-lookup ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen utop use-package typit tuareg toml-mode toc-org tagedit stickyfunc-enhance srefactor spacemacs-theme spaceline smeargle slim-mode sicp shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters racer quelpa pyvenv pytest pyenv-mode py-isort pug-mode pkgbuild-mode pip-requirements persp-mode pdf-tools pcre2el paradox pacmacs ox-gfm orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file ocp-indent nyan-mode neotree nasm-mode mwim multi-term mu4e-maildirs-extension mu4e-alert move-text monokai-theme mmm-mode minimal-theme merlin material-theme markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc intero info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets gruvbox-theme google-translate golden-ratio gnuplot github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies dumb-jump disaster diff-hl define-word cython-mode company-web company-tern company-statistics company-quickhelp company-ghci company-ghc company-emacs-eclim company-cabal company-c-headers company-auctex company-anaconda column-enforce-mode coffee-mode cmm-mode cmake-mode clean-aindent-mode clang-format cargo auto-yasnippet auto-highlight-symbol auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell 2048-game)))
+	(clj-refactor inflections edn paredit cider queue clojure-snippets peg cider-eval-sexp-fu clojure-mode dracula-theme base16-theme gotham-theme xresources-theme slime-company slime common-lisp-snippets vimrc-mode dactyl-mode zeal-at-point yapfify yaml-mode xterm-color xkcd x86-lookup ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen utop use-package typit tuareg toml-mode toc-org tagedit stickyfunc-enhance srefactor spacemacs-theme spaceline smeargle slim-mode sicp shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters racer quelpa pyvenv pytest pyenv-mode py-isort pug-mode pkgbuild-mode pip-requirements persp-mode pdf-tools pcre2el paradox pacmacs ox-gfm orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file ocp-indent nyan-mode neotree nasm-mode mwim multi-term mu4e-maildirs-extension mu4e-alert move-text monokai-theme mmm-mode minimal-theme merlin material-theme markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc intero info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets gruvbox-theme google-translate golden-ratio gnuplot github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies dumb-jump disaster diff-hl define-word cython-mode company-web company-tern company-statistics company-quickhelp company-ghci company-ghc company-emacs-eclim company-cabal company-c-headers company-auctex company-anaconda column-enforce-mode coffee-mode cmm-mode cmake-mode clean-aindent-mode clang-format cargo auto-yasnippet auto-highlight-symbol auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell 2048-game)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#1A1A18")
+ '(safe-local-variable-values (quote ((helm-make-build-dir . "build2"))))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
-    ((20 . "#F92672")
-     (40 . "#CF4F1F")
-     (60 . "#C26C0F")
-     (80 . "#E6DB74")
-     (100 . "#AB8C00")
-     (120 . "#A18F00")
-     (140 . "#989200")
-     (160 . "#8E9500")
-     (180 . "#A6E22E")
-     (200 . "#729A1E")
-     (220 . "#609C3C")
-     (240 . "#4E9D5B")
-     (260 . "#3C9F79")
-     (280 . "#A1EFE4")
-     (300 . "#299BA6")
-     (320 . "#2896B5")
-     (340 . "#2790C3")
-     (360 . "#66D9EF"))))
+	((20 . "#F92672")
+	 (40 . "#CF4F1F")
+	 (60 . "#C26C0F")
+	 (80 . "#E6DB74")
+	 (100 . "#AB8C00")
+	 (120 . "#A18F00")
+	 (140 . "#989200")
+	 (160 . "#8E9500")
+	 (180 . "#A6E22E")
+	 (200 . "#729A1E")
+	 (220 . "#609C3C")
+	 (240 . "#4E9D5B")
+	 (260 . "#3C9F79")
+	 (280 . "#A1EFE4")
+	 (300 . "#299BA6")
+	 (320 . "#2896B5")
+	 (340 . "#2790C3")
+	 (360 . "#66D9EF"))))
  '(vc-annotate-very-old-color nil)
  '(weechat-color-list
    (unspecified "#1A1A18" "#3C3D37" "#F70057" "#F92672" "#86C30D" "#A6E22E" "#BEB244" "#E6DB74" "#40CAE4" "#66D9EF" "#FB35EA" "#FD5FF0" "#74DBCD" "#A1EFE4" "#F8F8F2" "#F8F8F0")))
