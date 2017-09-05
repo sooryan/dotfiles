@@ -228,21 +228,22 @@ exec_always polybar top
 # Startup apps
 exec_always setxkbmap -option ctrl:nocaps
 exec_always feh --bg-fill ~/dotfiles/wallpaper.png
-exec --no-startup-id firefox
+exec --no-startup-id firefox-nightly
+exec --no-startup-id deluged
 exec_always --no-startup-id redshift -l 10.790483:78.70467
 exec_always --no-startup-id nm-applet
 exec --no-startup-id udiskie -s
-exec --no-startup-id emacsclient -a "" -c
+exec --no-startup-id emacs --daemon
 exec --no-startup-id urxvtd
 exec --no-startup-id mpd
-exec --no-startup-id compton -cCGb
+exec --no-startup-id compton -Gcb --config ~/.compton.conf
 #--backend glx --vsync opengl
 
 # Custom key bindings
 bindsym Ctrl+Mod1+e exec nautilus
 bindsym Ctrl+Mod1+r exec $term -e ranger
 bindsym Ctrl+Mod1+m exec $term -e ncmpcpp
-bindsym Ctrl+Mod1+f exec firefox
+bindsym Ctrl+Mod1+f exec firefox-nightly
 bindsym Ctrl+Mod1+p exec mpc -h 127.0.0.1 -p 7000 toggle
 bindsym Ctrl+Mod1+n exec mpc -h 127.0.0.1 -p 7000 next
 bindsym Ctrl+Mod1+c exec chromium

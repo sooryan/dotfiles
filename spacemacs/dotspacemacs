@@ -49,7 +49,7 @@
 	 common-lisp
 	 dash
 	 (elfeed :variables
-			 rmh-elfeed-org-files (list "~/spacemacs/elfeed.org")
+			 rmh-get information elfeed-org-files (list "~/spacemacs/elfeed.org")
 			 elfeed-enable-web-interface t
 			 )
 	 emacs-lisp
@@ -88,22 +88,25 @@
 	  		shell-default-height 50
 		  	shell-default-position 'bottom
         )
+	 selectric
 	 semantic
+	 (spell-checking :variables
+					 enable-flyspell-auto-completion t)
 	 syntax-checking
 	 version-control
 	 vimscript
 	 xkcd
 	 yaml
-	 ;; spell-checking
 	 )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
-                    material-theme
+									  material-theme
 									  gruvbox-theme
 									  minimal-theme
+									  doom-themes
 									  monokai-theme
 									  nyan-mode
 									  pkgbuild-mode
@@ -181,9 +184,10 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         monokai
+                         minimal
                          gruvbox
-						 minimal
+                         doom-tomorrow-night
+                         monokai
                          spacemacs-dark
                          spacemacs-light
                          )
@@ -236,7 +240,7 @@ values."
    dotspacemacs-display-default-layout nil
    ;; If non nil then the last auto saved layouts are resume automatically upon
    ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts nil
+   dotspacemacs-auto-resume-layouts t
    ;; Size (in MB) above which spacemacs will prompt to open the large file
    ;; literally to avoid performance issues. Opening a file literally means that
    ;; no major mode or minor modes are active. (default is 1)
@@ -358,7 +362,7 @@ values."
 	a package is loaded, you should place your code here."
   ;; Mine
   (add-to-list 'load-path "/home/soorya/spacemacs")
-  (load-theme 'monokai t)
+  (load-theme 'doom-tomorrow-night t)
   ;; show line numbers
   ;; (global-linum-mode t)
   ;; UTF-8
@@ -431,7 +435,7 @@ values."
   (add-hook 'c++-mode-hook 'c++-setup)
   (add-hook 'c-mode-hook 'c++-setup)
   (nyan-mode t)
-  (setq-default org-bullets-bullet-list '("" "" "▲" "▶"))
+  ;; (setq-default org-bullets-bullet-list '("" "" "▲" "▶"))
   (global-set-key (kbd "<C-down>")
                   'shrink-window)
   (global-set-key (kbd "<C-up>")
@@ -538,63 +542,49 @@ values."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
-   ["#3c3836" "#fb4934" "#b8bb26" "#fabd2f" "#83a598" "#d3869b" "#8ec07c" "#ebdbb2"])
- '(compilation-message-face (quote default))
- '(custom-enabled-themes (quote (monokai)))
+   ["#0d0d0d" "#cc6666" "#b5bd68" "#f0c674" "#81a2be" "#c9b4cf" "#8abeb7" "#ffffff"])
  '(custom-safe-themes
    (quote
-	("f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" "d9129a8d924c4254607b5ded46350d68cc00b6e38c39fc137c3cfb7506702c12" "907bacbe973888e44b057b32439bd51795d38034dceb71876958ffccc808a010" "93268bf5365f22c685550a3cbb8c687a1211e827edc76ce7be3c4bd764054bad" "16dd114a84d0aeccc5ad6fd64752a11ea2e841e3853234f19dc02a7b91f5d661" "dd4628d6c2d1f84ad7908c859797b24cc6239dfe7d71b3363ccdd2b88963f336" "74bca2951d424d60b511b4efcb8a467182bcf351a6d13e7c3309279dfa94bf05" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" "065efdd71e6d1502877fd5621b984cded01717930639ded0e569e1724d058af8" "3c5367b7432c8965cb82bcf5d3824e6d8a96db36bfef2278d93429e85185f9b5" "10abc17879eccf878007e26919b878aae03c652bc9957b1aa30b6ce7b43fa9ad" default)))
+	("12e2aee98f651031d10fd58af76250fa8cab6f28b3e88f03b88b7524c9278549" "cc0dbb53a10215b696d391a90de635ba1699072745bf653b53774706999208e3" "611e38c2deae6dcda8c5ac9dd903a356c5de5b62477469133c89b2785eb7a14d" default)))
  '(evil-want-Y-yank-to-eol t)
- '(fci-rule-color "#3C3D37" t)
- '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
- '(highlight-tail-colors
-   (quote
-	(("#3C3D37" . 0)
-	 ("#679A01" . 20)
-	 ("#4BBEAE" . 30)
-	 ("#1DB4D0" . 50)
-	 ("#9A8F21" . 60)
-	 ("#A75B00" . 70)
-	 ("#F309DF" . 85)
-	 ("#3C3D37" . 100))))
- '(hl-sexp-background-color "#1c1f26")
- '(magit-diff-use-overlays nil)
+ '(fci-rule-color "#5c5e5e" t)
+ '(jdee-db-active-breakpoint-face-colors (cons "#0d0d0d" "#41728e"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#0d0d0d" "#b5bd68"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#0d0d0d" "#5a5b5a"))
+ '(org-ellipsis "  ")
+ '(org-fontify-done-headline t)
+ '(org-fontify-quote-and-verse-blocks t)
+ '(org-fontify-whole-heading-line t)
  '(package-selected-packages
    (quote
-	(clj-refactor inflections edn paredit cider queue clojure-snippets peg cider-eval-sexp-fu clojure-mode dracula-theme base16-theme gotham-theme xresources-theme slime-company slime common-lisp-snippets vimrc-mode dactyl-mode zeal-at-point yapfify yaml-mode xterm-color xkcd x86-lookup ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen utop use-package typit tuareg toml-mode toc-org tagedit stickyfunc-enhance srefactor spacemacs-theme spaceline smeargle slim-mode sicp shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters racer quelpa pyvenv pytest pyenv-mode py-isort pug-mode pkgbuild-mode pip-requirements persp-mode pdf-tools pcre2el paradox pacmacs ox-gfm orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file ocp-indent nyan-mode neotree nasm-mode mwim multi-term mu4e-maildirs-extension mu4e-alert move-text monokai-theme mmm-mode minimal-theme merlin material-theme markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc intero info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets gruvbox-theme google-translate golden-ratio gnuplot github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies dumb-jump disaster diff-hl define-word cython-mode company-web company-tern company-statistics company-quickhelp company-ghci company-ghc company-emacs-eclim company-cabal company-c-headers company-auctex company-anaconda column-enforce-mode coffee-mode cmm-mode cmake-mode clean-aindent-mode clang-format cargo auto-yasnippet auto-highlight-symbol auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell 2048-game)))
- '(pos-tip-background-color "#A6E22E")
- '(pos-tip-foreground-color "#1A1A18")
+	(dired-quick-sort zeal-at-point yapfify yaml-mode xterm-color xkcd x86-lookup ws-butler winum which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen utop use-package unfill typit tuareg toml-mode toc-org tagedit sudoku stickyfunc-enhance srefactor spaceline smeargle slime-company slim-mode sicp shell-pop selectric-mode scss-mode sass-mode restart-emacs rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode pkgbuild-mode pip-requirements persp-mode pdf-tools pcre2el paradox pacmacs ox-gfm orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file ocp-indent nyan-mode neotree nasm-mode mwim multi-term mu4e-maildirs-extension mu4e-alert move-text monokai-theme mmm-mode minimal-theme merlin material-theme markdown-toc magit-gitflow magit-gh-pulls lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc intero info+ indent-guide ibuffer-projectile hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets gruvbox-theme google-translate golden-ratio gnuplot github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md fuzzy flyspell-popup flyspell-correct-helm flycheck-rust flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies dumb-jump doom-themes disaster diff-hl define-word dactyl-mode cython-mode company-web company-tern company-statistics company-quickhelp company-ghci company-ghc company-emacs-eclim company-cabal company-c-headers company-auctex company-anaconda common-lisp-snippets column-enforce-mode coffee-mode cmm-mode cmake-mode clojure-snippets clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu cargo auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell 2048-game)))
  '(safe-local-variable-values (quote ((helm-make-build-dir . "build2"))))
- '(vc-annotate-background nil)
+ '(vc-annotate-background "#0d0d0d")
  '(vc-annotate-color-map
-   (quote
-	((20 . "#F92672")
-	 (40 . "#CF4F1F")
-	 (60 . "#C26C0F")
-	 (80 . "#E6DB74")
-	 (100 . "#AB8C00")
-	 (120 . "#A18F00")
-	 (140 . "#989200")
-	 (160 . "#8E9500")
-	 (180 . "#A6E22E")
-	 (200 . "#729A1E")
-	 (220 . "#609C3C")
-	 (240 . "#4E9D5B")
-	 (260 . "#3C9F79")
-	 (280 . "#A1EFE4")
-	 (300 . "#299BA6")
-	 (320 . "#2896B5")
-	 (340 . "#2790C3")
-	 (360 . "#66D9EF"))))
- '(vc-annotate-very-old-color nil)
- '(weechat-color-list
-   (unspecified "#1A1A18" "#3C3D37" "#F70057" "#F92672" "#86C30D" "#A6E22E" "#BEB244" "#E6DB74" "#40CAE4" "#66D9EF" "#FB35EA" "#FD5FF0" "#74DBCD" "#A1EFE4" "#F8F8F2" "#F8F8F0")))
+   (list
+	(cons 20 "#b5bd68")
+	(cons 40 "#ffff00")
+	(cons 60 "#ffff00")
+	(cons 80 "#f0c674")
+	(cons 100 "#ffff00")
+	(cons 120 "#ffff00")
+	(cons 140 "#de935f")
+	(cons 160 "#ffff55")
+	(cons 180 "#ffffaa")
+	(cons 200 "#c9b4cf")
+	(cons 220 "#ffaaaa")
+	(cons 240 "#ff5555")
+	(cons 260 "#cc6666")
+	(cons 280 "#bf0000")
+	(cons 300 "#7f0000")
+	(cons 320 "#3f0000")
+	(cons 340 "#5c5e5e")
+	(cons 360 "#5c5e5e")))
+ '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:family "Iosevka" :foundry "CYEL" :slant normal :weight normal :height 113 :width normal)))))

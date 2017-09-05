@@ -3,7 +3,6 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/soorya/.oh-my-zsh
-export PATH="/home/soorya/Downloads/wine-2.2:/home/soorya/.gem/ruby/2.4.0/bin:/home/soorya/clones/LLVM/orig/llvm_build/bin:$PATH"
 export STARDICT_DATA_DIR=~
 HISTFILE=~/.bash_history
 HISTSIZE=99999999
@@ -166,5 +165,11 @@ fi
 # (wal -r &)
 export PATH="/home/soorya/clones/ctf-tools/bin:/usr/bin/vendor_perl:$PATH"
 
+export PATH="/home/soorya/Downloads/wine-2.2:/home/soorya/.gem/ruby/2.4.0/bin:/home/soorya/clones/LLVM/orig/llvm_build/bin:/usr/share/perl6/vendor/bin:$PATH"
+
 # OPAM configuration
 . /home/soorya/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+eval $(thefuck --alias)
+# added by Anaconda3 4.4.0 installer
+export PATH="/home/soorya/anaconda3/bin:$PATH"
+

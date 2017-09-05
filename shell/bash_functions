@@ -238,7 +238,7 @@ pgrep(){
 }
 
 xkcd(){
-	open http://www.xkcd.com/"$1"
+	firefox http://www.xkcd.com/"$1" & disown
 }
 
 define(){

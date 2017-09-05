@@ -4,17 +4,13 @@
 ** http://feeds.feedburner.com/InformationIsBeautiful
 ** [[http://orgmode.org][Org Mode Links supported as well]]
 ** Software Development                                                 :dev:
-*** Emacs                                                    :emacs:mustread:
-**** http://www.terminally-incoherent.com/blog/feed
-**** http://nullprogram.com/feed
-**** entry-title: \(emacs\|org-mode\)
-**** http://planet.emacsen.org/atom.xml
 *** General Practices
 **** http://feeds.feedburner.com/codinghorror
 ** Research                                                        :research:
 *** http://googleresearch.blogspot.com/atom.xml 
 *** http://matt.might.net/articles/feed.rss 
 *** http://blog.regehr.org/feed
+*** https://distill.pub/rss.xml
 *** http://blog.acolyer.org/feed/                                    :papers:
 ** Math                                                                :math:
 *** http://math.andrej.com/feed/ 
@@ -31,6 +27,8 @@
 *** http://www.smbc-comics.com/rss.php                                :comic:
 *** http://xkcd.com/rss.xml                                           :comic:
 *** http://what-if.xkcd.com/feed.atom 
-** ML                                                                    :ml:
-*** http://feeds.feedburner.com/PartiallyDerivative 
-
+** ML                                                                 :ml:
+*** http://feeds.feedburner.com/PartiallyDerivative
+*** https://theneural.wordpress.com/feed/
+** AI                                                                    :ai:
+*** http://feeds.feedburner.com/33rdsquare/eGPj
