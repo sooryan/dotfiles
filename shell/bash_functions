@@ -4,11 +4,6 @@
 #    mupdf ~/Documents/NITT/SyllabusNITT.pdf;
 #}
 
-rack(){
-    reset;
-    ack -i "$1";
-}
-
 pdfcompress(){
     gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$2" "$1";
 }
@@ -56,7 +51,7 @@ tardp(){
     pandoc tardis.md -o tardis.pdf;
 }
 
-package-backup(){
+apt-package-backup(){
     dpkg --get-selections > ~/.restore/Package.list
     sudo cp -R /etc/apt/sources.list* ~/.restore/
     sudo apt-key exportall | sudo tee ~/.restore/Repo.keys
@@ -64,7 +59,7 @@ package-backup(){
     #rsync --progress /home/`whoami` /path/to/user/profile/backup/here
 }
 
-package-reinstall(){
+apt-package-reinstall(){
     ## Reinstall now
     #rsync --progress /path/to/user/profile/backup/here /home/`whoami`
     sudo pip -H -r install ~/.restore/Pip.list
@@ -141,7 +136,7 @@ tard(){
 }
 
 Clone(){
-    cd ~/Clones/Github; git clone "$1" || exit
+    cd ~/Documents/clones/Github || exit; git clone "$1"
     cd "$(echo "$1" |cut -d '.' -f 2|cut -d '/' -f 3)" || exit
 }
 
@@ -151,7 +146,7 @@ mkcd(){
 }
 
 vcreate(){
-    virtualenv --system-site-packages ~/.virtualenvs/"$1"
+    virtualenv ~/.virtualenvs/"$1"
 }
 
 vactivate(){
@@ -175,7 +170,7 @@ sympy_test(){
 
 cloneall(){
         for branch in $(git branch -a | grep remotes | grep -v HEAD | grep -v master); do
-            git branch --track "${branch##*/}" $branch
+            git branch --track "${branch##*/}" "$branch"
         done
 
 }
@@ -222,7 +217,7 @@ revdns() {
 }
 
 gitroll(){
-    git diff "$1"^1 "$1";
+    git diff "$1"~1 "$1";
 }
 
 replaceall(){
@@ -234,7 +229,7 @@ wget-files(){
 }
 
 pgrep(){
-    find . -iname '*.pdf' -exec pdfgrep "$1" {} +
+    find . -iname '*.pdf' -exec pdfgrep -n "$1" {} +
 }
 
 xkcd(){
@@ -246,9 +241,13 @@ define(){
 }
 
 za() {
-    zathura $1 & disown;
+    zathura "$1" & disown;
 }
 
 ecd() {
-    ec $1 & disown;
+    ec "$1" & disown;
+}
+
+function cless () {
+    pygmentize "$1" | /usr/bin/less -R
 }

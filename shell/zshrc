@@ -11,7 +11,7 @@ SAVEHIST=$HISTSIZE
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="clean"
+ZSH_THEME="philips"
 # ZSH_THEME="af-magic"
 #philips
 #bira
@@ -165,11 +165,19 @@ fi
 # (wal -r &)
 export PATH="/home/soorya/clones/ctf-tools/bin:/usr/bin/vendor_perl:$PATH"
 
-export PATH="/home/soorya/Downloads/wine-2.2:/home/soorya/.gem/ruby/2.4.0/bin:/home/soorya/clones/LLVM/orig/llvm_build/bin:/usr/share/perl6/vendor/bin:$PATH"
+export PATH="/home/soorya/Downloads/wine-2.2:/home/soorya/.gem/ruby/2.5.0/bin:/home/soorya/Documents/clones/LLVM/orig/llvm_build/bin:/usr/share/perl6/vendor/bin:$PATH"
+
+export LD_LIBRARY_PATH='$LD_LIBRARY_PATH:/usr/local/lib'
 
 # OPAM configuration
 . /home/soorya/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 eval $(thefuck --alias)
 # added by Anaconda3 4.4.0 installer
-export PATH="/home/soorya/anaconda3/bin:$PATH"
+export PATH="$PATH:/home/soorya/anaconda3/bin:"
+export PATH="/home/soorya/Documents/Programmes/Intern/pkd/code/verse-coq/coq-8.6/system/bin:$PATH"
+export PATH="/opt/cuda/bin:$PATH"
+
+source ~/bin/tmuxinator.zsh
+source ~/bin/zsh-completion-yay 2> /dev/null
+source /etc/profile.d/autojump.zsh
 
