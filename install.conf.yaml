@@ -9,25 +9,26 @@
     ~/.dotfiles: ''
     ~/.bash_aliases: shell/bash_aliases
     ~/.bash_functions: shell/bash_functions
+    ~/.config/i3/config: config/i3
     ~/.config/polybar: polybar
     ~/.config/qutebrowser: qutebrowser
+    ~/.config/tmuxinator: tmux/tmuxinator
     ~/.config/terminator/config: config/terminator
     ~/.config/termite/config: config/termite
     ~/.config/zathura/zathurarc: config/zathurarc
     ~/.fonts: fonts
     ~/.i3/config: config/i3
-    ~/.config/i3/config: config/i3
     ~/.mpd/mpd.conf: config/mpd
     ~/.ncmpcpp/config: config/ncmpcpp
     ~/.offlineimaprc: offlineimap/offlineimaprc
     ~/.offlineimap.py: offlineimap/offlineimap.py
     ~/.spacemacs: spacemacs/dotspacemacs
-    ~/.vimperator: vimperator
-    ~/.vimperatorrc: vimperatorrc
     ~/.Xresources: Xresources
     ~/.Xdefaults: Xresources
     ~/.zshrc: shell/zshrc
     ~/spacemacs: spacemacs/spacemacs
+    ~/.tmux.conf: tmux/tmuxconf
+    ~/.tmux.conf.local: tmux/tmuxconflocal
 
 # - shell:
 #   - [git submodule update --init --recursive, Installing submodules]
