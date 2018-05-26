@@ -1,60 +1,166 @@
 [colors]
-foreground  = #CACAC8
-background  = #1a1a18
 
-t1		= #332D35
-t2		= #7D6297
-t6		= #CAB8D1
+base00 = #1d1f21
+base01 = #282a2e
+base02 = #373b41
+base03 = #969896
+base04 = #d4d7d4
+base05 = #c5c8c6
+base06 = #e0e0e0
+base07 = #ffffff
+base08 = #cc6666
+base09 = #de935f
+base0A = #f0c674
+base0B = #b5bd68
+base0C = #8abeb7
+base0D = #81a2be
+base0E = #b294bb
+base0F = #a3685a
 
-t3		= #AD9CC3
-t4  	= #B6A5C8
-t5		= #C0AECD
-t7		= #D3C1D6
-t8		= #DDCADB
-t99		= colors.background
-t100    = colors.background
+background = #1b2b34
+foreground = #ffffff
+
+red    = #ec5f67
+orange = #f99157
+yellow = #fac863
+green  = #99c794
+teal   = #5fb3b3
+blue   = #6699cc
+purple = #c594c5
+brown  = #ab7967
+
+[bar/master]
+monitor = eDP-1
+fixed-center = true
+
+width = 100%
+height = 25
+
+radius = 0.0
+
+module-margin = 1
+background = ${colors.base00}
+foreground = ${colors.base04}
+
+font-0 = "Iosevka:pixelsize=10:antialias=true:weight=bold;1"
+font-1 = wuncon siji:pixelsize=6;2
+font-2 = "FontAwesome:pixelsize=8:antialias=true;1"
 
 [bar/top]
-monitor = eDP-1
-bottom = false
-height = 22
+inherit = bar/master
+bottom = true
 
-override-redirect = false
-width = 100%
-enable-ipc = true
+modules-left = i3 music
+modules-center = time
+modules-right = down essid cpu volume battery
 
-padding-left = 0
-padding-right = 1
-offset-x = 0
-offset-y = 0
+padding-left = 2
+padding-right = 3
 
-tray-detached = false
-tray-position = right
-tray-offset-x = 0
-tray-offset-y = 0
-tray-maxsize = 16
-tray-padding = 0
-tray-scale = 1
+accumulate-stats = true
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+[module/network]
+type = internal/network
+interface = wlo1
+ping-interval = 3
 
-; border-left-size = 15
-border-right-size = 15
-border-color = ${self.background}
+[module/music]
+type = custom/script
+interval = 2
 
-font-0 = Iosevka:size=11:dpi=138;2
-font-1 = FontAwesome:size=9:dpi=138;2
-font-2 = Cousine for Powerline:size=18;2
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.blue}
+label = %output:0:45:...%
 
-modules-left   = i3 xwindow
-; modules-center = xwindow
-modules-right  = mpd wlan volume battery cpu clock
+exec = ~/.config/polybar/mpris.sh
+click-left = playerctl previous
+click-middle = playerctl play-pause
+click-right = playerctl next
 
-[module/xwindow]
+[module/volume]
+type = internal/alsa
+
+ramp-volume-0 = ""
+ramp-volume-1 = ""
+ramp-volume-2 = ""
+ramp-volume-foreground = ${colors.base0C}
+format-volume = <ramp-volume> <label-volume>
+
+format-muted = <label-muted>
+label-muted = mute
+format-muted-prefix = " "
+format-muted-prefix-foreground = ${colors.base08}
+
+mapping = true
+
+[module/title]
 type = internal/xwindow
-label-maxlen = 30
-label-padding   = 2
+
+format-prefix = " "
+format-prefix-foreground = ${colors.purple}
+
+label = "%title:0:25:...%"
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+
+format-prefix = ""
+format-prefix-foreground = ${colors.blue}
+
+label = "%percentage%%"
+label-padding-left = 1
+
+[module/ram]
+type = internal/memory
+interval = 3
+
+format-prefix = ""
+format-prefix-foreground = ${colors.orange}
+
+label = "%percentage_used%%"
+label-padding-left = 1
+
+[module/essid]
+inherit = module/network
+
+format-connected = <ramp-signal> <label-connected>
+
+format-disconnected = <label-disconnected>
+format-disconnected-prefix = ""
+format-disconnected-prefix-foreground = ${colors.green}
+
+label-connected = "%essid%"
+label-disconnected = "not connected"
+label-connected-padding-left = 1
+label-disconnected-padding-left = 1
+
+ramp-signal-0 = ""
+ramp-signal-1 = ""
+ramp-signal-2 = ""
+ramp-signal-3 = ""
+ramp-signal-4 = ""
+ramp-signal-5 = ""
+
+ramp-signal-foreground = ${colors.green}
+
+[module/up]
+inherit = module/network
+
+format-connected-prefix = ""
+format-connected-prefix-foreground = ${colors.green}
+
+label-connected = %{T2}%upspeed:9%%{T-}
+label-padding-left = 1
+
+[module/down]
+inherit = module/network
+
+format-connected-prefix = ""
+format-connected-prefix-foreground = ${colors.base0B}
+
+label-connected = %{T2}%downspeed:9%%{T-}
 
 [module/i3]
 type = internal/i3
@@ -62,11 +168,11 @@ format = <label-state>
 index-sort = true
 
 label-focused            = %icon%
-label-focused-foreground = #F0F4F5
+label-focused-foreground = #ffffff
 label-focused-padding    = 1
 
 label-unfocused            = %icon%
-; label-unfocused-foreground = #B0B4B5
+label-unfocused-foreground = #DFD5D4
 label-unfocused-padding    = 1
 
 label-urgent            = %icon%
@@ -85,273 +191,102 @@ ws-icon-8 = 9;
 ws-icon-9 = 10;
 ws-icon-default = 
 
-[module/mpd]
-type                  = internal/mpd
-interval = 2
 
-host = 127.0.0.1
-port = 7000
+[module/i3workspaces]
+type = internal/i3
+format = <label-mode> <label-state>
+index-sort = true
 
-label-song            =   %title% - %artist%
-label-song-maxlen     = 40
-label-song-ellipsis   = true
+label-focused = ""
+label-unfocused = ""
+label-urgent = ""
+label-visible = ""
 
-format-online         = <label-song>
-# <icon-prev>    <icon-seekb>  <toggle>  <icon-seekf>    <icon-next>     <icon-random>  <icon-repeat>
+label-focused-foreground = ${colors.blue}
+label-focused-padding = 1
 
-label-song-background = ${colors.t99}
-icon-pause-background = ${self.label-song-background}
-icon-play-background  = ${self.label-song-background}
-icon-pause-foreground = ${self.label-song-foreground}
-icon-play-foreground  = ${self.label-song-foreground}
+label-unfocused-foreground = ${colors.base03}
+label-unfocused-padding = 1
 
-label-song-padding = 2
-icon-pause-padding-right = 2
-icon-play-padding-right = 2
+label-visible-foreground = ${colors.base03}
+label-visible-padding = 1
 
-icon-prev  = 
-icon-seekb = 
-icon-stop  = 
-icon-pause = 
-icon-play  = 
-icon-next  = 
-icon-seekf = 
+label-urgent-foreground = ${colors.base08}
+label-urgent-padding = 1
 
-; padding-left = 50
-icon-random = 
-icon-repeat = 
-toggle-off-foreground = ${colors.grey}
-toggle-on-foreground  = ${colors.blue}
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
 
-[module/memory]
-type             = internal/memory
-interval         = 2
-format           = <label>
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-foreground = ${colors.yellow}
 
-label            =  %percentage_used%%
-
-label-background = ${colors.t5}
-label-padding   =  2
-
-format-prefix            = 
-format-prefix-background = #D3C1D6
-format-prefix-foreground = ${self.label-background}
-
-format-suffix            = 
-format-suffix-background = ${self.label-background}
-format-suffix-foreground = ${module/cpu.format-background}
-
-
-[module/cpu]
-format-label       = internal/cpu
-
-format             = <label>
-label-background = ${colors.t99}
-
-type      = internal/cpu
-interval  = 2
-label     = "  %percentage%% "
-padding   = 0
-
-[module/wlan]
-type      = internal/network
-interface = wlo1
-; p3s0
-interval  = 3.0
-
-label-connected-padding      = 2
-label-disconnected-padding   = 2
-
-format-connected              = <label-connected>
-format-disconnected           = <label-disconnected>
-
-label-connected-foreground    = ${colors.foreground}
-label-connected-background    = ${colors.t99}
-
-label-disconnected-foreground    = ${colors.foreground}
-label-disconnected-background    = ${colors.t99}
-
-label-connected    =  %downspeed%
-label-disconnected = no wifi :(
-
-[module/eth]
-type                          = internal/network
-interface                     = eno1
-interval                      = 3.0
-
-format-connected              = <label-connected>
-format-disconnected           = <label-disconnected>
-
-label-connected-padding      = 2
-label-disconnected-padding   = 2
-
-label-connected               =  connected
-label-disconnected            = 
-
-label-connected-foreground    = ${colors.foreground}
-label-connected-background    = ${colors.t99}
-
-label-disconnected-foreground    = ${colors.foreground}
-label-disconnected-background    = ${colors.t99}
-
-[module/date]
-type     = internal/date
-interval = 2
-
-date     = " %d.%m.%Y"
-date-alt = "  %A, %d. %B"
-
-time     = " %H:%M"
-time-alt = "%H:%M:%S"
-
-label-background = ${colors.t7}
-label-padding = 2
-format-padding   = 0
-format           = <label>
-label            = %time% | %date%
-
-[module/volume]
-type                      		= internal/volume
-
-format = <label>
-label-muted-background  	= ${colors.t99}
-label-volume-background  	= ${colors.t99}
-
-format-volume 					= <label-volume>
-format-muted  					= <label-muted>
-
-label-muted   					=  " muted "
-format-muted-padding 		= 0
-
-label-volume = " %percentage%% "
-format-volume-padding 		= 0
-
-bar-volume-background 			= ${colors.t99}
+format = <ramp> <label>
+label = %percentage%%
 
 [module/battery]
-type    = internal/battery
+type = internal/battery
 battery = BAT0
 adapter = AC
 full-at = 98
 
-format-charging    = <label-charging>
-time-format        = %H:%M
+format-charging = <animation-charging><label-charging>
+label-charging = %percentage%%
+label-charging-padding-left = 1
 
-format-discharging =  <label-discharging>
-label-discharging  = "  %percentage%% "
-label-charging  = "   %percentage%% "
+format-discharging = <ramp-capacity><label-discharging>
+label-discharging = %percentage%%
+label-discharging-padding-left = 1
 
-format-padding     = 2
+format-full = " 100%"
+format-full-prefix = ""
+format-full-prefix-foreground = ${colors.green}
+format-full-padding-left = 1
 
-label-charging-background = ${colors.t99}
+ramp-capacity-0 = ""
+ramp-capacity-1 = ""
+ramp-capacity-2 = ""
+ramp-capacity-3 = ""
+ramp-capacity-4 = ""
+ramp-capacity-5 = ""
+ramp-capacity-6 = ""
+ramp-capacity-7 = ""
+ramp-capacity-8 = ""
+ramp-capacity-foreground = ${colors.green}
 
-format-full-background        = ${colors.t99}
-format-charging-background    = ${colors.t99}
-format-discharging-background = ${colors.t99}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 =  
+animation-charging-0 = ""
+animation-charging-1 = ""
+animation-charging-2 = ""
+animation-charging-3 = ""
+animation-charging-4 = ""
+animation-charging-5 = ""
+animation-charging-6 = ""
+animation-charging-7 = ""
+animation-charging-8 = ""
+animation-charging-foreground = ${colors.base0B}
 animation-charging-framerate = 750
 
-[module/temperature]
-type                  = internal/temperature
-thermal-zone          = 0
-warn-temperature      = 80
-
-format             = <ramp><label>
-format-background  = ${colors.t5}
-label-background   = ${colors.t5}
-label-padding = 2
-
-format-prefix                 = 
-format-prefix-background      = ${module/battery.format-background}
-format-prefix-foreground      = ${self.label-background}
-
-format-suffix                 = 
-format-suffix-foreground      = ${self.label-background}
-
-format-warn-prefix            = 
-format-warn-prefix-background = ${module/battery.format-background}
-format-warn-prefix-foreground = ${self.label-warn-background}
-
-format-warn-suffix            = 
-format-warn-suffix-foreground = ${self.label-warn-background}
-
-format-warn           = <label-warn>
-label-warn-background = ${colors.t2}
-
-ramp-background       = ${colors.t5}
-
-label                 = %temperature%
-label-warn            =  %temperature%
-
-ramp-0 = "   "
-ramp-1 = "   "
-ramp-2 = " "
-
-[module/weather]
-type = custom/script
-interval = 300
-format = <label>
-exec = ~/.config/polybar/weather-git.sh
-
-label-background = ${colors.t7}
-label-padding   =  2
-
-format-prefix            = 
-format-prefix-background = #B6A5C8
-format-prefix-foreground = ${self.label-background}
-
-format-suffix            = 
-format-suffix-background = ${self.label-background}
-format-suffix-foreground = #AD9CC3
-
-[module/clock]
-type = custom/script
+[module/time]
+type = internal/date
 interval = 1
-format = <label>
-exec = ~/.config/polybar/clock.sh
+date =
+time = "%I:%M %P"
+format-prefix = " "
+format-prefix-foreground = ${colors.red}
+label = %time% %date%
 
-label-background = ${colors.t100}
-label-padding-right    = 2
+[settings]
+screenchange-reload = true
 
-[module/pkg]
-type = custom/script
-interval = 120
-format = <label>
-label = "%output:0:30%"
-exec = ~/.config/polybar/pkg.sh
-exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+[global/wm]
+margin-top = 24
+margin-bottom = 24
 
-label-background = ${colors.t99}
-label-foreground = ${colors.t100}
-format-underline = ${colors.cyan}
-label-padding   =  2
+override-redirect = true
 
-[module/temps]
-type = custom/script
-interval = 1
-format = <label>
-exec = ~/.config/polybar/cputemp.sh
 
-label-background = ${colors.t5}
-format-underline = ${colors.cyan}
-label-padding   =  2
-
-format-prefix            = 
-format-prefix-background = #D3C1D6
-format-prefix-foreground = ${self.label-background}
-
-format-suffix            = 
-format-suffix-background = ${self.label-background}
-format-suffix-foreground = #B6A5C8
-
+; vim:ft=dosini
