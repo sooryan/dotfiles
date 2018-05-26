@@ -273,7 +273,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
-set $Locker lock && sleep 1
+set $Locker i3lock-fancy && sleep 1
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
