@@ -1,205 +1,159 @@
-! do not scroll with output
-URxvt*scrollTtyOutput: false
+*background:                      #272827
+*foreground:                      #657b83
+*cursorColor:                     #16A085
 
-! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
-URxvt*scrollWithBuffer: true
+*color0:                          #232423
+*color8:                          #282928
+*color1:                          #BA2922
+*color9:                          #CC372C
+*color2:                          #7E807E
+*color10:                         #8D8F8D
+*color3:                          #4C4F4D
+*color11:                         #4E524F
+*color4:                          #16A085
+*color12:                         #13BF9D
+*color5:                          #43746A
+*color13:                         #487D72
+*color6:                          #00CCCC
+*color14:                         #00D1D1
+*color7:                          #E0E0E0
+*color15:                         #E8E8E8
 
-! scroll back to the bottom on keypress
-URxvt*scrollTtyKeypress: true
+URxvt.font: xft:Source Code Pro:size=10.5
+URxvt.depth:                      32
+URxvt*scrollBar:                  false
+URxvt*mouseWheelScrollPage:       false
+URxvt*cursorBlink:                true
+URxvt*saveLines:                  5000
+URxvt*internalBorder: 5
+URxvt*geometry: 70x19
 
-! scrollback in secondary buffer
-URxvt.secondaryScreen: 1
-URxvt.secondaryScroll: 0
-URxvt.secondaryWheel: 1
+! rofi.color-enabled: false
+! rofi.color-window: #272827, #13bf9d, #13bf9d
+! rofi.color-normal: #272827, #657b83, #272827, #272827, #13bf9d
+! rofi.color-active: #272827, #657b83, #272827, #272827, #13bf9d
+! rofi.color-urgent: #272827, #657b83, #272827, #272827, #13bf9d
 
-! urxvt*depth:32
-! urxvt*foreground:#B0B0B0
-! urxvt*background:rgba:0010/0010/0010/cccc
-
-URxvt.font:     xft:iosevka-11.5
-URxvt.boldFont: xft:iosevka-11.5
-URxvt.letterSpace: 0
-URxvt.internalBorder: 6
-
-! Clickabe URLs
-URxvt.perl-ext-common:default,matcher,url-select,keyboard-select,tabbedex,resize-font,clipboard
-URxvt.url-launcher: /usr/bin/xdg-open
-URxvt.matcher.button: 1
-
-URxvt.keysym.C-Delete: perl:matcher:last
-URxvt.keysym.M-Delete: perl:matcher:list
-
-URxvt.matcher.rend.0: Uline Bold fg5
-
-! URxvt.url-select.launcher:  /usr/bin/xdg-open
-URxvt.url-select.underline: true
-URxvt.keysym.M-u:           perl:url-select:select_next
-URxvt.keysym.M-Escape:      perl:keyboard-select:activate
-URxvt.keysym.M-s:           perl:keyboard-select:search
-
-! Tabs
-URxvt.tabbed.new-button: no
-URxvt.tabbed.autohide: yes
-URxvt.tabbedex.reopen-on-close: yes
-URxvt.tabbed.title: no
-URxvt.keysym.Control-t: perl:tabbedex:new_tab
-URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
-URxvt.keysym.Control-PgDn: perl:tabbedex:next_tab
-URxvt.keysym.Control-PgUp: perl:tabbedex:prev_tab
-URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
-
-URxvt.clipboard.autocopy: true
-
-URxvt.tabbed.tabbar-fg: 7
-URxvt.tabbed.tabbar-bg: 0
-URxvt.tabbed.tab-fg: 0
-URxvt.tabbed.tab-bg: 7
-
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-
-
-! URxvt.keysym.Control-Shift-t:	perl:tabbedex:new_tab
-! URxvt.keysym.Shifft-Right:	perl:tabbedex:next_tab
-! URxvt.keysym.Shift-Left:	perl:tabbedex:prev_tab
-
-URxvt.resize-font.smaller: C-minus
-URxvt.resize-font.bigger: C-equal
-
-URxvt.iso14755: false
-URxvt.iso14755_52: false
-
-URxvt*scrollBar:     false
-URxvt*scrollBar_right:   false
-
-! URxvt*transparent:   false
-
-*antialias:  true
-
-! ------------------------------------------------------------------------------
-! ! ROFI Color theme
-! ! ------------------------------------------------------------------------------
-rofi.color-enabled: true
-! first two color-window were a013191c
-! a6 = 65% amount of black needed over white for white to be a 7 contrast score
-! b3 = 70%
-! 80 = 50%
-rofi.color-window: argb:a6000000, argb:a6000000, argb:0000000
-rofi.color-normal: argb:0fdf6e3, #ffffff, argb:0eee8d5, #009688, #ffffff
-rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
-rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
-rofi.line-margin: 31
-rofi.font: Iosevka 15
-rofi.padding: 168
-rofi.fullscreen: true
-rofi.display-drun:
-rofi.display-window: win
-rofi.display-combi: myprompt
-! rofi.color-enabled: true
-! rofi.color-window: #1a1a18, #1a1a18, #4E6C65
-! rofi.color-normal: #1a1a18, #ffffff, #1a1a18, #4E6C65, #ffffff
-! rofi.color-active: #1a1a18, #4E6C65, #1a1a18, #4E6C65, #205171
-! rofi.color-urgent: #1a1a18, #f3843d, #1a1a18, #4E6C65, #ffc39c
-
-#define base00 #1a1a18
-#define base01 #383830
-#define base02 #49483e
-#define base03 #75715e
-#define base04 #a59f85
-#define base05 #f8f8f2
-#define base06 #f5f4f1
-#define base07 #f9f8f5
-#define base08 #f92672
-#define base09 #fd971f
-#define base0A #f4bf75
-#define base0B #a6e22e
-#define base0C #a1efe4
-#define base0D #66d9ef
-#define base0E #ae81ff
-#define base0F #cc6633
-
-*.foreground:   base05
-*.background:   base00
-*.cursorColor:  base05
-
-*.color0:       base00
-*.color1:       base08
-*.color2:       base0B
-*.color3:       base0A
-*.color4:       base0D
-*.color5:       base0E
-*.color6:       base0C
-*.color7:       base05
-
-*.color8:       base03
-*.color9:       base08
-*.color10:      base0B
-*.color11:      base0A
-*.color12:      base0D
-*.color13:      base0E
-*.color14:      base0C
-*.color15:      base07
-
-! Note: colors beyond 15 might not be loaded (e.g., , urxvt),
-! use 'shell' template to set these if necessary
-! *.color16:      base09
-! *.color17:      base0F
-! *.color18:      base01
-! *.color19:      base02
-! *.color20:      base04
-! *.color21:      base06
-
-! *background: #1a1a18
-! *foreground: #ebdbb2
-! ! Black + DarkGrey
-! *color0:  #282828
-! *color8:  #928374
-! ! DarkRed + Red
-! *color1:  #cc241d
-! *color9:  #fb4934
-! ! DarkGreen + Green
-! *color2:  #98971a
-! *color10: #b8bb26
-! ! DarkYellow + Yellow
-! *color3:  #d79921
-! *color11: #fabd2f
-! ! DarkBlue + Blue
-! *color4:  #458588
-! *color12: #83a598
-! ! DarkMagenta + Magenta
-! *color5:  #b16286
-! *color13: #d3869b
-! ! DarkCyan + Cyan
-! *color6:  #689d6a
-! *color14: #8ec07c
-! ! LightGrey + White
-! *color7:  #a89984
-! *color15: #ebdbb2
-
-! *.foreground:   #98d1ce
-! *.background:   #1a1a18
-! *.cursorColor:  #98d1ce
-
-! *.color0:       #3a3f44
-! *.color8:       #30454b
-
-! *.color1:       #c33027
-! *.color9:       #d26939
-
-! *.color2:       #26a98b
-! *.color10:      #687f8d
-
-! *.color3:       #edb54b
-! *.color11:      #245361
-
-! *.color4:       #397485
-! *.color12:      #295768
-
-! *.color5:       #4e5165
-! *.color13:      #888ba5
-
-! *.color6:       #33859d
-! *.color14:      #599caa
-
-! *.color7:       #98d1ce
-! *.color15: #d3ebe9
+! rofi.separator-style: solid
+! rofi.sidebar-mode: false
+! rofi.lines: 5
+! rofi.font: Go Mono 10.5
+! rofi.bw: 1
+! rofi.columns: 3
+! rofi.padding: 5
+! rofi.fixed-num-lines: true
+! rofi.hide-scrollbar: true
+! "Enabled modi" Set from: Default
+rofi.modi:                           window,run,drun
+! "Window width" Set from: Default
+! rofi.width:                          50
+! "Number of lines" Set from: XResources
+rofi.lines:                          5
+! "Number of columns" Set from: XResources
+rofi.columns:                        3
+! "Font to use" Set from: XResources
+rofi.font:                           Go Mono 10.5
+! "Border width" Set from: XResources
+rofi.bw:                             1
+! "Location on screen" Set from: Default
+! rofi.location:                       0
+! "Padding" Set from: XResources
+rofi.padding:                        5
+! "Y-offset relative to location" Set from: Default
+! rofi.yoffset:                        0
+! "X-offset relative to location" Set from: Default
+! rofi.xoffset:                        0
+! "Always show number of lines" Set from: XResources
+rofi.fixed-num-lines:                true
+! "Whether to load and show icons" Set from: Default
+! rofi.show-icons:                     false
+! "Terminal to use" Set from: Default
+rofi.terminal:                       termite
+! "Ssh client to use" Set from: Default
+! rofi.ssh-client:                     ssh
+! "Ssh command to execute" Set from: Default
+! rofi.ssh-command:                    {terminal} -e {ssh-client} {host}
+! "Run command to execute" Set from: Default
+! rofi.run-command:                    {cmd}
+! "Command to get extra run targets" Set from: Default
+! rofi.run-list-command:               
+! "Run command to execute that runs in shell" Set from: Default
+! rofi.run-shell-command:              {terminal} -e {cmd}
+! "Command executed on accep-entry-custom for window modus" Set from: Default
+! rofi.window-command:                 xkill -id {window}
+! "Window fields to match in window mode" Set from: Default
+! rofi.window-match-fields:            all
+! "Theme to use to look for icons" Set from: Default
+! rofi.drun-icon-theme:                
+! "Desktop entry fields to match in drun" Set from: Default
+! rofi.drun-match-fields:              name,generic,exec,categories
+! "Disable history in run/ssh" Set from: Default
+! rofi.disable-history:                false
+! "Use sorting" Set from: Default
+! rofi.sort:                           false
+! "Use levenshtein sorting also for fuzzy matching" Set from: Default
+! rofi.levenshtein-sort:               false
+! "Set case-sensitivity" Set from: Default
+! rofi.case-sensitive:                 false
+! "Cycle through the results list" Set from: Default
+! rofi.cycle:                          true
+! "Enable sidebar-mode" Set from: XResources
+rofi.sidebar-mode:                   true
+! "Row height (in chars)" Set from: Default
+! rofi.eh:                             1
+! "Enable auto select mode" Set from: Default
+! rofi.auto-select:                    false
+! "Parse hosts file for ssh mode" Set from: Default
+! rofi.parse-hosts:                    false
+! "Parse known_hosts file for ssh mode" Set from: Default
+! rofi.parse-known-hosts:              true
+! "Set the modi to combine in combi mode" Set from: Default
+! rofi.combi-modi:                     window,run
+! "Set the matching algorithm. (normal, regex, glob, fuzzy)" Set from: Default
+! rofi.matching:                       normal
+! "Tokenize input string" Set from: Default
+! rofi.tokenize:                       true
+! "Monitor id to show on" Set from: Default
+! rofi.m:                              -5
+! "Margin between rows *DEPRECATED*" Set from: Default
+! rofi.line-margin:                    2
+! "Padding within rows *DEPRECATED*" Set from: Default
+! rofi.line-padding:                   1
+! "Pre-set filter" Set from: Default
+! rofi.filter:                         
+! "Separator style (none, dash, solid) *DEPRECATED*" Set from: XResources
+rofi.separator-style:                dash
+! "Hide scroll-bar *DEPRECATED*" Set from: XResources
+rofi.hide-scrollbar:                 true
+! "Fullscreen" Set from: Default
+rofi.fullscreen:                     false
+! "Fake transparency *DEPRECATED*" Set from: Default
+! rofi.fake-transparency:              true
+! "DPI" Set from: Default
+! rofi.dpi:                            -1
+! "Threads to use for string matching" Set from: Default
+! rofi.threads:                        0
+! "Scrollbar width *DEPRECATED*" Set from: Default
+! rofi.scrollbar-width:                8
+! "Scrolling method. (0: Page, 1: Centered)" Set from: Default
+! rofi.scroll-method:                  0
+! "Background to use for fake transparency. (background or screenshot)" Set from: Default
+! rofi.fake-background:                screenshot
+! "Window Format. w (desktop name), t (title), n (name), r (role), c (class) *DEPRECATED*" Set from: Default
+! rofi.window-format:                  {w}    {i}{c}   {t}
+! "Click outside the window to exit" Set from: Default
+! rofi.click-to-exit:                  true
+! "Indicate how it match by underlining it." Set from: Default
+! rofi.show-match:                     true
+! "New style theme file" Set from: File
+rofi.theme:                         ~/dotfiles/onedark.rasi
+! "Color scheme for normal row" Set from: XResources
+! rofi.color-normal:                   #272827, #657b83, #272827, #272827, #13bf9d
+! ! "Color scheme for urgent row" Set from: XResources
+! rofi.color-urgent:                   #272827, #657b83, #272827, #272827, #13bf9d
+! ! "Color scheme for active row" Set from: XResources
+! rofi.color-active:                   #272827, #657b83, #272827, #272827, #13bf9d
+! ! "Color scheme window" Set from: XResources
+! rofi.color-window:                   #272827, #13bf9d, #13bf9d
+! ! "Max history size (WARNING: can cause slowdowns when set to high)." Set from: Default
+! rofi.max-history-size:               25
