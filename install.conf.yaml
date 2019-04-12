@@ -29,6 +29,7 @@
     ~/spacemacs: spacemacs/spacemacs
     ~/.tmux.conf: tmux/tmuxconf
     ~/.tmux.conf.local: tmux/tmuxconflocal
+    ~/.tmuxinator: tmuxinator
 
 # - shell:
 #   - [git submodule update --init --recursive, Installing submodules]
