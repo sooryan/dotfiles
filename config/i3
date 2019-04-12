@@ -29,20 +29,45 @@ set $base0C #97e0ff
 set $base0D #97bbf7
 set $base0E #c0b7f9
 set $base0F #fcc09e
+# dark0 + gray
+# set $base00 #282828
+# set $base08 #928374
+
+# # neutral_red + bright_red
+# set $base01 #cc241d
+# set $base09 #fb4934
+
+# # neutral_green + bright_green
+# set $base02 #98971a
+# set $base0A #b8bb26
+
+# # neutral_yellow + bright_yellow
+# set $base03 #d79921
+# set $base0B #fabd2f
+
+# # neutral_blue + bright_blue
+# set $base04 #458588
+# set $base0C #83a598
+
+# # neutral_purple + bright_purple
+# set $base05 #b16286
+# set $base0D #d3869b
+
+# # neutral_aqua + faded_aqua
+# set $base06 #689d6a
+# set $base0E #8ec07c
+
+# # light4 + light1
+# set $base07 #a89984
+# set $base0F #ebdbb2
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Go Mono 10
+font xft: Pragmata Pro, Fantasque Sans Mono 11
+# font pango:Fantasque Sans Mono 11
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Go Mono 9
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -56,7 +81,7 @@ bindsym $mod+q kill
 # start rofi (a program launcher)
 bindsym $mod+d exec rofi -show run -fuzzy -hide-scrollbar
 
-# rofi -show run -opacity 95 -font "Go Mono 12" -lines 19 -bw 0 -fg "#EBDBB2" -bg "#1a1a18" -hlfg "#1E1F21" -hlbg "#EBDBB2" -bc "#1a1a18"
+# rofi -show run -opacity 95 -font "BPtypewriteDamaged Regular 12" -lines 19 -bw 0 -fg "#EBDBB2" -bg "#1a1a18" -hlfg "#1E1F21" -hlbg "#EBDBB2" -bc "#1a1a18"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -64,9 +89,14 @@ bindsym $mod+d exec rofi -show run -fuzzy -hide-scrollbar
 
 # change focus
 bindsym $mod+j focus left
+bindsym $mod+m move workspace to output right
+bindsym $mod+n move workspace to output left
+# bindsym $mod+m move workspace to output up
+# bindsym $mod+n move workspace to output down
 bindsym $mod+k focus down
+bindsym $mod+g fullscreen toggle global
 bindsym $mod+semicolon focus right
-bindsym $mod+Shift+w exec "wal -i $HOME/Pictures/Wallpapers -o wal-set"
+bindsym $mod+Shift+w exec "feh --randomize --bg-fill $HOME/Pictures/wallpapers/"
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -146,6 +176,7 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 assign [class="vlc"] $workspace4
 assign [class="DTA"] $workspace10
 assign [class="Deluge"] $workspace10
+assign [class="glv2"] $workspace4
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -205,7 +236,7 @@ bindsym $mod+r mode "resize"
 
 # Widow Colours
 #                         border  background text    indicator
-  client.focused          $base02 $base01    $base07 $base0F
+  client.focused          $base02 $base03    $base07 $base0F
   client.focused_inactive $base02 $base02    $base03 $base0F
   client.unfocused        $base02 $base02    $base03 $base0F
   client.urgent           $base02 $base08    $base00 $base0F
@@ -213,11 +244,11 @@ bindsym $mod+r mode "resize"
 hide_edge_borders both
 
 new_window pixel
-gaps inner 7
+gaps inner 5
 gaps outer 0
-for_window [class="^.*"] border pixel 2
+# for_window [class="^.*"] border pixel 100
 smart_borders on
-# smart_gaps on
+smart_gaps on
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -226,25 +257,25 @@ exec_always polybar top
 # exec_always polybar bottom_bar
 
 # Startup apps
+exec_always --no-startup-id xrandr --output eDP-1-1 --mode 1920x1080
 exec_always setxkbmap -option ctrl:nocaps
 exec_always feh --bg-fill ~/dotfiles/wallpaper.png
-exec --no-startup-id firefox
+exec --no-startup-id google-chrome
 exec --no-startup-id redshift -l 10.790483:78.704673 -O 4200
 exec --no-startup-id deluged
 # exec_always --no-startup-id redshift -l 10.790483:78.70467
 exec_always --no-startup-id nm-applet
 exec --no-startup-id udiskie -s
 exec --no-startup-id emacs --daemon
-exec --no-startup-id mpd
-#--backend glx --vsync opengl
+exec --no-startup-id compton --backend glx --vsync opengl
 
 # Custom key bindings
 bindsym Ctrl+Mod1+e exec nautilus
-bindsym Ctrl+Mod1+r exec $term -e ranger
-bindsym Ctrl+Mod1+m exec $term -e ncmpcpp
-bindsym Ctrl+Mod1+f exec firefox
-bindsym Ctrl+Mod1+p exec mpc -h 127.0.0.1 -p 7000 toggle
-bindsym Ctrl+Mod1+n exec mpc -h 127.0.0.1 -p 7000 next
+# bindsym Ctrl+Mod1+r exec $term -e ranger
+# bindsym Ctrl+Mod1+m exec $term -e ncmpcpp
+# bindsym Ctrl+Mod1+f exec firefox
+bindsym Mod1+Shift+p exec variety -p
+bindsym Mod1+Shift+n exec variety -n
 bindsym Ctrl+Mod1+c exec chromium
 bindsym Ctrl+Mod1+q exec qutebrowser
 bindsym $mod+BackSpace focus parent, focus parent, focus parent, kill
@@ -254,26 +285,29 @@ bindsym $mod+Shift+b exec xdo hide -N Polybar
 # Pulse Audio controls
 # increase sound volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2%
-# decrease sound volume
+# decrease sound volum
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2%
 # mute sound
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec light -A 2 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 2 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play-pause
 # bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+bindsym Ctrl+Mod1+n exec playerctl next
+bindsym Ctrl+Mod1+p exec playerctl previous
 
 # scratchpad
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+s sticky toggle
 
-set $Locker i3lock-fancy && sleep 1
+set $Locker betterlockscreen -l && sleep 1
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {

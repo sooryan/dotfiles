@@ -32,7 +32,7 @@ CASE_SENSITIVE="true"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -57,7 +57,7 @@ HIST_STAMPS="dd/mm/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(web_search z git common-aliases colored-man-pages mercurial zsh-syntax-highlighting)
+plugins=(web_search z git common-aliases colored-man-pages mercurial zsh-syntax-highlighting autojump)
 # User configuration
 
 export PATH="/home/soorya/.local/bin:/home/soorya/bin:/home/soorya/bin/git-scripts:/home/soorya/krita/inst/bin:/home/soorya/bin:/home/soorya/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/soorya/scripts:/home/soorya/.local/bin:/home/soorya/.cargo/bin:/home/soorya/bin/cross/bin:/home/soorya/clones/LLVM/orig/llvm_build/bin"
@@ -95,7 +95,8 @@ if [ -f ~/.bash_functions  ]; then
    . ~/.bash_functions
 fi
 
-export PATH="/home/soorya/.cabal/bin:/usr/bin/core_perl:/home/soorya/.gem/ruby/2.4.0/bin:$PATH"
+export PATH="/home/soorya/.cabal/bin:/usr/bin/core_perl:/home/soorya/.gem/ruby/2.3.0/bin:/home/soorya/bin/cling_2018-09-04_ubuntu16/bin
+:$PATH"
 
 function collapse_pwd {
     echo $(pwd | sed -e "s,^$HOME,~,")
@@ -152,10 +153,6 @@ stty -ixon
 #if [ -f ~/.last_dir  ]
 #   then cd "`cat ~/.last_dir`"
 #fi
-if [[ $TERM == xterm-termite  ]]; then
-    . /etc/profile.d/vte.sh
-     __vte_osc7
-fi
 
 if [ -n "$INSIDE_EMACS"  ]; then
     export EDITOR=emacsclient
@@ -167,17 +164,54 @@ export PATH="/home/soorya/clones/ctf-tools/bin:/usr/bin/vendor_perl:$PATH"
 
 export PATH="/home/soorya/Downloads/wine-2.2:/home/soorya/.gem/ruby/2.5.0/bin:/home/soorya/Documents/clones/LLVM/orig/llvm_build/bin:/usr/share/perl6/vendor/bin:$PATH"
 
-export LD_LIBRARY_PATH='$LD_LIBRARY_PATH:/usr/local/lib'
+# export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:
 
 # OPAM configuration
 . /home/soorya/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-eval $(thefuck --alias)
 # added by Anaconda3 4.4.0 installer
 export PATH="$PATH:/home/soorya/anaconda3/bin:"
 export PATH="/home/soorya/Documents/Programmes/Intern/pkd/code/verse-coq/coq-8.6/system/bin:$PATH"
-export PATH="/opt/cuda/bin:$PATH"
+export PATH="/opt/cuda/bin:/home/soorya/code/nuCore/build/nucore/bin:$PATH"
 
-source ~/bin/tmuxinator.zsh
-source ~/bin/zsh-completion-yay 2> /dev/null
-source /etc/profile.d/autojump.zsh
+#nucore
+export NUCORE=/home/soorya/code/nuCore
+. ${NUCORE}/install/setenv.bash
+export NUCORE_USE_PRECOMPILED_BINS=true
 
+# Send LCM messages to local network
+export LCM_DEFAULT_URL=mpudpm://239.255.76.67:7667?ttl=0  # local computer
+# export LCM_DEFAULT_URL=mpudpm://239.255.76.67:7667?ttl=1    # subnet
+
+# nusim
+export NUSIM=/home/soorya/code/nuSim
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export SUMO_HOME="/home/soorya/code/sumo"
+
+# Ottomatika Environment
+export OTTO_DIR=$HOME/ottomatika_package
+export OTTO_CONFIG_DIR=$HOME/ottomatika/config
+export LD_LIBRARY_PATH=${OTTO_DIR}/lib:/usr/local/lib:${LD_LIBRARY_PATH}:/usr/lib/x86_64-linux-gnu:/usr/local/lib/gtest
+export OTTO_CONFIG_DIR=${OTTO_DIR}/config
+export PATH=${OTTO_DIR}/bin:${OTTO_DIR}/scripts:${PATH}
+
+# added by Miniconda3 4.5.12 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$(CONDA_REPORT_ERRORS=false '/home/soorya/.miniconda3/bin/conda' shell.bash hook 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     \eval "$__conda_setup"
+# else
+#     if [ -f "/home/soorya/.miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/soorya/.miniconda3/etc/profile.d/conda.sh"
+#         CONDA_CHANGEPS1=false conda activate base
+#     else
+#         \export PATH="/home/soorya/.miniconda3/bin:$PATH"
+#     fi
+# fi
+unset __conda_setup
+# <<< conda init <<<
+
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:/home/soorya/code/nuCore/nucore/BUILD/bin/:$PATH"

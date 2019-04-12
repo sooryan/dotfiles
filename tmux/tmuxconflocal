@@ -272,6 +272,8 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @plugin 'Morantron/tmux-fingers'
+set -g @plugin 'jimeh/tmux-themepack'
 
 # Other examples:
 # set -g @plugin 'github_username/plugin_name'
@@ -292,3 +294,11 @@ set -g status-right 'Continuum status: #{continuum_status}'
 set -g @resurrect-processes ':all:'
 set -g @continuum-boot 'on'
 set -g @continuum-restore 'on'
+set -g mouse 'on'
+set allow-rename off
+
+bind E command-prompt -p "Command:" \
+       "run \"tmux list-panes -a -F '##{session_name}:##{window_index}.##{pane_index}' \
+                     | xargs -I PANE tmux send-keys -t PANE '%1' Enter\""
+
+set -g @themepack 'powerline/block/blue'

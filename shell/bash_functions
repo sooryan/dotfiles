@@ -154,7 +154,7 @@ vactivate(){
 }
 
 vcreate3(){
-    virtualenv -p python3 --system-site-packages ~/.virtualenvs/"$1"
+    virtualenv -p python3 ~/.virtualenvs/"$1"
 }
 
 gitrep(){

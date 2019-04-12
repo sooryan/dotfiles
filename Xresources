@@ -37,7 +37,7 @@ URxvt*geometry: 70x19
 ! rofi.separator-style: solid
 ! rofi.sidebar-mode: false
 ! rofi.lines: 5
-! rofi.font: Go Mono 10.5
+! rofi.font: Fantasque Sans Mono 10.5
 ! rofi.bw: 1
 ! rofi.columns: 3
 ! rofi.padding: 5
@@ -52,13 +52,13 @@ rofi.lines:                          5
 ! "Number of columns" Set from: XResources
 rofi.columns:                        3
 ! "Font to use" Set from: XResources
-rofi.font:                           Go Mono 10.5
+rofi.font:                           Fantasque Sans Mono 13
 ! "Border width" Set from: XResources
 rofi.bw:                             1
 ! "Location on screen" Set from: Default
 ! rofi.location:                       0
 ! "Padding" Set from: XResources
-rofi.padding:                        5
+rofi.padding:                        10
 ! "Y-offset relative to location" Set from: Default
 ! rofi.yoffset:                        0
 ! "X-offset relative to location" Set from: Default
@@ -68,7 +68,7 @@ rofi.fixed-num-lines:                true
 ! "Whether to load and show icons" Set from: Default
 ! rofi.show-icons:                     false
 ! "Terminal to use" Set from: Default
-rofi.terminal:                       termite
+rofi.terminal:                       gnome-terminal
 ! "Ssh client to use" Set from: Default
 ! rofi.ssh-client:                     ssh
 ! "Ssh command to execute" Set from: Default
@@ -157,3 +157,45 @@ rofi.theme:                         ~/dotfiles/onedark.rasi
 ! rofi.color-window:                   #272827, #13bf9d, #13bf9d
 ! ! "Max history size (WARNING: can cause slowdowns when set to high)." Set from: Default
 ! rofi.max-history-size:               25
+Xft.dpi: 96
+Xcursor.size: 16
+
+#define nord0 #2E3440
+#define nord1 #3B4252
+#define nord2 #434C5E
+#define nord3 #4C566A
+#define nord4 #D8DEE9
+#define nord5 #E5E9F0
+#define nord6 #ECEFF4
+#define nord7 #8FBCBB
+#define nord8 #88C0D0
+#define nord9 #81A1C1
+#define nord10 #5E81AC
+#define nord11 #BF616A
+#define nord12 #D08770
+#define nord13 #EBCB8B
+#define nord14 #A3BE8C
+#define nord15 #B48EAD
+
+*.foreground:   nord4
+*.background:   nord0
+*.cursorColor:  nord4
+*fading: 35
+*fadeColor: nord3
+
+*.color0: nord1
+*.color1: nord11
+*.color2: nord14
+*.color3: nord13
+*.color4: nord9
+*.color5: nord15
+*.color6: nord8
+*.color7: nord5
+*.color8: nord3
+*.color9: nord11
+*.color10: nord14
+*.color11: nord13
+*.color12: nord9
+*.color13: nord15
+*.color14: nord7
+*.color15: nord6
