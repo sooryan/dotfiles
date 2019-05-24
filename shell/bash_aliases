@@ -56,7 +56,7 @@ alias quotes='vim .quotes'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias redshift_='redshift -l 10.790483:78.704673 & disown'
 alias reminders='vim ~/.reminders'
-alias rm='rm -i'
+alias rm="echo Use 'del', or the full path i.e. '/bin/rm'"
 alias s='sudo'
 alias speaketh='toilet -f pagga '
 # alias spotify='spotify %U --ap=194.132.196.162'

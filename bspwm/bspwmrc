@@ -1,0 +1,36 @@
+#! /bin/sh
+
+sxhkd &
+xrandr --output eDP-1-1 --mode 1920x1080
+
+bspc monitor HDMI-1-1 -n 0 -d 1 3 5 7 9
+bspc monitor DP-1-2   -n 1 -d 2 4 6 8 0
+
+bspc config border_width          2
+bspc config window_gap            5
+
+bspc config split_ratio           0.52
+bspc config borderless_monocle    true
+bspc config gapless_monocle       true
+bspc config focus_follows_pointer true
+bspc config auto_alternate        true
+bspc config auto_cancel           true
+
+bspc config normal_frame_opacity  0.0
+bspc config focused_frame_opacity 0.1
+bspc config bottom_padding        30
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+
+# Startup apps
+emacs --daemon
+setxkbmap -option ctrl:nocaps
+feh --bg-fill ~/dotfiles/wallpaper.png
+google-chrome
+redshift -l 10.790483:78.704673 -O 4200
+compton --backend glx --vsync opengl
+polybar top

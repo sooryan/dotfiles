@@ -262,11 +262,10 @@ exec_always setxkbmap -option ctrl:nocaps
 exec_always feh --bg-fill ~/dotfiles/wallpaper.png
 exec --no-startup-id google-chrome
 exec --no-startup-id redshift -l 10.790483:78.704673 -O 4200
-exec --no-startup-id deluged
+exec --no-startup-id mpd
+exec --no-startup-id spotify
 # exec_always --no-startup-id redshift -l 10.790483:78.70467
-exec_always --no-startup-id nm-applet
-exec --no-startup-id udiskie -s
-exec --no-startup-id emacs --daemon
+exec --no-startup-id emacsclient -a "" -c
 exec --no-startup-id compton --backend glx --vsync opengl
 
 # Custom key bindings
@@ -284,11 +283,11 @@ bindsym $mod+Shift+b exec xdo hide -N Polybar
 
 # Pulse Audio controls
 # increase sound volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 2 +2%
 # decrease sound volum
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 2 -2%
 # mute sound
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 2 toggle
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness

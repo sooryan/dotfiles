@@ -11,6 +11,8 @@
     ~/.bash_functions: shell/bash_functions
     ~/.config/i3/config: config/i3
     ~/.config/polybar: polybar
+    ~/.config/bspwm/bspwmrc: bspwm/bspwmrc
+    ~/.config/sxhkd/sxhkdrc: bspwm/sxhkdrc
     ~/.config/qutebrowser: qutebrowser
     ~/.config/tmuxinator: tmux/tmuxinator
     ~/.config/terminator/config: config/terminator

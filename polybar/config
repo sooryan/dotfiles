@@ -58,6 +58,8 @@ modules-left = i3 music
 modules-center = time
 modules-right = down essid cpu volume battery
 
+;wm-restack = bspwm
+
 padding-left = 2
 padding-right = 3
 
@@ -218,6 +220,29 @@ label-visible-padding = 1
 
 label-urgent-foreground = ${colors.base08}
 label-urgent-padding = 1
+
+[module/bspwm]
+type = internal/bspwm
+module-margin-left = 4
+module-margin-right = 4
+label-focused = %name%
+label-focused-font = 4
+label-focused-background = ${xrdb:background:#ff0000}
+label-focused-underline= ${xrdb:color9:#ff0000}
+label-focused-padding = 1
+
+label-occupied = %name%
+
+label-occupied-foreground = ${xrdb:color1:FF000000}
+label-occupied-padding = 1
+
+label-urgent = %name%
+label-urgent-background = ${xrdb:color1:#ff0000}
+label-urgent-padding = 1
+
+label-empty = %name%
+label-empty-foreground = ${xrdb:foreground:#ff0000}
+label-empty-padding = 1
 
 [module/backlight]
 type = internal/backlight

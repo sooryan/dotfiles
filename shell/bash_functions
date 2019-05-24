@@ -221,7 +221,7 @@ gitroll(){
 }
 
 replaceall(){
-   sh -c "grep -rl $1 . | xargs sed -i 's/$1/$2/g'"
+   sh -c "ag -l $1 | xargs sed -i 's/$1/$2/g'"
 }
 
 wget-files(){
@@ -250,4 +250,10 @@ ecd() {
 
 function cless () {
     pygmentize "$1" | /usr/bin/less -R
+}
+
+function del() {
+	for i in $@
+			 mv -f $i ~/.trash/
+
 }

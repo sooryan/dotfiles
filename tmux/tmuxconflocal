@@ -302,3 +302,4 @@ bind E command-prompt -p "Command:" \
                      | xargs -I PANE tmux send-keys -t PANE '%1' Enter\""
 
 set -g @themepack 'powerline/block/blue'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
