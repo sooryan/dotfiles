@@ -147,3 +147,4 @@ alias ra='replaceall'
 alias gcld='gcl --depth=1'
 alias clang-tidy='clang-tidy-6.0'
 alias gdba="gdb --args"
+alias zshrc="vim ~/.zshrc && source ~/.zshrc"
