@@ -52,7 +52,7 @@ rofi.lines:                          5
 ! "Number of columns" Set from: XResources
 rofi.columns:                        3
 ! "Font to use" Set from: XResources
-rofi.font:                           Fantasque Sans Mono 13
+rofi.font:                           Pragmata Pro 13
 ! "Border width" Set from: XResources
 rofi.bw:                             1
 ! "Location on screen" Set from: Default
@@ -68,7 +68,7 @@ rofi.fixed-num-lines:                true
 ! "Whether to load and show icons" Set from: Default
 ! rofi.show-icons:                     false
 ! "Terminal to use" Set from: Default
-rofi.terminal:                       gnome-terminal
+rofi.terminal:                       alacritty
 ! "Ssh client to use" Set from: Default
 ! rofi.ssh-client:                     ssh
 ! "Ssh command to execute" Set from: Default
@@ -177,25 +177,20 @@ Xcursor.size: 16
 #define nord14 #A3BE8C
 #define nord15 #B48EAD
 
-*.foreground:   nord4
-*.background:   nord0
-*.cursorColor:  nord4
-*fading: 35
-*fadeColor: nord3
 
-*.color0: nord1
-*.color1: nord11
-*.color2: nord14
-*.color3: nord13
-*.color4: nord9
-*.color5: nord15
-*.color6: nord8
-*.color7: nord5
-*.color8: nord3
-*.color9: nord11
-*.color10: nord14
-*.color11: nord13
-*.color12: nord9
-*.color13: nord15
-*.color14: nord7
-*.color15: nord6
+! *.color0: nord1
+! *.color1: nord11
+! *.color2: nord14
+! *.color3: nord13
+! *.color4: nord9
+! *.color5: nord15
+! *.color6: nord8
+! *.color7: nord5
+! *.color8: nord3
+! *.color9: nord11
+! *.color10: nord14
+! *.color11: nord13
+! *.color12: nord9
+! *.color13: nord15
+! *.color14: nord7
+! *.color15: nord6

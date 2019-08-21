@@ -1,6 +1,6 @@
 [colors]
 
-base00 = #1d1f21
+base00 = #161E21
 base01 = #282a2e
 base02 = #373b41
 base03 = #969896
@@ -17,7 +17,7 @@ base0D = #81a2be
 base0E = #b294bb
 base0F = #a3685a
 
-background = #1b2b34
+background = #161E21
 foreground = #ffffff
 
 red    = #ec5f67
@@ -45,9 +45,11 @@ foreground = ${colors.base04}
 ; font-0 = "Fantasque Sans Mono:pixelsize=30:antialias=true:weight=bold;1"
 ; font-1 = "Siji:pixelsize=20:2"
 ; font-2 = "FontAwesome:pixelsize=25:antialias=true;2"
-font-0 = "Pragmata Pro:pixelsize=15:antialias=true:weight=bold;1"
-font-1 = "Siji:pixelsize=10:2"
-font-2 = "FontAwesome:pixelsize=12:antialias=true;2"
+font-0 = "PragmataPro:pixelsize=13:antialias=true:;1"
+font-1 = "Siji:pixelsize=10:antialias=true;1"
+font-2 = FontAwesome5Free:style=Solid:pixelsize=11
+font-3 = FontAwesome5Brands:style=Solid:pixelsize=11
+font-4 = Weather Icons:size=12;0
 
 [bar/top]
 inherit = bar/master
@@ -56,7 +58,7 @@ monitor = eDP-1-1
 
 modules-left = i3 music
 modules-center = time
-modules-right = down essid cpu volume battery
+modules-right = weather down essid cpu volume battery
 
 ;wm-restack = bspwm
 
@@ -65,9 +67,19 @@ padding-right = 3
 
 accumulate-stats = true
 
+[module/mpd]
+type = internal/mpd
+format-prefix = " "
+format-prefix-foreground = ${colors.blue}
+label = %output:0:45:...%
+click-left = playerctl previous
+click-middle = playerctl play-pause
+click-right = playerctl next
+
+
 [module/network]
 type = internal/network
-interface = wlp2s0
+interface = wlo1
 ping-interval = 3
 
 [module/music]
@@ -85,7 +97,7 @@ click-middle = playerctl play-pause
 click-right = playerctl next
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 
 ramp-volume-0 = " "
 ramp-volume-1 = " "
@@ -189,7 +201,7 @@ label-urgent-padding    = 1
 ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;
-ws-icon-3 = 4;
+ws-icon-3 = 4;
 ws-icon-4 = 5;5
 ws-icon-5 = 6;6
 ws-icon-6 = 7;7
@@ -296,7 +308,7 @@ animation-charging-4 = ""
 animation-charging-5 = ""
 animation-charging-6 = ""
 animation-charging-7 = ""
-animation-charging-8 = ""
+; animation-charging-8 = ""
 animation-charging-foreground = ${colors.base0B}
 animation-charging-framerate = 750
 
@@ -309,6 +321,16 @@ format-prefix = " "
 format-prefix-foreground = ${colors.red}
 label = %time% %date%
 
+[module/weather]
+type = custom/script
+exec = wedder
+label-font=5
+exec-if = ping openweathermap.org -c 1
+tail = true
+;click-left = xdg-open "https://google.de/search?q=weather"
+; or using the city determined by wedder:
+click-left = xdg-open "https://google.de/search?q=weather+$(wedder -C)"
+
 [settings]
 screenchange-reload = true
 
@@ -317,7 +339,6 @@ margin-top = 24
 margin-bottom = 24
 
 override-redirect = true
-
 
 ; vim:ft=dosini
 

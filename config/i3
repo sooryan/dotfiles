@@ -10,7 +10,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $term termite
+set $term alacritty
 # xterm -fa 'Monospace' -fs 11 -bg '#131C22'
 set $mod Mod4
 set $base00 #101218
@@ -79,7 +79,7 @@ bindsym $mod+Return exec $term #i3-sensible-terminal
 bindsym $mod+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show run -fuzzy -hide-scrollbar
+bindsym $mod+d exec rofi -show drun -fuzzy -hide-scrollbar
 
 # rofi -show run -opacity 95 -font "BPtypewriteDamaged Regular 12" -lines 19 -bw 0 -fg "#EBDBB2" -bg "#1a1a18" -hlfg "#1E1F21" -hlbg "#EBDBB2" -bc "#1a1a18"
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -89,8 +89,8 @@ bindsym $mod+d exec rofi -show run -fuzzy -hide-scrollbar
 
 # change focus
 bindsym $mod+j focus left
-bindsym $mod+m move workspace to output right
-bindsym $mod+n move workspace to output left
+bindsym $mod+Shift+m move workspace to output right
+bindsym $mod+Shift+n move workspace to output left
 # bindsym $mod+m move workspace to output up
 # bindsym $mod+n move workspace to output down
 bindsym $mod+k focus down
@@ -247,8 +247,9 @@ new_window pixel
 gaps inner 5
 gaps outer 0
 # for_window [class="^.*"] border pixel 100
-smart_borders on
-smart_gaps on
+# smart_borders on
+# smart_gaps on
+# border_radius 10
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -260,16 +261,20 @@ exec_always polybar top
 exec_always --no-startup-id xrandr --output eDP-1-1 --mode 1920x1080
 exec_always setxkbmap -option ctrl:nocaps
 exec_always feh --bg-fill ~/dotfiles/wallpaper.png
-exec --no-startup-id google-chrome
+
+exec --no-startup-id compton --config ~/dotfiles/compton.conf
+exec_always --no-startup-id flashfocus
+exec_always --no-startup-id udiskie -a
 exec --no-startup-id redshift -l 10.790483:78.704673 -O 4200
-exec --no-startup-id mpd
-exec --no-startup-id spotify
+
+exec --no-startup-id emacs --daemon
+# exec --no-startup-id mpd
+# exec --no-startup-id spotify
 # exec_always --no-startup-id redshift -l 10.790483:78.70467
-exec --no-startup-id emacsclient -a "" -c
-exec --no-startup-id compton --backend glx --vsync opengl
 
 # Custom key bindings
-bindsym Ctrl+Mod1+e exec nautilus
+bindsym Ctrl+Mod1+e exec pcmanfm
+bindsym $mod+n exec --no-startup-id flash_window
 # bindsym Ctrl+Mod1+r exec $term -e ranger
 # bindsym Ctrl+Mod1+m exec $term -e ncmpcpp
 # bindsym Ctrl+Mod1+f exec firefox
@@ -283,23 +288,18 @@ bindsym $mod+Shift+b exec xdo hide -N Polybar
 
 # Pulse Audio controls
 # increase sound volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 2 +2%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 # decrease sound volum
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 2 -2%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 # mute sound
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 2 toggle
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
 # Media player controls
-# bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-bindsym Ctrl+Mod1+n exec playerctl next
-bindsym Ctrl+Mod1+p exec playerctl previous
+# bindsym XF86AudioPause exec mpc pause
 
 # scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -321,6 +321,26 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
+set $mode_mpc System (p) pause, (P) play, (n) next, (N) previous
+mode "$mode_mpc" {
+    bindsym p exec --no-startup-id mpc toggle, mode "default"
+    bindsym Shift+p exec --no-startup-id mpc play, mode "default"
+    bindsym n exec --no-startup-id mpc next, mode "default"
+    bindsym Shift+n exec --no-startup-id mpc prev, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+m mode "$mode_mpc"
+
+# bindsym Pause exec mpc play-pause
+# bindsym XF86AudioNext exec mpc next
+# bindsym XF86AudioPrev exec mpc previous
+# bindsym Ctrl+Mod1+n exec mpc next
+# bindsym Ctrl+Mod1+p exec mpc previous
 
 bindsym $mod+l mode "$mode_system"
 

@@ -6,32 +6,41 @@
 - clean: ['~']
 
 - link:
-    ~/.dotfiles: ''
     ~/.bash_aliases: shell/bash_aliases
+    ~/.bash_aliases: shell/my.alias
     ~/.bash_functions: shell/bash_functions
     ~/.config/i3/config: config/i3
-    ~/.config/polybar: polybar
     ~/.config/bspwm/bspwmrc: bspwm/bspwmrc
-    ~/.config/sxhkd/sxhkdrc: bspwm/sxhkdrc
+    ~/.config/pacman/makepkg.conf: pacman/makepkg.conf
+    ~/.config/polybar: polybar
     ~/.config/qutebrowser: qutebrowser
+    ~/.config/sxhkd/sxhkdrc: bspwm/sxhkdrc
     ~/.config/tmuxinator: tmux/tmuxinator
     ~/.config/terminator/config: config/terminator
     ~/.config/termite/config: config/termite
+    ~/.config/wedder/wedder.toml: polybar/wedder.toml
     ~/.config/zathura/zathurarc: config/zathurarc
-    ~/.fonts: fonts
     ~/.i3/config: config/i3
     ~/.mpd/mpd.conf: config/mpd
     ~/.ncmpcpp/config: config/ncmpcpp
     ~/.offlineimaprc: offlineimap/offlineimaprc
     ~/.offlineimap.py: offlineimap/offlineimap.py
     ~/.spacemacs: spacemacs/dotspacemacs
-    ~/.Xresources: Xresources
-    ~/.Xdefaults: Xresources
-    ~/.zshrc: shell/zshrc
     ~/spacemacs: spacemacs/spacemacs
     ~/.tmux.conf: tmux/tmuxconf
     ~/.tmux.conf.local: tmux/tmuxconflocal
     ~/.tmuxinator: tmuxinator
+    ~/.Xresources: Xresources
+    ~/.nvidia-xinitrc : nvidia-xinitrc
+    ~/.xinitrc : xinitrc
+    ~/.Xdefaults: Xresources
+    ~/.zshrc: shell/zshrc
+    ~/.zimrc: shell/zimrc
+    ~/.config/alacritty/alacritty.yml: config/alacritty.yml
+    ~/.config/mopidy: mopidy
+    ~/.config/systemd: systemd
+    ~/.config/pulse/daemon.conf : pulse.daemon.conf
+    # /etc/pacman.conf: pacman/pacman.conf
 
 # - shell:
 #   - [git submodule update --init --recursive, Installing submodules]

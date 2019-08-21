@@ -148,3 +148,13 @@ alias gcld='gcl --depth=1'
 alias clang-tidy='clang-tidy-6.0'
 alias gdba="gdb --args"
 alias zshrc="vim ~/.zshrc && source ~/.zshrc"
+alias -g ...='cd ../..'
+alias -g ....='cd ../../..'
+alias -g .....='cd ../../../..'
+alias -g ......='cd ../../../../..'
+alias -g .......='cd ../../../../../..'
+alias -g G='| grep'
+alias -g L='| less'
+alias ff='find . -type f -name'
+alias fd='find . -type f -name'
+alias git_current_branch="git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'"

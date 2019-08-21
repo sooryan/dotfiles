@@ -8,7 +8,7 @@ export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 # Start zim
 [[ -s ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
 
-export PATH="/home/soorya/.local/bin:/home/soorya/bin:/opt/cuda/bin:$PATH"
+export PATH="/home/soorya/.local/bin:/home/soorya/.cabal/bin:/home/soorya/bin:$PATH:/opt/cuda/bin"
 
 [ -f ~/.bash_aliases  ] && . ~/.bash_aliases
 [ -f ~/.bash_functions  ] && . ~/.bash_functions
@@ -19,3 +19,9 @@ fortune | pokemonsay
 
 autoload -Uz compinit
 compinit
+
+setopt histignorespace
+setopt clobber
+# source ~/dotfiles/shell/powerlevel10k/powerlevel10k.zsh-theme
+
+source ~/.vulkan/1.1.108.0/setup-env.sh
