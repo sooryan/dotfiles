@@ -9,7 +9,8 @@
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 [options]
-font = Pragmata Pro 17px
+font = Fantasque Sans Mono Regular 16px
+# font = Fira Code Regular 15px
 # font = BPtypewrite Regular 17px
 # font = Back Issues BB 16px
 # font = Fantasque Sans Mono 32px

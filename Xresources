@@ -52,7 +52,7 @@ rofi.lines:                          5
 ! "Number of columns" Set from: XResources
 rofi.columns:                        3
 ! "Font to use" Set from: XResources
-rofi.font:                           Pragmata Pro 13
+rofi.font:                           Fira Code Regular 13
 ! "Border width" Set from: XResources
 rofi.bw:                             1
 ! "Location on screen" Set from: Default
@@ -146,7 +146,7 @@ rofi.fullscreen:                     false
 ! "Indicate how it match by underlining it." Set from: Default
 ! rofi.show-match:                     true
 ! "New style theme file" Set from: File
-rofi.theme:                         ~/dotfiles/onedark.rasi
+rofi.theme:                         ~/.dotfiles/onedark.rasi
 ! "Color scheme for normal row" Set from: XResources
 ! rofi.color-normal:                   #272827, #657b83, #272827, #272827, #13bf9d
 ! ! "Color scheme for urgent row" Set from: XResources

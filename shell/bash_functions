@@ -1,182 +1,161 @@
 #!/usr/bin/bash
 
-#syllabus(){
-#    mupdf ~/Documents/NITT/SyllabusNITT.pdf;
-#}
-
-pdfcompress(){
-    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$2" "$1";
+pdfcompress() {
+  gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$2" "$1"
 }
 
-hlint-refactor(){
-    hlint "$1" --refactor --refactor-options="--inplace";
+hlint-refactor() {
+  hlint "$1" --refactor --refactor-options="--inplace"
 }
 
-findn(){
-    find . -name "$1"
+findn() {
+  find . -name "$1"
 }
 
-hackage(){
-    reset
-    cd /home/soorya/Documents/Programmes/HSOC/hackage-server || exit
-    cabal configure
-    rm -rf state/
-    cabal run -- hackage-server init --static-dir=datafiles/
-    cabal run -- hackage-server run  --static-dir=datafiles/
+hackage() {
+  reset
+  cd /home/soorya/Documents/Programmes/HSOC/hackage-server || exit
+  cabal configure
+  rm -rf state/
+  cabal run -- hackage-server init --static-dir=datafiles/
+  cabal run -- hackage-server run --static-dir=datafiles/
 }
 
-hackage_(){
-    reset
-    cd /home/soorya/Documents/HSOC/hackage-server || exit
-    cabal run -- hackage-server init --static-dir=datafiles/
-    cabal run -- hackage-server run  --static-dir=datafiles/
+hackage_() {
+  reset
+  cd /home/soorya/Documents/HSOC/hackage-server || exit
+  cabal run -- hackage-server init --static-dir=datafiles/
+  cabal run -- hackage-server run --static-dir=datafiles/
 }
 
-fuckhaskell(){
-    sudo rm -rf ~/.ghc ~/.cabal;
-    cabal update;
+fuckhaskell() {
+  sudo rm -rf ~/.ghc ~/.cabal
+  cabal update
 }
 
-weather(){
-    reset; curl http://wttr.in/"$1";
+weather() {
+  reset
+  curl http://wttr.in/"$1"
 }
 
-Blog(){
-    cd ~/Documents/Projects/Blog || exit
-    # fab live_build;
+tardp() {
+  pandoc tardis.md -o tardis.tex
+  pandoc tardis.md -o tardis.pdf
 }
 
-tardp(){
-    pandoc tardis.md -o tardis.tex;
-    pandoc tardis.md -o tardis.pdf;
+apt-package-backup() {
+  dpkg --get-selections >~/.restore/Package.list
+  sudo cp -R /etc/apt/sources.list* ~/.restore/
+  sudo apt-key exportall | sudo tee ~/.restore/Repo.keys
+  pip freeze >~/.restore/Pip.list
+  #rsync --progress /home/`whoami` /path/to/user/profile/backup/here
 }
 
-apt-package-backup(){
-    dpkg --get-selections > ~/.restore/Package.list
-    sudo cp -R /etc/apt/sources.list* ~/.restore/
-    sudo apt-key exportall | sudo tee ~/.restore/Repo.keys
-    pip freeze > ~/.restore/Pip.list
-    #rsync --progress /home/`whoami` /path/to/user/profile/backup/here
+apt-package-reinstall() {
+  ## Reinstall now
+  #rsync --progress /path/to/user/profile/backup/here /home/`whoami`
+  sudo pip -H -r install ~/.restore/Pip.list
+  sudo apt-key add ~/.restore/Repo.keys
+  sudo cp -R ~/.restore/sources.list* /etc/apt/
+  sudo apt-get update
+  sudo apt-get install dselect
+  sudo dpkg --set-selections | sudo cat ~/.restore/Package.list
+  sudo dselect
 }
 
-apt-package-reinstall(){
-    ## Reinstall now
-    #rsync --progress /path/to/user/profile/backup/here /home/`whoami`
-    sudo pip -H -r install ~/.restore/Pip.list
-    sudo apt-key add ~/.restore/Repo.keys
-    sudo cp -R ~/.restore/sources.list* /etc/apt/
-    sudo apt-get update
-    sudo apt-get install dselect
-    sudo dpkg --set-selections | sudo cat ~/.restore/Package.list
-    sudo dselect
+yfastm() {
+  UA=$(ydlm --dump-user-agent)
+  TMPDIR=$(mktemp -d)
+  COOKIES="$TMPDIR/cookies"
+  trap 'rm -rf $TMPDIR' 0
+  ARIA_DNS_FLAGS=""
+  aria2c -h#all | grep -- '--async-dns' >/dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    ARIA_DNS_FLAGS="--async-dns=false"
+  fi
+  # We need to separate the execution of youtube-dl and invocations of
+  # aria2, since youtube-dl writes cookie data after it has performed
+  # /all/ of its work.
+  youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s" --get-url --get-filename --cookies=${COOKIES} "$@" >${TMPDIR}/video_data
+  while read URL && read FILENAME; do
+    CLEANED_FILENAME=$(echo "${FILENAME}" | tail -n 1 | tr ":\"" ";'" | tr -d "\\/*?<>|")
+    echo "$CLEANED_FILENAME"
+    aria2c $ARIA_DNS_FLAGS -c -j 3 -x 3 -s 3 -k 1M --load-cookies="$COOKIES" -U "$UA" -o "$CLEANED_FILENAME" "$URL"
+  done <$TMPDIR/video_data
+  $("'")$("'")
+  "'"
 }
 
-yfastm(){
-    UA=$(ydlm --dump-user-agent)
-    TMPDIR=$(mktemp -d)
-    COOKIES="$TMPDIR/cookies"
-    trap 'rm -rf $TMPDIR' 0
-    ARIA_DNS_FLAGS=""
-    aria2c -h#all|grep -- '--async-dns' >/dev/null 2>&1
-    if [ $? -eq 0   ]
-    then
-            ARIA_DNS_FLAGS="--async-dns=false"
-        fi
-        # We need to separate the execution of youtube-dl and invocations of
-        # aria2, since youtube-dl writes cookie data after it has performed
-        # /all/ of its work.
-        youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s" --get-url --get-filename --cookies=${COOKIES} "$@" > ${TMPDIR}/video_data
-        while read URL && read FILENAME
-        do
-            CLEANED_FILENAME=`echo "${FILENAME}" | tail -n 1 | tr ":\"" ";'" | tr -d "\\\/*?<>|"`
-                echo "$CLEANED_FILENAME"
-                    aria2c $ARIA_DNS_FLAGS -c -j 3 -x 3 -s 3 -k 1M --load-cookies="$COOKIES" -U "$UA" -o "$CLEANED_FILENAME" "$URL"
-                done < $TMPDIR/video_data
-                    $("'")$("'")
-            "'"
+yfast() {
+  UA=$(youtube-dl --dump-user-agent)
+  TMPDIR=$(mktemp -d)
+  COOKIES="$TMPDIR/cookies"
+  trap "rm -rf '$TMPDIR'" 0
+  ARIA_DNS_FLAGS=""
+  aria2c -h#all | grep -- '--async-dns' #>/dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    ARIA_DNS_FLAGS="--async-dns=false"
+  fi
+  # We need to separate the execution of youtube-dl and invocations of
+  # aria2, since youtube-dl writes cookie data after it has performed
+  # /all/ of its work.
+  youtube-dl -o "%(title)s.%(ext)s" --get-url --get-filename --cookies=${COOKIES} "$@" >${TMPDIR}/video_data
+  while read URL && read FILENAME; do
+    CLEANED_FILENAME=$(echo "${FILENAME}" | tail -n 1 | tr ":\"" ";'" | tr -d "\\/*?<>|")
+    echo "$CLEANED_FILENAME"
+    aria2c $ARIA_DNS_FLAGS -c -j 3 -x 3 -s 3 -k 1M --load-cookies="$COOKIES" -U "$UA" -o "$CLEANED_FILENAME" "$URL"
+  done <$TMPDIR/video_data
+  $("'")$("'")
+  $("'")
 }
 
-yfast(){
-    UA=$(youtube-dl --dump-user-agent)
-    TMPDIR=$(mktemp -d)
-    COOKIES="$TMPDIR/cookies"
-    trap "rm -rf '$TMPDIR'" 0
-    ARIA_DNS_FLAGS=""
-    aria2c -h#all|grep -- '--async-dns' #>/dev/null 2>&1
-    if [ $? -eq 0   ]
-   then
-            ARIA_DNS_FLAGS="--async-dns=false"
-        fi
-        # We need to separate the execution of youtube-dl and invocations of
-        # aria2, since youtube-dl writes cookie data after it has performed
-        # /all/ of its work.
-        youtube-dl -o "%(title)s.%(ext)s" --get-url --get-filename --cookies=${COOKIES} "$@" > ${TMPDIR}/video_data
-        while read URL && read FILENAME
-        do
-            CLEANED_FILENAME=`echo "${FILENAME}" | tail -n 1 | tr ":\"" ";'" | tr -d "\\\/*?<>|"`
-                echo "$CLEANED_FILENAME"
-                    aria2c $ARIA_DNS_FLAGS -c -j 3 -x 3 -s 3 -k 1M --load-cookies="$COOKIES" -U "$UA" -o "$CLEANED_FILENAME" "$URL"
-                done < $TMPDIR/video_data
-                    `"'"``"'"`
-            `"'"`
+py() {
+  read -r input
+  p -c "$input"
 }
 
-py(){
-    read -r input;
-    p -c "$input";
+Clone() {
+  cd ~/Documents/clones/Github || exit
+  git clone "$1"
+  cd "$(echo "$1" | cut -d '.' -f 2 | cut -d '/' -f 3)" || exit
 }
 
-tard(){
-    vactivate TARDIS
-    cd ~/Documents/GSoC/Tardis/TARDIS || exit
-    python setup.py develop
-    echo '-------------------------------------------------------------------------------'
-    cd ~/Documents/GSoC/Tardis/TARDIS/tardis || exit
-    p -c 'from tardis import run_tardis;a = run_tardis("tardis_example/tardis_02bo_kurucz.yml");' -i
+mkcd() {
+  mkdir "$1"
+  cd "$1" || exit
 }
 
-Clone(){
-    cd ~/Documents/clones/Github || exit; git clone "$1"
-    cd "$(echo "$1" |cut -d '.' -f 2|cut -d '/' -f 3)" || exit
+vcreate() {
+  virtualenv ~/.virtualenvs/"$1"
 }
 
-mkcd(){
-        mkdir "$1";
-        cd "$1" || exit
+vactivate() {
+  source ~/.virtualenvs/"$1"/bin/activate
 }
 
-vcreate(){
-    virtualenv ~/.virtualenvs/"$1"
+vcreate3() {
+  virtualenv -p python3 ~/.virtualenvs/"$1"
 }
 
-vactivate(){
-        source ~/.virtualenvs/"$1"/bin/activate;
-}
-
-vcreate3(){
-    virtualenv -p python3 ~/.virtualenvs/"$1"
-}
-
-gitrep(){
-        PS1='\W $(__git_ps1 "%s")\$ '
+gitrep() {
+  PS1='\W $(__git_ps1 "%s")\$ '
 
 }
 
-sympy_test(){
-        ./bin/test;
-        ./bin/doctest;
-        ./bin/doctest;
-}
-
-cloneall(){
-        for branch in $(git branch -a | grep remotes | grep -v HEAD | grep -v master); do
-            git branch --track "${branch##*/}" "$branch"
-        done
+cloneall() {
+  for branch in $(git branch -a | grep remotes | grep -v HEAD | grep -v master); do
+    git branch --track "${branch##*/}" "$branch"
+  done
 
 }
 
-clock(){
-        while sleep 1;do tput sc;tput cup 0 $(($(tput cols)-10));echo -e "\e[31m$(date +%T)\e[39m";tput rc;done &
+clock() {
+  while sleep 1; do
+    tput sc
+    tput cup 0 $(($(tput cols) - 10))
+    echo -e "\e[31m$(date +%T)\e[39m"
+    tput rc
+  done &
 }
 
 #torb(){
@@ -185,75 +164,87 @@ clock(){
 #}
 
 cdls() {
-    cd "$@" &&
+  cd "$@" &&
     ls -a
 }
 
-open(){
-    xdg-open "$1" & disown
+open() {
+  xdg-open "$1" &
+  disown
 }
 
-pipu(){
-    pip2 install --user --upgrade "$1";
-    pip3 install --user --upgrade "$1";
+pipu() {
+  pip2 install --user --upgrade "$1"
+  pip3 install --user --upgrade "$1"
 }
 
 revdns() {
-    octets=""
-    addr="in-addr.arpa"
+  octets=""
+  addr="in-addr.arpa"
 
-    # split the IP address into an array of octets
-    IFS="." read -r -a octets <<< "$1"
+  # split the IP address into an array of octets
+  IFS="." read -r -a octets <<<"$1"
 
-    # add each octet to our $addr string in reverse order
-    for octet in "${octets[@]}"; do
-         addr=$octet"."$addr
-    done
+  # add each octet to our $addr string in reverse order
+  for octet in "${octets[@]}"; do
+    addr=$octet"."$addr
+  done
 
-    # run a DNS pointer lookup with dig
-    # `+short` makes dig's output very terse (un-verbose)
-    # `"${@:2}"` passes any extra params from this command to dig
-    dig ptr +short "$addr" "${@:2}"
+  # run a DNS pointer lookup with dig
+  # `+short` makes dig's output very terse (un-verbose)
+  # `"${@:2}"` passes any extra params from this command to dig
+  dig ptr +short "$addr" "${@:2}"
 }
 
-gitroll(){
-    git diff "$1"~1 "$1";
+gitroll() {
+  git diff "$1"~1 "$1"
 }
 
-replaceall(){
-   sh -c "ag -l $1 | xargs sed -i 's/$1/$2/g'"
+replaceall() {
+  sh -c "ag -l $1 | xargs sed -i 's/$1/$2/g'"
 }
 
-wget-files(){
-    wget -A "$1" -m -p -E -k -K -np -nd "$2"
+wget-files() {
+  wget -A "$1" -m -p -E -k -K -np -nd "$2"
 }
 
-pgrep(){
-    find . -iname '*.pdf' -exec pdfgrep -n "$1" {} +
+pgrep() {
+  find . -iname '*.pdf' -exec pdfgrep -n "$1" {} +
 }
 
-xkcd(){
-	firefox http://www.xkcd.com/"$1" & disown
+xkcd() {
+  firefox http://www.xkcd.com/"$1" &
+  disown
 }
 
-define(){
-	sdcv "$1" | less
+define() {
+  sdcv "$1" | less
 }
 
 za() {
-    zathura "$1" & disown;
+  zathura "$1" &
+  disown
 }
 
 ecd() {
-    ec "$1" & disown;
+  ec "$1" &
+  disown
 }
 
-function cless () {
-    pygmentize "$1" | /usr/bin/less -R
+function cless() {
+  pygmentize "$1" | /usr/bin/less -R
 }
 
 function del() {
-	for i in $@
-			 mv -f $i ~/.trash/
+  for i in $@; do
+    mv -f $i ~/.trash/
+  done
+}
 
+function gac() {
+  last=${@:$#}         # last parameter
+  other=${*%"${last}"} # all parameters except the last
+  # printf "last: ${last} \n"
+  # printf "others: ${other} \n"
+  bash -c "git add ${other} && git commit -m '${last}'"
 }

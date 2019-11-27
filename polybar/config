@@ -45,9 +45,9 @@ foreground = ${colors.base04}
 ; font-0 = "Fantasque Sans Mono:pixelsize=30:antialias=true:weight=bold;1"
 ; font-1 = "Siji:pixelsize=20:2"
 ; font-2 = "FontAwesome:pixelsize=25:antialias=true;2"
-font-0 = "PragmataPro:pixelsize=13:antialias=true:;1"
+font-0 = "Fira Code Mono:pixelsize=11:antialias=true:;1"
 font-1 = "Siji:pixelsize=10:antialias=true;1"
-font-2 = FontAwesome5Free:style=Solid:pixelsize=11
+font-2 = FontAwesome:style=Solid:pixelsize=11
 font-3 = FontAwesome5Brands:style=Solid:pixelsize=11
 font-4 = Weather Icons:size=12;0
 
@@ -58,7 +58,7 @@ monitor = eDP-1-1
 
 modules-left = i3 music
 modules-center = time
-modules-right = weather down essid cpu volume battery
+modules-right =  down essid cpu volume battery
 
 ;wm-restack = bspwm
 
@@ -79,7 +79,7 @@ click-right = playerctl next
 
 [module/network]
 type = internal/network
-interface = wlo1
+interface = wlp2s0
 ping-interval = 3
 
 [module/music]

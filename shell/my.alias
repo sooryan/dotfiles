@@ -302,7 +302,7 @@ alias todo='ec -t ~/.TODO.org'
 alias underscore='find -name "* *" -type f | rename "s/ /_/g"'
 alias unexport=unset
 alias vid='cd ~/Videos/'
-alias vim='ec -t'
+# alias vim='ec -t'
 alias vimp='vim ~/.vimperatorrc'
 alias vimrc='vim ~/.vimrc'
 alias volBoost='pactl -- set-sink-volume 0 150%'
@@ -326,3 +326,9 @@ alias ydlmo='ydlm --playlist-start'
 alias ydlo='ydl --playlist-start'
 alias z='_z 2>&1'
 alias zshrc="vim ~/.zshrc && source ~/.zshrc"
+alias killunity="pkill -9 Unity; pkill -9 unityhub"
+alias git-changed="git ls-files -m"
+alias gstt="gst ."
+alias remove-merged-branches='git branch --merged G -v "(^\*|master|dev)" X git branch -d {}'
+alias LD='LD_LIBRARY_PATH= '
+

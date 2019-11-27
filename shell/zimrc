@@ -10,8 +10,7 @@
 # The second line of modules may depend on options set by modules in the first
 # line. These dependencies are noted on the respective module's README.md.
 zmodules=(directory environment git git-info history input utility custom \
-          prompt completion syntax-highlighting history-substring-search \
-          pacman)
+          prompt completion syntax-highlighting pacman)
 
 
 ###################
@@ -23,7 +22,7 @@ zmodules=(directory environment git git-info history input utility custom \
 #
 
 # Set your desired prompt here
-zprompt_theme='eriner'
+zprompt_theme='magicmace'
 
 #
 # Completion

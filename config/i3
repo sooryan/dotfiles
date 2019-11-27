@@ -10,7 +10,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $term alacritty
+set $term termite
 # xterm -fa 'Monospace' -fs 11 -bg '#131C22'
 set $mod Mod4
 set $base00 #101218
@@ -91,8 +91,8 @@ bindsym $mod+d exec rofi -show drun -fuzzy -hide-scrollbar
 bindsym $mod+j focus left
 bindsym $mod+Shift+m move workspace to output right
 bindsym $mod+Shift+n move workspace to output left
-# bindsym $mod+m move workspace to output up
-# bindsym $mod+n move workspace to output down
+# bindsym $mod+m move workspace to output right
+# bindsym $mod+n move workspace to output left
 bindsym $mod+k focus down
 bindsym $mod+g fullscreen toggle global
 bindsym $mod+semicolon focus right
@@ -273,7 +273,7 @@ exec --no-startup-id emacs --daemon
 # exec_always --no-startup-id redshift -l 10.790483:78.70467
 
 # Custom key bindings
-bindsym Ctrl+Mod1+e exec pcmanfm
+bindsym Ctrl+Mod1+e exec nautilus
 bindsym $mod+n exec --no-startup-id flash_window
 # bindsym Ctrl+Mod1+r exec $term -e ranger
 # bindsym Ctrl+Mod1+m exec $term -e ncmpcpp
@@ -306,7 +306,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 bindsym $mod+Shift+s sticky toggle
 
-set $Locker betterlockscreen -l && sleep 1
+set $Locker i3lock -c 000000 && sleep 1
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {

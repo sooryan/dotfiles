@@ -24,4 +24,19 @@ setopt histignorespace
 setopt clobber
 # source ~/dotfiles/shell/powerlevel10k/powerlevel10k.zsh-theme
 
-source ~/.vulkan/1.1.108.0/setup-env.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /usr/share/autojump/autojump.zsh ] && source /usr/share/autojump/autojump.zsh
+
+# Ottomatika Environment
+#export OTTO_DIR=/home/soorya/.conan/data/aptivware/0.99/jenkins/PR-17-6463def/package/1cc155b4f1e22eaea47cf529d44dbfb8b6209b1e
+export OTTO_DIR=/home/soorya/ottomatika_package
+export OTTO_CONFIG_DIR=$OTTO_DIR/config
+export APTIV_MAP_DIR=$OTTO_DIR/models
+# export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${OTTO_DIR}/lib
+export PATH=${OTTO_DIR}/bin:${OTTO_DIR}/scripts:${PATH}
+export ACTIVE_CONFIG_DIR=/tmp/aptiv
+export PATH=/usr/local/cuda-10.1/bin:$PATH
+export DOTNET_CLI_TELEMETRY_OPTOUT=true
+export EDITOR=vim
+
