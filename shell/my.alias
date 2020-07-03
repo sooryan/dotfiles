@@ -204,6 +204,7 @@ alias gsps='git show --pretty=short --show-signature'
 alias gsr='git svn rebase'
 alias gss='git status -s'
 alias gst='git status'
+alias gstu='git status -uno'
 alias gsta='git stash save'
 alias gstaa='git stash apply'
 alias gstc='git stash clear'
@@ -298,11 +299,10 @@ alias syllabus='zathura /home/soorya/Documents/NITT/SyllabusNITT.pdf & disown'
 alias t='tail -f'
 alias tempDir='cd $(mktemp -d)'
 alias thistle='mpv http://somafm.com/thistle.pls'
-alias todo='ec -t ~/.TODO.org'
+alias todo='vi ~/.TODO.todo'
 alias underscore='find -name "* *" -type f | rename "s/ /_/g"'
 alias unexport=unset
 alias vid='cd ~/Videos/'
-# alias vim='ec -t'
 alias vimp='vim ~/.vimperatorrc'
 alias vimrc='vim ~/.vimrc'
 alias volBoost='pactl -- set-sink-volume 0 150%'
@@ -329,6 +329,15 @@ alias zshrc="vim ~/.zshrc && source ~/.zshrc"
 alias killunity="pkill -9 Unity; pkill -9 unityhub"
 alias git-changed="git ls-files -m"
 alias gstt="gst ."
+alias gsttu="gst . -uno"
 alias remove-merged-branches='git branch --merged G -v "(^\*|master|dev)" X git branch -d {}'
 alias LD='LD_LIBRARY_PATH= '
+alias LDO='LD_LIBRARY_PATH=/home/soorya/ottomatika_package/lib'
+# alias vim='nvim'
+alias gitshorttag='git rev-parse --verify --short HEAD'
+alias conantag='echo $(date +%F)-$(gitshorttag)'
+alias yay='sudo apt install'
+alias g='globalprotect connect --portal  vpn.ap.aptiv.com'
+alias pkill9='pkill -9'
+alias ScenarioEditor='~/ottomatika_package/sim/ScenarioEditor/ScenarioEditor.x86_64'
 

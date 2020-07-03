@@ -34,9 +34,28 @@ export OTTO_DIR=/home/soorya/ottomatika_package
 export OTTO_CONFIG_DIR=$OTTO_DIR/config
 export APTIV_MAP_DIR=$OTTO_DIR/models
 # export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${OTTO_DIR}/lib
-export PATH=${OTTO_DIR}/bin:${OTTO_DIR}/scripts:${PATH}
-export ACTIVE_CONFIG_DIR=/tmp/aptiv
-export PATH=/usr/local/cuda-10.1/bin:$PATH
+export PATH=${OTTO_DIR}/bin:${OTTO_DIR}/scripts:${HOME}/go/bin:${PATH}:/home/soorya/.gem/ruby/2.5.0/bin
+export ACTIVE_CONFIG_DIR=${OTTO_DIR}/active
+export PATH=/usr/local/cuda-10.2/bin:$PATH
 export DOTNET_CLI_TELEMETRY_OPTOUT=true
 export EDITOR=vim
 
+# [ -z "$TMUX"  ] && { tmux attach || exec tmux new-session && exit;}
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/soorya/.miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/soorya/.miniconda/etc/profile.d/conda.sh" ]; then
+        . "/home/soorya/.miniconda/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/soorya/.miniconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+conda activate prediction
+
+setopt AUTO_PUSHD

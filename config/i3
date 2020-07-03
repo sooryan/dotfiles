@@ -10,7 +10,8 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $term termite
+set $term alacritty
+set $SINK_NO 0
 # xterm -fa 'Monospace' -fs 11 -bg '#131C22'
 set $mod Mod4
 set $base00 #101218
@@ -90,7 +91,7 @@ bindsym $mod+d exec rofi -show drun -fuzzy -hide-scrollbar
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+Shift+m move workspace to output right
-bindsym $mod+Shift+n move workspace to output left
+bindsym $mod+Shift+n move workspace to output up
 # bindsym $mod+m move workspace to output right
 # bindsym $mod+n move workspace to output left
 bindsym $mod+k focus down
@@ -178,6 +179,7 @@ assign [class="DTA"] $workspace10
 assign [class="Deluge"] $workspace10
 assign [class="glv2"] $workspace4
 
+for_window [class="sensor-sim-debug-[.]*"] floating enable
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -254,13 +256,13 @@ gaps outer 0
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 # exec_always --no-startup-id ~/.i3/lemonbar/i3_lemonbar.sh &
-exec_always polybar top
+exec_always polybar hdmi
+exec_always polybar hdmi2
 # exec_always polybar bottom_bar
 
 # Startup apps
 exec_always --no-startup-id xrandr --output eDP-1-1 --mode 1920x1080
-exec_always setxkbmap -option ctrl:nocaps
-exec_always feh --bg-fill ~/dotfiles/wallpaper.png
+exec_always feh --bg-fill ~/.dotfiles/wallpaper.png
 
 exec --no-startup-id compton --config ~/dotfiles/compton.conf
 exec_always --no-startup-id flashfocus
@@ -288,11 +290,11 @@ bindsym $mod+Shift+b exec xdo hide -N Polybar
 
 # Pulse Audio controls
 # increase sound volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $SINK_NO +2%
 # decrease sound volum
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $SINK_NO -2%
 # mute sound
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
@@ -306,7 +308,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 bindsym $mod+Shift+s sticky toggle
 
-set $Locker i3lock -c 000000 && sleep 1
+set $Locker i3lock -c 000000 -i ~/.dotfiles/wallpaper2.png && sleep 1
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
@@ -336,8 +338,8 @@ mode "$mode_mpc" {
 
 bindsym $mod+m mode "$mode_mpc"
 
-# bindsym Pause exec mpc play-pause
-# bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
 # bindsym XF86AudioPrev exec mpc previous
 # bindsym Ctrl+Mod1+n exec mpc next
 # bindsym Ctrl+Mod1+p exec mpc previous

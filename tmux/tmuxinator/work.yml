@@ -1,7 +1,7 @@
-# ~/.tmuxinator/default.yml
+#c ~/.tmuxinator/default.yml
 
-name: ntmy
-root: ~/code
+name: default
+root: ~/
 
 # Optional tmux socket
 # socket_name: foo
@@ -43,6 +43,24 @@ root: ~/code
 # post: tmux -CC attach -t default
 
 windows:
-  - aptv-cpp: cd aptiv_sim
-  - aptv-upkg: cd aptiv_sim_conan
-  - tester: ~/doodles/Tester
+  - top:
+      panes:
+        - htop
+        - nvtop
+      layout: main-vertical
+  - log_record: 
+      root: ~/code/code/aptiv_sim_release/simtools
+      panes:
+        - cd ~/code/aptiv_sim_no_edit/simtools/sensors/bin
+        - cd ~/code/aptiv_sim/simtools/sim_bridge/bin
+        - LDO scs
+        - tempDir
+  - avstack: cd code/av-stack
+  - avsim:
+      root: ~/code/av-sim
+      panes:
+        - cd unity_projects/SensorSimulatorHDRP/Builds
+        - cd bin
+        - cd bin
+  - envs: cd code/environments
+  - ~: cd

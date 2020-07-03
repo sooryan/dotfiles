@@ -47,7 +47,7 @@
 			;; c-c++-enable-clang-support t
 			c-c++-adopt-subprojects t
 			c-c++-default-mode-for-headers 'c++-mode
-			c-c++-backend 'lsp-cquery
+			c-c++-backend 'lsp-clangd
 			c-c++-lsp-sem-highlight-rainbow t
 			c-c++-lsp-sem-highlight-method 'font-lock
 			c-c++-enable-clang-format-on-save t
@@ -392,6 +392,7 @@ values."
   ;; 	(flycheck-add-next-checker 'intero '(warning . haskell-hlint)))
   (define-key evil-insert-state-map (kbd "M-RET") 'org-meta-return)
 
+  (setq vc-follow-symlinks t)
   ;; (use-package dante
 	;; :ensure t
 	;; :after haskell-mode
@@ -639,3 +640,19 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  )
 )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#080808" "#d70000" "#67b11d" "#875f00" "#268bd2" "#af00df" "#00ffff" "#b2b2b2"])
+ '(package-selected-packages
+   (quote
+    (dante zeal-at-point yapfify yaml-mode xterm-color xkcd x86-lookup ws-butler winum which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill typit mmt toml-mode toc-org tagedit systemd sudoku stickyfunc-enhance srefactor spaceline powerline solarized-theme smeargle slim-mode sicp shell-pop selectric-mode scss-mode sass-mode rmsbolt restart-emacs rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode powershell popwin pkgbuild-mode pip-requirements persp-mode pcre2el paradox spinner pacmacs ox-gfm orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-plus-contrib org-mime org-download org-bullets open-junk-file omnisharp nyan-mode neotree nasm-mode mwim multi-term move-text monokai-theme mmm-mode minimal-theme material-theme markdown-toc magit-gitflow magit-popup magit-gh-pulls macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint json-mode json-snatcher json-reformat js2-refactor multiple-cursors js-doc intero indent-guide ibuffer-projectile hydra lv hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-dash dash-docs helm-css-scss helm-cscope xcscope helm-company helm-c-yasnippet helm-ag haskell-snippets haml-mode gruvbox-theme autothemer google-translate golden-ratio gnuplot gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh marshal logito pcache ht gh-md fuzzy flyspell-popup flyspell-correct-helm flyspell-correct flycheck-rust flycheck-pos-tip flycheck-haskell flycheck pkg-info epl flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit transient git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav ein skewer-mode polymode deferred request websocket js2-mode simple-httpd editorconfig dumb-jump doom-themes disaster diminish diff-hl define-word darkroom dactyl-mode cython-mode csv-mode csharp-mode company-web web-completion-data company-tern dash-functional tern company-statistics company-quickhelp pos-tip company-ghci company-ghc ghc haskell-mode company-cabal company-c-headers company-auctex company-anaconda company column-enforce-mode coffee-mode cmm-mode cmake-mode clean-aindent-mode clang-format cargo markdown-mode rust-mode bison-mode bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-dictionary auto-compile packed auctex anaconda-mode pythonic f dash s aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup 2048-game nord-theme))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
