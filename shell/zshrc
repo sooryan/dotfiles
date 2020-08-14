@@ -22,6 +22,4 @@ compinit
 
 setopt histignorespace
 setopt clobber
-# source ~/dotfiles/shell/powerlevel10k/powerlevel10k.zsh-theme
-
-source ~/.vulkan/1.1.108.0/setup-env.sh
+export EDITOR="vim"

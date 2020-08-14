@@ -290,7 +290,7 @@ set -g @yank_selection 'primary'
 bind-key -n C-S-Left swap-window -t -1
 bind-key -n C-S-Right swap-window -t +1
 
-set -g status-right 'Continuum status: #{continuum_status}'
+# set -g status-right 'Continuum status: #{continuum_status}'
 set -g @resurrect-processes ':all:'
 set -g @continuum-boot 'on'
 set -g @continuum-restore 'on'
@@ -302,4 +302,3 @@ bind E command-prompt -p "Command:" \
                      | xargs -I PANE tmux send-keys -t PANE '%1' Enter\""
 
 set -g @themepack 'powerline/block/blue'
-set -g @plugin 'tmux-plugins/tmux-resurrect'

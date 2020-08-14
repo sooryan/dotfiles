@@ -58,7 +58,7 @@ monitor = eDP-1-1
 
 modules-left = i3 music
 modules-center = time
-modules-right = weather down essid cpu volume battery
+modules-right = down essid cpu volume battery
 
 ;wm-restack = bspwm
 
@@ -345,7 +345,7 @@ override-redirect = true
 [bar/hdmi]
 inherit = bar/master
 bottom = true
-monitor = HDMI-1-1
+monitor = HDMI-0
 ; monitor = DP-1-2
 
 modules-left = i3 music

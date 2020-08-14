@@ -11,6 +11,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $term alacritty
+set $SINK 1
 # xterm -fa 'Monospace' -fs 11 -bg '#131C22'
 set $mod Mod4
 set $base00 #101218
@@ -90,7 +91,7 @@ bindsym $mod+d exec rofi -show drun -fuzzy -hide-scrollbar
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+Shift+m move workspace to output right
-bindsym $mod+Shift+n move workspace to output left
+bindsym $mod+Shift+n move workspace to output down
 # bindsym $mod+m move workspace to output up
 # bindsym $mod+n move workspace to output down
 bindsym $mod+k focus down
@@ -251,11 +252,7 @@ gaps outer 0
 # smart_gaps on
 # border_radius 10
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# exec_always --no-startup-id ~/.i3/lemonbar/i3_lemonbar.sh &
 exec_always polybar top
-# exec_always polybar bottom_bar
 
 # Startup apps
 exec_always --no-startup-id xrandr --output eDP-1-1 --mode 1920x1080
@@ -268,29 +265,24 @@ exec_always --no-startup-id udiskie -a
 exec --no-startup-id redshift -l 10.790483:78.704673 -O 4200
 
 exec --no-startup-id emacs --daemon
-# exec --no-startup-id mpd
 # exec --no-startup-id spotify
-# exec_always --no-startup-id redshift -l 10.790483:78.70467
 
 # Custom key bindings
 bindsym Ctrl+Mod1+e exec pcmanfm
 bindsym $mod+n exec --no-startup-id flash_window
-# bindsym Ctrl+Mod1+r exec $term -e ranger
-# bindsym Ctrl+Mod1+m exec $term -e ncmpcpp
-# bindsym Ctrl+Mod1+f exec firefox
 bindsym Mod1+Shift+p exec variety -p
 bindsym Mod1+Shift+n exec variety -n
 bindsym Ctrl+Mod1+c exec chromium
 bindsym Ctrl+Mod1+q exec qutebrowser
-bindsym $mod+BackSpace focus parent, focus parent, focus parent, kill
+bindsym $mod+Shift+BackSpace focus parent, focus parent, focus parent, kill
 bindsym $mod+b exec xdo show -N Polybar
 bindsym $mod+Shift+b exec xdo hide -N Polybar
 
 # Pulse Audio controls
 # increase sound volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $SINK +2%
 # decrease sound volum
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $SINK -2%
 # mute sound
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
@@ -299,7 +291,9 @@ bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
 # Media player controls
-# bindsym XF86AudioPause exec mpc pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
 
 # scratchpad
 bindsym $mod+Shift+minus move scratchpad
