@@ -51,16 +51,13 @@ windows:
   - log_record: 
       root: ~/code/code/aptiv_sim_release/simtools
       panes:
-        - cd ~/code/aptiv_sim_no_edit/simtools/sensors/bin
-        - cd ~/code/aptiv_sim/simtools/sim_bridge/bin
         - LDO scs
         - tempDir
   - avstack: cd code/av-stack
   - avsim:
-      root: ~/code/av-sim
+      root: ~/code
       panes:
-        - cd unity_projects/SensorSimulatorHDRP/Builds
-        - cd bin
-        - cd bin
-  - envs: cd code/environments
+        - cd av-sim
+        - cd av-sim-other
+  - envs: cd ~/code/environments
   - ~: cd

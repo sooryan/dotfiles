@@ -340,4 +340,4 @@ alias yay='sudo apt install'
 alias g='globalprotect connect --portal  vpn.ap.aptiv.com'
 alias pkill9='pkill -9'
 alias ScenarioEditor='~/ottomatika_package/sim/ScenarioEditor/ScenarioEditor.x86_64'
-
+alias gitorderbranches='for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r'

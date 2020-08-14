@@ -79,7 +79,7 @@ click-right = playerctl next
 
 [module/network]
 type = internal/network
-interface = eno2
+interface = enp61s0
 ping-interval = 3
 
 [module/music]
@@ -345,7 +345,7 @@ override-redirect = true
 [bar/hdmi]
 inherit = bar/master
 bottom = true
-monitor = HDMI-0
+monitor = eDP-1
 ; monitor = DP-1-2
 
 modules-left = i3 music
@@ -360,7 +360,7 @@ accumulate-stats = true
 [bar/hdmi2]
 inherit = bar/master
 bottom = true
-monitor = DP-5
+monitor = HDMI-0
 
 modules-left = i3 music
 modules-center = time
