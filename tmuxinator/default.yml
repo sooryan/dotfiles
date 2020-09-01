@@ -44,6 +44,12 @@ root: ~/
 
 windows:
   - todo: todo
-  - htop: htop
-  - ranger: ranger
-  - ~: mux start ntmy
+  - htop:
+    - panes:
+      - htop
+      - nvtop
+  - libigl:
+    - root: ~/doodles/graphics/libigl
+    - pwd
+  - zsh:
+    - cd

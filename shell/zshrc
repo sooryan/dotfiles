@@ -8,7 +8,7 @@ export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 # Start zim
 [[ -s ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
 
-export PATH="/home/soorya/.local/bin:/home/soorya/.cabal/bin:/home/soorya/bin:$PATH:/opt/cuda/bin"
+export PATH="/home/soorya/.local/bin:/home/soorya/.cabal/bin:/home/soorya/bin:$PATH:/opt/cuda/bin:/home/soorya/.gem/ruby/2.7.0/bin"
 
 [ -f ~/.bash_aliases  ] && . ~/.bash_aliases
 [ -f ~/.bash_functions  ] && . ~/.bash_functions
@@ -22,4 +22,7 @@ compinit
 
 setopt histignorespace
 setopt clobber
-export EDITOR="vim"
+export EDITOR="ec -t"
+export TERM="xterm-256color"
+
+source /home/soorya/.config/broot/launcher/bash/br

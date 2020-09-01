@@ -327,5 +327,5 @@ alias z='_z 2>&1'
 alias zshrc="vim ~/.zshrc && source ~/.zshrc"
 alias nvidia-on="sudo bash -c 'tee /proc/acpi/bbswitch <<<ON'"
 alias nvidia-off="sudo bash -c 'tee /proc/acpi/bbswitch <<<OFF'"
-alias vim="nvim"
-alias vi="nvim"
+alias vim="ec -t"
+alias vi="ec -t"

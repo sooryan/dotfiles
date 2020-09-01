@@ -44,7 +44,7 @@ URxvt*geometry: 70x19
 ! rofi.fixed-num-lines: true
 ! rofi.hide-scrollbar: true
 ! "Enabled modi" Set from: Default
-rofi.modi:                           window,run,drun
+rofi.modi:                           window,run,drun,combi
 ! "Window width" Set from: Default
 ! rofi.width:                          50
 ! "Number of lines" Set from: XResources
@@ -52,7 +52,7 @@ rofi.lines:                          5
 ! "Number of columns" Set from: XResources
 rofi.columns:                        3
 ! "Font to use" Set from: XResources
-rofi.font:                           Pragmata Pro 13
+rofi.font:                           Fantasque Sans Mono 13
 ! "Border width" Set from: XResources
 rofi.bw:                             1
 ! "Location on screen" Set from: Default

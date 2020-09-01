@@ -1,4 +1,4 @@
-# ~/.tmuxinator/default.yml
+#c ~/.tmuxinator/default.yml
 
 name: default
 root: ~/
@@ -47,6 +47,17 @@ windows:
       panes:
         - htop
         - nvtop
-  - libigl: cd ~/doodles/graphics/libigl
-  - zsh: cd
-
+      layout: main-vertical
+  - log_record: 
+      root: ~/code/code/aptiv_sim_release/simtools
+      panes:
+        - LDO scs
+        - tempDir
+  - avstack: cd code/av-stack
+  - avsim:
+      root: ~/code
+      panes:
+        - cd av-sim
+        - cd av-sim-other
+  - envs: cd ~/code/environments
+  - ~: cd

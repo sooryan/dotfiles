@@ -10,7 +10,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $term alacritty
+set $term kitty
 set $SINK 1
 # xterm -fa 'Monospace' -fs 11 -bg '#131C22'
 set $mod Mod4
@@ -80,7 +80,7 @@ bindsym $mod+Return exec $term #i3-sensible-terminal
 bindsym $mod+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show drun -fuzzy -hide-scrollbar
+bindsym $mod+d exec "rofi -combi-modi window,drun,run -show combi -fuzzy -hide-scrollbar"
 
 # rofi -show run -opacity 95 -font "BPtypewriteDamaged Regular 12" -lines 19 -bw 0 -fg "#EBDBB2" -bg "#1a1a18" -hlfg "#1E1F21" -hlbg "#EBDBB2" -bc "#1a1a18"
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -264,7 +264,7 @@ exec_always --no-startup-id flashfocus
 exec_always --no-startup-id udiskie -a
 exec --no-startup-id redshift -l 10.790483:78.704673 -O 4200
 
-exec --no-startup-id emacs --daemon
+# exec --no-startup-id emacs --daemon
 # exec --no-startup-id spotify
 
 # Custom key bindings
@@ -329,13 +329,6 @@ mode "$mode_mpc" {
 }
 
 bindsym $mod+m mode "$mode_mpc"
-
-# bindsym Pause exec mpc play-pause
-# bindsym XF86AudioNext exec mpc next
-# bindsym XF86AudioPrev exec mpc previous
-# bindsym Ctrl+Mod1+n exec mpc next
-# bindsym Ctrl+Mod1+p exec mpc previous
-
 bindsym $mod+l mode "$mode_system"
 
 # Cycle through active workspaces

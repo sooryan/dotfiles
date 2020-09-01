@@ -6,10 +6,7 @@
 
 config_version: 2
 settings:
-  auto_save.session:
-    global: true
-  content.notifications:
-    https://watchepisodeseries.unblockit.me: false
-    https://www.chess.com: true
-  zoom.default:
-    global: 125%
+  tabs.position:
+    global: bottom
+  tabs.width:
+    global: 12%

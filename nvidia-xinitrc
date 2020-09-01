@@ -1,7 +1,9 @@
 if [ $# -gt 0 ]; then
   $*
 else
-  dbus-launch --exit-with-session i3
+  # dbus-launch awesome
+	dbus-launch i3 --shmlog-size=26214400
   # Alternatively, you can also use xfce4:
   # xfce4-session
+	bain arch &
 fi
