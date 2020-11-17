@@ -22,7 +22,8 @@ compinit
 
 setopt histignorespace
 setopt clobber
-export EDITOR="ec -t"
+export EDITOR="emacsclient -tc"
 export TERM="xterm-256color"
 
 source /home/soorya/.config/broot/launcher/bash/br
+[[ $- == *i* ]] && instantterminalhelp

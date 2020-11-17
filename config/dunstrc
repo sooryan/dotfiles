@@ -26,8 +26,8 @@
 	# icon_path = /usr/share/icons/Paper/32x32/devices:/usr/share/icons/Paper/32x32/status
     # Icon settings
     icon_position = left
-    min_icon_size = 172
-    max_icon_size = 172
+    min_icon_size = 100
+    max_icon_size = 100
     icon_folders = ""
 
     # Sort messages by urgency
@@ -170,7 +170,7 @@
     timeout = 3
 
 [urgency_normal]
-    background = "#42bdbd"
+    background = "#81a1c1"
     foreground = "#ffffff"
     timeout = 5
 

@@ -11,7 +11,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $term kitty
-set $SINK 1
+set $SINK "pactl list sinks | grep RUNNING -a1 | head -n 1 | cut -d '#' -f 2"
 # xterm -fa 'Monospace' -fs 11 -bg '#131C22'
 set $mod Mod4
 set $base00 #101218
@@ -237,10 +237,21 @@ bindsym $mod+r mode "resize"
 
 # Widow Colours
 #                         border  background text    indicator
-  client.focused          $base02 $base03    $base07 $base0F
-  client.focused_inactive $base02 $base02    $base03 $base0F
-  client.unfocused        $base02 $base02    $base03 $base0F
-  client.urgent           $base02 $base08    $base00 $base0F
+  # client.focused          $base02 $base03    $base07 $base0F
+  # client.focused_inactive $base02 $base02    $base03 $base0F
+  # client.unfocused        $base02 $base02    $base03 $base0F
+  # client.urgent           $base02 $base08    $base00 $base0F
+
+## darcula
+
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
+client.background       #F8F8F2
 
 hide_edge_borders both
 
@@ -259,16 +270,16 @@ exec_always --no-startup-id xrandr --output eDP-1-1 --mode 1920x1080
 exec_always setxkbmap -option ctrl:nocaps
 exec_always feh --bg-fill ~/dotfiles/wallpaper.png
 
-exec --no-startup-id compton --config ~/dotfiles/compton.conf
+exec --no-startup-id picom --experimental-backend
 exec_always --no-startup-id flashfocus
 exec_always --no-startup-id udiskie -a
-exec --no-startup-id redshift -l 10.790483:78.704673 -O 4200
+# exec --no-startup-id redshift -l 10.790483:78.704673 -O 4200
 
 # exec --no-startup-id emacs --daemon
 # exec --no-startup-id spotify
 
 # Custom key bindings
-bindsym Ctrl+Mod1+e exec pcmanfm
+bindsym Ctrl+Mod1+e exec nautilus
 bindsym $mod+n exec --no-startup-id flash_window
 bindsym Mod1+Shift+p exec variety -p
 bindsym Mod1+Shift+n exec variety -n
@@ -280,11 +291,11 @@ bindsym $mod+Shift+b exec xdo hide -N Polybar
 
 # Pulse Audio controls
 # increase sound volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $SINK +2%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume `eval $SINK` +2%
 # decrease sound volum
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $SINK -2%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume `eval $SINK` -2%
 # mute sound
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute `eval $SINK` toggle
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
@@ -337,7 +348,7 @@ bindsym $mod+Prior workspace prev
 
 bindsym $mod+x [urgent=latest] focus
 
-bindsym Print exec "sleep 0.5 && scrot -s '%d-%m-%Y_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots/'"
+bindsym Print exec "sleep 0.5 && scrot -s ~/foo.png && xclip -selection c -t image/png ~/foo.png && /bin/rm ~/foo.png"
 bindsym $mod+Print exec "sleep 0.5 && scrot 'FULL_%s_%d-%m-%Y_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots/'"
 bindsym $mod+t exec "transset-df 0.88"
 

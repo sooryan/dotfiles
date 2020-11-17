@@ -47,6 +47,7 @@ windows:
       panes:
         - htop
         - nvtop
-  - libigl: cd ~/doodles/graphics/libigl
+  - libigl: cd ~/doodles/graphics/LIBIGL
+  - todo: todo
   - zsh: cd
 

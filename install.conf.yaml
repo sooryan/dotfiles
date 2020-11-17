@@ -13,7 +13,6 @@
     ~/.config/bspwm/bspwmrc: bspwm/bspwmrc
     ~/.config/pacman/makepkg.conf: pacman/makepkg.conf
     ~/.config/polybar: polybar
-    ~/.config/awesome: awesome
     ~/.config/kitty: kitty
     ~/.config/dunst/dunstrc: config/dunstrc
     ~/.config/qutebrowser: qutebrowser
@@ -42,6 +41,7 @@
     ~/.config/alacritty/alacritty.yml: config/alacritty.yml
     ~/.config/mopidy: mopidy
     ~/.config/systemd: systemd
+    ~/.xmonad/xmonad.hs: xmonad.hs
     # ~/.config/pulse/daemon.conf : pulse.daemon.conf
     # /etc/pacman.conf: pacman/pacman.conf
 

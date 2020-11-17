@@ -1,5 +1,4 @@
 [colors]
-
 base00 = #161E21
 base01 = #282a2e
 base02 = #373b41
@@ -18,7 +17,9 @@ base0E = #b294bb
 base0F = #a3685a
 
 background = #161E21
+bg = #161E21
 foreground = #ffffff
+fg = #ffffff
 
 red    = #ec5f67
 orange = #f99157
@@ -29,34 +30,38 @@ blue   = #6699cc
 purple = #c594c5
 brown  = #ab7967
 
+
 [bar/master]
-fixed-center = true
-
+fixed-center = false
 width = 100%
-height = 30
+height = 2.5%
 ; height = 50
-
+; offset-x = 20
+; offset-y = 20
 radius = 0.0
+bottom = true
 
 module-margin = 1
 background = ${colors.base00}
 foreground = ${colors.base04}
 
-; font-0 = "Fantasque Sans Mono:pixelsize=30:antialias=true:weight=bold;1"
+font-0 = "Fantasque Sans Mono:pixelsize=12:antialias=true;1"
 ; font-1 = "Siji:pixelsize=20:2"
 ; font-2 = "FontAwesome:pixelsize=25:antialias=true;2"
-font-0 = "PragmataPro:pixelsize=13:antialias=true:;1"
+; font-0 = "PragmataPro:pixelsize=13:antialias=true:;1"
 font-1 = "Siji:pixelsize=10:antialias=true;1"
 font-2 = FontAwesome5Free:style=Solid:pixelsize=11
 font-3 = FontAwesome5Brands:style=Solid:pixelsize=11
 font-4 = Weather Icons:size=12;0
+
+tray-posiiton = right
 
 [bar/top]
 inherit = bar/master
 bottom = true
 monitor = eDP-1-1
 
-modules-left = i3 music
+modules-left = ewmh music
 modules-center = time
 modules-right = down essid cpu volume battery
 
@@ -66,11 +71,62 @@ padding-left = 2
 padding-right = 3
 
 accumulate-stats = true
+dim-value = 1
+
+[module/ewmh]
+type = internal/xworkspaces
+
+pin-workspaces = false
+enable-click = true
+enable-scroll = true
+reverse-scroll = true
+
+
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;
+icon-3 = 4;
+icon-4 = 5;
+icon-5 = 6;
+icon-6 = 7;
+icon-7 = 8;
+icon-8 = 9;
+icon-9 = 10;
+#icon-5 = 6;
+format = <label-state>
+label-monitor = %name%
+
+label-active = %name%
+label-active-foreground = ${colors.base01}
+label-active-background = ${colors.base06}
+label-active-underline = 56c77d
+label-active-padding = 1
+
+label-occupied = %name%
+label-occupied-background = ${colors.bg}
+label-occupied-padding = 1
+
+label-urgent = %name%
+label-urgent-foreground = ${colors.background}
+label-urgent-background = ${colors.background}
+label-urgent-underline = ${colors.foreground}
+label-urgent-padding = 1
+
+
+label-empty = %name%
+label-empty-foreground = ${colors.foreground}
+label-empty-padding = 1
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+[module/xmonad]
+type = custom/script
+exec = xmonad-log
 
 [module/mpd]
 type = internal/mpd
-format-prefix = " "
-format-prefix-foreground = ${colors.blue}
+  format-prefix = " "
+  format-prefix-foreground = ${colors.blue}
 label = %output:0:45:...%
 click-left = playerctl previous
 click-middle = playerctl play-pause
@@ -335,10 +391,12 @@ click-left = xdg-open "https://google.de/search?q=weather+$(wedder -C)"
 screenchange-reload = true
 
 [global/wm]
-margin-top = 24
-margin-bottom = 24
+margin-top = 0
+margin-bottom = 0
 
-override-redirect = true
+monitor-strict = false
+override-redirect = false
+
 
 ; vim:ft=dosini
 
@@ -348,7 +406,7 @@ bottom = true
 monitor = HDMI-0
 ; monitor = DP-1-2
 
-modules-left = i3 music
+modules-left = ewmh music
 modules-center = time
 modules-right = down essid cpu volume battery
 
@@ -362,7 +420,7 @@ inherit = bar/master
 bottom = true
 monitor = DP-1-2
 
-modules-left = i3 music
+modules-left = ewmh music
 modules-center = time
 modules-right = down essid cpu volume battery
 
