@@ -16,6 +16,8 @@ import qualified Data.Map                         as M
 import qualified XMonad.Layout.Fullscreen         as FS
 import           XMonad.Layout.Gaps
 import           XMonad.Layout.Spacing
+import XMonad.Layout.Roledex
+import XMonad.Layout.Spiral
 import qualified XMonad.StackSet                  as W
 
 -- Actions
@@ -98,7 +100,7 @@ myModMask = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+myWorkspaces = ["1:\xf269", "2:\xf121", "3", "4", "5", "6", "7", "8", "9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -114,19 +116,23 @@ myScratchPads =
   [ NS "term" spawnTerm findTerm manageScratch
   , NS "bt" spawnBT findBT manageScratch
   , NS "audio" spawnPavu findPavu manageScratch
+  , NS "record" spawnScreenRecorder findScreenRecorder manageScratch
   ]
   where
     -- Terminal (st)
-    spawnTerm = "kitty --class scratchpad"
-    findTerm = className =? "scratchpad"
+    spawnTerm = "kitty --title scratchpad"
+    findTerm = title =? "scratchpad"
     -- Music player (ncmpcpp)
     spawnBT = "blueman-manager"
     findBT = className =? "Blueman-manager"
     -- Audio mixer (pulseaudio)
     spawnPavu = "pavucontrol"
     findPavu = className =? "Pavucontrol"
+    -- Simple Screen Recorder
+    spawnScreenRecorder = "simplescreenrecorder"
+    findScreenRecorder = className =? "SimpleScreenRecorder"
     manageScratch =
-      customFloating $ W.RationalRect (1 / 6) (1 / 6) (1 / 6) (1 / 6) -- where center w h = W.RationalRect ((1 - w) / 2) ((1 - h) / 2) w h
+      customFloating $ W.RationalRect (1 / 6) (1 / 6) (2/3) (2 / 3) -- where center w h = W.RationalRect ((1 - w) / 2) ((1 - h) / 2) w h
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -216,6 +222,7 @@ myKeys
   , ("M-<Print>", spawn "sleep 0.5 && scrot 'FULL_%s_%d-%m-%Y_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots/'")
   , ("M-o", namedScratchpadAction myScratchPads "term")
   , ("M-S-a", namedScratchpadAction myScratchPads "audio")
+  , ("M-S-r", namedScratchpadAction myScratchPads "record")
   , ("M-<Tab>", toggleWS' ["NSP"]) -- Toggle to the previous WS excluding NSP
   , ("M-.", nextNonEmptyWS) -- Move to next non-empty WS skipping NSP
   , ("M-,", prevNonEmptyWS) -- Move to previous non-empty WS skipping NSP
@@ -267,7 +274,7 @@ myMouseBindings XConfig {XMonad.modMask = modm} =
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
+myLayout = avoidStruts (tiled ||| (smartSpacing 5 $ spiral (3/4)) ||| Full ||| Roledex)
   where
     -- default tiling algorithm partitions the screen into two panes
     tiled = smartSpacing 5 $ Tall nmaster delta ratio
