@@ -27,6 +27,7 @@
     ~/.ncmpcpp/config: config/ncmpcpp
     ~/.offlineimaprc: offlineimap/offlineimaprc
     ~/.offlineimap.py: offlineimap/offlineimap.py
+    ~/.doom.d: doomd
     ~/.spacemacs: spacemacs/dotspacemacs
     ~/spacemacs: spacemacs/spacemacs
     ~/.tmux.conf: tmux/tmuxconf
