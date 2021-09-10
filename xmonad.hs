@@ -374,7 +374,9 @@ myStartupHook = do
   spawnOnce "feh --bg-fill ~/dotfiles/wallpaper.png"
   spawnOnce "picom --experimental-backend"
   spawnOnce "udiskie -a"
+  spawnOnce "dunst"
   spawnOnce "emacs --daemon"
+  -- spawnOnce "nvidia-fix.sh"
   setWMName "xmonad"
 
 ------------------------------------------------------------------------

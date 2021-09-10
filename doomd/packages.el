@@ -52,3 +52,17 @@
 (package! cmake-ide)
 (package! origami)
 (package! lsp-origami)
+(package! nyan-mode)
+(package! carbon-now-sh)
+
+(use-package! zig-mode
+  :hook ((zig-mode . lsp-deferred))
+  :custom (zig-format-on-save nil)
+  :config
+  (after! lsp-mode
+    (add-to-list 'lsp-language-id-configuration '(zig-mode . "zig"))
+    (lsp-register-client
+      (make-lsp-client
+        :new-connection (lsp-stdio-connection "/home/soorya/bin/zls")
+        :major-modes '(zig-mode)
+        :server-id 'zls))))

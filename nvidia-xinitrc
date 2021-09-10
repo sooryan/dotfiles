@@ -3,9 +3,8 @@ if [ $# -gt 0 ]; then
 else
   # dbus-launch awesome
 	# dbus-launch i3 --shmlog-size=26214400
-	dbus-launch xmonad
+  dbus-launch xmonad
   # gnome-session
   # Alternatively, you can also use xfce4:
   # xfce4-session
-	bain arch &
 fi

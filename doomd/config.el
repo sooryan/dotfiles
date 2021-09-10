@@ -21,7 +21,7 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "Fantasque Sans Mono" :size 15))
+(setq doom-font (font-spec :family "Fantasque Sans Mono" :size 16))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -66,6 +66,21 @@
 (global-origami-mode 1)
 (setq lsp-enable-file-watchers 't)
 (add-hook 'lsp-after-open-hook #'lsp-origami-try-enable)
+;; (setq mode-line-format
+;;       (append mode-line-format
+;;        '(:eval (list (nyan-create)))
+;;        ))
+
+;; Define your custom doom-modeline
+;; (doom-modeline-def-modeline 'my-simple-line
+;;   '(bar matches buffer-info remote-host buffer-position parrot selection-info)
+;;   '(:eval (list (nyan-create)))
+;;   '(misc-info minor-modes input-method buffer-encoding major-mode process vcs checker))
+
+;; Add to `doom-modeline-mode-hook` or other hooks
+(defun setup-custom-doom-modeline ()
+   (doom-modeline-set-modeline 'my-simple-line 'default))
+(add-hook 'doom-modeline-mode-hook 'setup-custom-doom-modeline)
 
 (set-eglot-client! 'cc-mode '("ccls" "--init={\"index\": {\"threads\": 3}}"))
 
@@ -81,3 +96,10 @@
   ("f" origami-forward-toggle-node)
   ("q" nil "quit")
   ("a" origami-toggle-all-nodes))
+
+(setq xterm-set-window-title t)
+(defadvice! fix-xterm-set-window-title (&optional terminal)
+  :before-while #'xterm-set-window-title
+  (not (display-graphic-p terminal)))
+
+(add-to-list 'auto-mode-alist '("\.cu$" . c++-mode))
